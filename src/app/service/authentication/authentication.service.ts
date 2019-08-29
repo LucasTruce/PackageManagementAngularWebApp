@@ -22,8 +22,7 @@ export class AuthenticationService {
       map(
         userData => {
           sessionStorage.setItem('login', login);
-          const tokenStr = 'Bearer ' + userData.token;
-          console.log('Token: ' + tokenStr);
+          const tokenStr = 'Bearer ' + userData.jwttoken;
           sessionStorage.setItem('token', tokenStr);
           return userData;
         }
@@ -34,12 +33,13 @@ export class AuthenticationService {
   }
 
   isUserLoggedIn() {
-    const user = sessionStorage.getItem('login')
+    const user = sessionStorage.getItem('login');
     console.log(!(user === null));
     return !(user === null);
   }
 
   logOut() {
     sessionStorage.removeItem('login');
+    sessionStorage.removeItem('token');
   }
 }

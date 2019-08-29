@@ -15,11 +15,10 @@ export class BasicAuthHttpInterceptorService implements HttpInterceptor{
     if (sessionStorage.getItem('login') && sessionStorage.getItem('token')) {
       req = req.clone({
           setHeaders: {
-              Authentication: sessionStorage.getItem('token')
+              Authorization: sessionStorage.getItem('token')
         }
       });
     }
-    console.log( 'TOKEN!!: ' + sessionStorage.getItem('token'));
 
     return next.handle(req);
 
