@@ -9,13 +9,19 @@ import { NavbarComponent } from './component/navbar/navbar.component';
 import { LoginComponent } from './component/login/login.component';
 import {FormsModule} from '@angular/forms';
 import {BasicAuthHttpInterceptorService} from './service/authentication/basic-auth-http-interceptor.service';
+import { LogoutComponent } from './component/logout/logout.component';
+import { FooterComponent } from './component/footer/footer.component';
+import { RegistrationComponent } from './component/registration/registration.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     UserListComponent,
     NavbarComponent,
-    LoginComponent
+    LoginComponent,
+    LogoutComponent,
+    FooterComponent,
+    RegistrationComponent
   ],
   imports: [
     BrowserModule,

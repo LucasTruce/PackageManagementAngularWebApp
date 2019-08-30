@@ -19,8 +19,7 @@ export class UserListComponent implements OnInit {
      );
   }
 
-  handleSuccessfulResponse(response)
-  {
+  handleSuccessfulResponse(response) {
     this.users = response;
   }
 

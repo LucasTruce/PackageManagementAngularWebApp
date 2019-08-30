@@ -5,7 +5,12 @@ import {Observable} from 'rxjs';
 export class User {
   constructor(
     public id: string,
-    public name: string
+    public name: string,
+    public lastName: string,
+    public phoneNumber: string,
+    public street: string,
+    public city: string,
+    public postCode: number
   ) {}
 }
 
@@ -19,4 +24,5 @@ export class UserService {
   getAll() {
     return this.httpClient.get<User[]>('//localhost:8080/users');
   }
+
 }
