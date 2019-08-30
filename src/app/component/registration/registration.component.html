@@ -1,0 +1,30 @@
+<form class="form-registration" name="formRegistration" #myForm="ngForm" (ngSubmit)="onSumbit()">
+    <table class="table">
+      <tbody>
+        <tr>
+          <td>
+            <div class="form-group">
+            Email: <input type="email" class="form-control" name="email" [(ngModel)]="password.email" placeholder="E-mail"><br/>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="form-group">
+            Login: <input type="text" class="form-control" name="login" [(ngModel)]="password.login" placeholder="Login"><br/>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="form-group">
+            Password: <input type="password" class="form-control" name="password" [(ngModel)]="password.password" placeholder="Hasło"><br/>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  <div class="form-group">
+    <button class="btn btn-success" type="submit">Register</button>
+  </div>
+</form>
