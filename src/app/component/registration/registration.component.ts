@@ -12,18 +12,34 @@ export class RegistrationComponent implements OnInit {
 
   password: Password = new Password('', '', '');
 
+  errors: object = {};
+
+  fields: string[] = ['email', 'login', 'password'];
+
   constructor(private router: Router, private passwordService: PasswordService, private authenticationService: AuthenticationService) { }
 
   ngOnInit() {
   }
 
   onSumbit() {
-      this.passwordService.savePassword(this.password).subscribe(
+    this.errors = {};
+
+    this.passwordService.savePassword(this.password).subscribe(
         data => {
           this.authenticationService.authenticate(this.password.login, this.password.password).subscribe(
             tempData =>
               this.router.navigate([''])
           );
+        },
+        error => {
+            const errors = error.error.errors;
+
+            for (const err of errors) {
+              const field = err.field;
+              const message = err.defaultMessage;
+
+              this.errors[field] = message;
+            }
         }
       );
   }

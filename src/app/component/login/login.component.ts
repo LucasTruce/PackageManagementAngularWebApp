@@ -12,6 +12,7 @@ export class LoginComponent implements OnInit {
   login = '';
   password = '';
   invalidLogin = false;
+  errors: string;
 
   constructor(private router: Router,
               private authenticationService: AuthenticationService) { }
@@ -26,6 +27,7 @@ export class LoginComponent implements OnInit {
           this.invalidLogin = false;
         },
         error => {
+          this.errors = error.error.message;
           this.invalidLogin = true;
 
         }

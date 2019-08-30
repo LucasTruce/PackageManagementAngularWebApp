@@ -1,9 +1,32 @@
-<div class="container">
-  <div>
-    Login: <input type="text" name="username" [(ngModel)]="login">
-    Password: <input type="password" name="password" [(ngModel)]="password">
+<form class="form-registration" name="formRegistration" #myForm="ngForm" (ngSubmit)="checkLogin()">
+  <table class="table">
+    <tbody>
+      <div *ngIf="errors" class="error-message">
+        {{errors}}
+
+      </div>
+    <tr>
+      <td>
+        <div class="form-group">
+          Login: <input type="text" name="username" [(ngModel)]="login">
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div class="form-group">
+          Password: <input type="password" name="password" [(ngModel)]="password">
+        </div>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <div class="form-group">
+    <button (click)=checkLogin() class="btn btn-success" type="submit">Login</button>
   </div>
-  <button (click)=checkLogin() class="btn btn-success">
-    Login
-  </button>
-</div>
+</form>
+
+
+
+
+
