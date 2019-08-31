@@ -12,6 +12,8 @@ import {BasicAuthHttpInterceptorService} from './service/authentication/basic-au
 import { LogoutComponent } from './component/logout/logout.component';
 import { FooterComponent } from './component/footer/footer.component';
 import { RegistrationComponent } from './component/registration/registration.component';
+import { ProfileComponent } from './component/profile/profile.component';
+import { ChangeLoginComponent } from './component/profile/change-login/change-login.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { RegistrationComponent } from './component/registration/registration.com
     LoginComponent,
     LogoutComponent,
     FooterComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    ProfileComponent,
+    ChangeLoginComponent
   ],
   imports: [
     BrowserModule,

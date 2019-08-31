@@ -41,4 +41,8 @@ export class AuthenticationService {
     sessionStorage.removeItem('login');
     sessionStorage.removeItem('token');
   }
+
+  getLogin() {
+    return sessionStorage.getItem('login');
+  }
 }

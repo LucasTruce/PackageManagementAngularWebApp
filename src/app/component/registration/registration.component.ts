@@ -28,7 +28,7 @@ export class RegistrationComponent implements OnInit {
         data => {
           this.authenticationService.authenticate(this.password.login, this.password.password).subscribe(
             tempData =>
-              this.router.navigate([''])
+              this.router.navigate(['profile'])
           );
         },
         error => {

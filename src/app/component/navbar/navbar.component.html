@@ -16,5 +16,9 @@
     <li>
         <a *ngIf="!authenticationService.isUserLoggedIn()" routerLink="/register" class="nav-link">Zarejestruj</a>
     </li>
+    <li>
+      <a *ngIf="authenticationService.isUserLoggedIn()" routerLink="/profile" class="nav-link">Profil</a>
+    </li>
   </ul>
+
 </nav>

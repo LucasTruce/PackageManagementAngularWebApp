@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="row justify-content-md-center">
+    <div class="col-md-6">
+      <a routerLink="/profile" class="nav-link" href="/profile">Informacje</a><br/>
+      <a routerLink="/profile/change" class="nav-link" href="/profile/change">Zmień dane logowania</a>
+    </div>
+
+
+    <div class="col-md-6">
+      <form class="form-registration" (ngSubmit)="updatePassword()" name="updatePassword" #myForm="ngForm">
+        <table class="table">
+          <tbody>
+          <tr>
+            <td>
+              <div class="form-group">
+                Email: <input type="text" class="form-control" name="name" [(ngModel)]="password.email" placeholder="Imię">
+              </div>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </form>
+    </div>
+  </div>
+</div>
+
