@@ -15,6 +15,8 @@ export class RegistrationComponent implements OnInit {
 
   errors: object = {};
 
+  comunicate: string = '';
+
   constructor(private router: Router, private userService: UserService, private authenticationService: AuthenticationService) { }
 
   ngOnInit() {
@@ -22,6 +24,7 @@ export class RegistrationComponent implements OnInit {
 
   onSumbit() {
     this.errors = {};
+    this.comunicate = '';
 
     this.userService.saveUser(this.user).subscribe(
         data => {
@@ -31,13 +34,18 @@ export class RegistrationComponent implements OnInit {
           );
         },
         error => {
-            const errors = error.error.errors;
+            if (error.status === 404) {
+              this.comunicate = 'Login/email zajety!';
+            }
+            else {
+              const errors = error.error.errors;
 
-            for (const err of errors) {
-              const field = err.field;
-              const message = err.defaultMessage;
+                for (const err of errors) {
+                  const field = err.field;
+                  const message = err.defaultMessage;
 
-              this.errors[field] = message;
+                  this.errors[field] = message;
+                }
             }
         }
       );

@@ -1,6 +1,9 @@
 <form class="form-registration" name="formRegistration" #myForm="ngForm" (ngSubmit)="onSumbit()">
     <table class="table">
       <tbody>
+        <div *ngIf="comunicate != ''" class="error-message">
+          {{comunicate}}
+        </div>
         <tr>
           <td>
             <div class="form-group">
