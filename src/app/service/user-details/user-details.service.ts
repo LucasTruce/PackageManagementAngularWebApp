@@ -10,7 +10,7 @@ export class UserDetails {
     public number: string,
     public street: string,
     public city: string,
-    public postCode: number
+    public postCode: string
   ) {}
 }
 
@@ -33,7 +33,7 @@ export class UserDetailsService {
       return this.httpClient.get('http://localhost:8080/userdetails/?login=' + login);
   }
 
-  update(userDetails) {
-      return this.httpClient.put('http://localhost:8080/userdetails', userDetails);
+  update(userDetails, login) {
+      return this.httpClient.put('http://localhost:8080/userdetails/?login=' + login, userDetails);
   }
 }

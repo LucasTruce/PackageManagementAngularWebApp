@@ -16,6 +16,9 @@ export class UserService {
 
   constructor(private httpClient: HttpClient) { }
 
+  getUser(login) {
+    return this.httpClient.get('http://localhost:8080/users/?login=' + login);
+  }
   saveUser(user) {
     return this.httpClient.post('http://localhost:8080/register', user);
   }

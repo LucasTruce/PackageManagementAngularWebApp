@@ -11,11 +11,12 @@ import {UserService} from '../../service/user/user.service';
 })
 export class ProfileComponent implements OnInit {
 
-  userDetails: UserDetails = new UserDetails('', '', '', '', '', '', 0);
+  userDetails: UserDetails = new UserDetails('', '', '', '', '', '', '');
 
   error: object = {};
   temp = true;
   authenticate = false;
+  comunicate: string = '';
 
   constructor(private userService: UserService, private userDetailsService: UserDetailsService, private authenticationService: AuthenticationService, private router: Router) { }
 
@@ -43,11 +44,13 @@ export class ProfileComponent implements OnInit {
   createUser() {
     this.error = {};
     this.temp = true;
+    this.comunicate = '';
 
     if(this.authenticate == true) {
-      this.userDetailsService.update(this.userDetails).subscribe(
+      this.userDetailsService.update(this.userDetails, this.authenticationService.getLogin()).subscribe(
           response => {
             this.handleSuccessfulResponse(response);
+            this.comunicate = 'Dane zmienione poprawnie!';
             this.router.navigate(['/profile']);
           }
       );

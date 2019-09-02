@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import {User} from '../../../service/authentication/authentication.service';
-import {UserService} from '../../../service/user/user.service';
+import {Component, OnInit } from '@angular/core';
+
+import {User, UserService} from '../../../service/user/user.service';
+import {AuthenticationService} from '../../../service/authentication/authentication.service';
 
 @Component({
   selector: 'app-change-login',
@@ -9,13 +10,27 @@ import {UserService} from '../../../service/user/user.service';
 })
 export class ChangeLoginComponent implements OnInit {
 
-  user: User;
-  constructor(private userService: UserService) { }
+  user: User = new User('', '', '');
+  error: object = {};
+
+  constructor(private userService: UserService, private authenticationService: AuthenticationService) { }
 
   ngOnInit() {
+    this.userService.getUser(this.authenticationService.getLogin()).subscribe(
+      response => {
+        this.handleSuccessfulResponse(response);
+      },
+      err => {
+        this.error = err.error.message;
+      }
+    );
   }
 
-  updatePassword() {
+  handleSuccessfulResponse(response) {
+    this.user = response;
+  }
+
+  updateUser() {
 
   }
 

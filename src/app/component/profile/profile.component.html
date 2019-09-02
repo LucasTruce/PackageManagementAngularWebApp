@@ -11,6 +11,10 @@
       <div *ngIf="!temp" class="error-message">
         Uzupełnij dane użytkownika!
       </div>
+      <div *ngIf="comunicate != ''" class="error-message">
+        Dane zmienione poprawnie!
+      </div>
+
 
       <form class="form-registration" (ngSubmit)="createUser()" name="createUser" #myForm="ngForm">
         <table class="table">
@@ -68,7 +72,7 @@
           <tr>
             <td>
               <div class="form-group">
-                Kod pocztowy: <input type="number" class="form-control" name="postCode" [(ngModel)]="userDetails.postCode" placeholder="Kod pocztowy">
+                Kod pocztowy: <input type="text" class="form-control" name="postCode" [(ngModel)]="userDetails.postCode" placeholder="Kod pocztowy">
                 <div *ngIf="error.postCode" class="error-message">
                   {{error.postCode}}
                 </div>
