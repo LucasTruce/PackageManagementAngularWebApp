@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {User, UserService} from '../../service/user/user.service';
 import {AuthenticationService} from '../../service/authentication/authentication.service';
 import {Router} from '@angular/router';
+import {UserDetails, UserDetailsService} from '../../service/user-details/user-details.service';
+import {UserService} from '../../service/user/user.service';
 
 @Component({
   selector: 'app-profile',
@@ -10,18 +11,18 @@ import {Router} from '@angular/router';
 })
 export class ProfileComponent implements OnInit {
 
-  user: User = new User('', '', '', '', '', 0);
+  userDetails: UserDetails = new UserDetails('', '', '', '', '', '', 0);
 
   error: object = {};
   temp = true;
   authenticate = false;
 
-  constructor(private userService: UserService, private authenticationService: AuthenticationService, private router: Router) { }
+  constructor(private userService: UserService, private userDetailsService: UserDetailsService, private authenticationService: AuthenticationService, private router: Router) { }
 
   ngOnInit() {
     this.error = {};
 
-    this.userService.getOne(this.authenticationService.getLogin()).subscribe(
+    this.userDetailsService.getOne(this.authenticationService.getLogin()).subscribe(
       response => {
         this.handleSuccessfulResponse(response);
         this.authenticate = true;
@@ -36,7 +37,7 @@ export class ProfileComponent implements OnInit {
   }
 
   handleSuccessfulResponse(response) {
-    this.user = response;
+    this.userDetails = response;
   }
 
   createUser() {
@@ -44,7 +45,7 @@ export class ProfileComponent implements OnInit {
     this.temp = true;
 
     if(this.authenticate == true) {
-      this.userService.updateUser(this.user).subscribe(
+      this.userDetailsService.update(this.userDetails).subscribe(
           response => {
             this.handleSuccessfulResponse(response);
             this.router.navigate(['/profile']);
@@ -53,7 +54,7 @@ export class ProfileComponent implements OnInit {
     }
     else {
 
-      this.userService.saveUser(this.user, this.authenticationService.getLogin()).subscribe(
+      this.userDetailsService.saveUserDetails(this.userDetails, this.authenticationService.getLogin()).subscribe(
         response => {
           this.handleSuccessfulResponse(response);
           this.router.navigate(['']);

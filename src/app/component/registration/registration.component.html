@@ -4,7 +4,7 @@
         <tr>
           <td>
             <div class="form-group">
-              Email: <input type="email" class="form-control" name="email" [(ngModel)]="password.email" placeholder="E-mail">
+              Email: <input type="email" class="form-control" name="email" [(ngModel)]="user.email" placeholder="E-mail">
               <div *ngIf="errors.email" class="error-message">
                 {{errors.email}}
               </div>
@@ -14,7 +14,7 @@
         <tr>
           <td>
             <div class="form-group">
-              Login: <input type="text" class="form-control" name="login" [(ngModel)]="password.login" placeholder="Login">
+              Login: <input type="text" class="form-control" name="login" [(ngModel)]="user.login" placeholder="Login">
               <div *ngIf="errors.login" class="error-message">
                 {{errors.login}}
               </div>
@@ -24,7 +24,7 @@
         <tr>
           <td>
             <div class="form-group">
-              Password: <input type="password" class="form-control" name="password" [(ngModel)]="password.password" placeholder="Hasło">
+              Password: <input type="password" class="form-control" name="password" [(ngModel)]="user.password" placeholder="Hasło">
               <div *ngIf="errors.password" class="error-message">
                 {{errors.password}}
               </div>

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
-import {Password, PasswordService} from '../../service/password/password.service';
+import {UserDetails, UserDetailsService} from '../../service/user-details/user-details.service';
 import {AuthenticationService} from '../../service/authentication/authentication.service';
+import {User, UserService} from '../../service/user/user.service';
 
 @Component({
   selector: 'app-registration',
@@ -10,13 +11,11 @@ import {AuthenticationService} from '../../service/authentication/authentication
 })
 export class RegistrationComponent implements OnInit {
 
-  password: Password = new Password('', '', '');
+  user: User = new User('', '', '');
 
   errors: object = {};
 
-  fields: string[] = ['email', 'login', 'password'];
-
-  constructor(private router: Router, private passwordService: PasswordService, private authenticationService: AuthenticationService) { }
+  constructor(private router: Router, private userService: UserService, private authenticationService: AuthenticationService) { }
 
   ngOnInit() {
   }
@@ -24,9 +23,9 @@ export class RegistrationComponent implements OnInit {
   onSumbit() {
     this.errors = {};
 
-    this.passwordService.savePassword(this.password).subscribe(
+    this.userService.saveUser(this.user).subscribe(
         data => {
-          this.authenticationService.authenticate(this.password.login, this.password.password).subscribe(
+          this.authenticationService.authenticate(this.user.login, this.user.password).subscribe(
             tempData =>
               this.router.navigate(['profile'])
           );
