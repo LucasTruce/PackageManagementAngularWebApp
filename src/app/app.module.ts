@@ -16,6 +16,7 @@ import { ProfileComponent } from './component/profile/profile.component';
 import { ChangeLoginComponent } from './component/profile/change-login/change-login.component';
 import { CreatePackageComponent } from './component/create-package/create-package.component';
 import { CreateSenderReceiverComponent } from './component/create-package/create-sender-receiver/create-sender-receiver.component';
+import { CreateProductComponent } from './component/create-package/create-product/create-product.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { CreateSenderReceiverComponent } from './component/create-package/create
     ProfileComponent,
     ChangeLoginComponent,
     CreatePackageComponent,
-    CreateSenderReceiverComponent
+    CreateSenderReceiverComponent,
+    CreateProductComponent
   ],
   imports: [
     BrowserModule,
