@@ -10,7 +10,7 @@ import {AuthenticationService} from '../../../service/authentication/authenticat
 })
 export class ChangeLoginComponent implements OnInit {
 
-  user: User = new User('', '', '');
+  user: User = new User('', '', '', {});
   error: object = {};
 
   constructor(private userService: UserService, private authenticationService: AuthenticationService) { }
@@ -27,7 +27,12 @@ export class ChangeLoginComponent implements OnInit {
   }
 
   handleSuccessfulResponse(response) {
+    this.user.roles = {};
+    this.user.login = '';
+    this.user.email = '';
+    this.user.password = '';
     this.user = response;
+
   }
 
   updateUser() {

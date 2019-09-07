@@ -4,10 +4,10 @@ import {UserDetails, UserDetailsService} from '../../service/user-details/user-d
 
 @Component({
   selector: 'app-user-list',
-  templateUrl: './user-list.component.html',
-  styleUrls: ['./user-list.component.css']
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.css']
 })
-export class UserListComponent implements OnInit {
+export class HomeComponent implements OnInit {
 
   usersDetails: UserDetails[];
 

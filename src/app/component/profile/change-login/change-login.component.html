@@ -7,34 +7,40 @@
 
 
     <div class="col-md-6">
-      <form class="form-registration" (ngSubmit)="updateUser()" name="updateUser" #myForm="ngForm">
+      <form class="form-registration" name="updateUser" (ngSubmit)="updateUser()"  #myForm="ngForm">
         <table class="table">
           <tbody>
             <tr>
               <td>
                 <div class="form-group">
-                  Email: <input type="text" class="form-control" name="email" [(ngModel)]="user.email" placeholder="Imię">
+                  Email: <input type="email" class="form-control" name="email" [(ngModel)]="user.email" placeholder="Email">
                 </div>
               </td>
             </tr>
             <tr>
               <td>
                 <div class="form-group">
-                  Login <input type="text" class="form-control" name="login" [(ngModel)]="user.login" placeholder="Imię">
+                  Login <input type="text" class="form-control" name="login" [(ngModel)]="user.login" placeholder="Login">
                 </div>
               </td>
             </tr>
             <tr>
               <td>
                 <div class="form-group">
-                  Password: <input type="password" class="form-control" name="password" placeholder="Password">
+                  Password: <input type="password" class="form-control" name="password" [(ngModel)]="user.password" placeholder="Password">
                 </div>
               </td>
             </tr>
             <tr>
               <td>
-                <!-- <div *ngIf="!authenticate"> -->
-                  <button class="btn btn-success" type="submit">Zapisz</button>
+                <div class="form-group">
+
+                  <div *ngIf="user.roles[0]?.name === 'ROLE_USER'" >
+                    <button class="btn btn-success" type="submit">Zapisz</button>
+                  </div>
+                </div>
+
+
 
               </td>
             </tr>

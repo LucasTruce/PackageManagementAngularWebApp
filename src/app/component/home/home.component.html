@@ -1,0 +1,22 @@
+<div class="col-md-6">
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th>id</th>
+      <th>name</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let userDetail of usersDetails">
+      <td>{{userDetail.id}}</td>
+      <td>{{userDetail.name}}</td>
+      <td>{{userDetail.lastName}}</td>
+      <td>{{userDetail.number}}</td>
+      <td>{{userDetail.street}}</td>
+      <td>{{userDetail.city}}</td>
+      <td>{{userDetail.postCode}}</td>
+    </tr>
+    </tbody>
+  </table>
+
+</div>

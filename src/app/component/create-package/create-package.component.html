@@ -1,0 +1,71 @@
+<div class="container">
+  <div class="row justify-content-md-center">
+
+    <div *ngIf="added && !senderAdded">
+      <app-create-sender-receiver
+        [packId]="package.id"
+        (senderReceiverAdded)="handleSenderReceiverResponse($event)">
+      </app-create-sender-receiver>
+    </div>
+
+
+
+    <div *ngIf="!added && !senderAdded">
+      <form class="form-registration" (ngSubmit)="createPackage()" name="createPackage" #myForm="ngForm">
+        <table class="table">
+          <tbody>
+          <tr><td>Wprowadź wymiary paczki:</td></tr>
+          <tr>
+            <td>
+              <div class="form-group">
+                Wysokość: <input type="number" class="form-control" name="height" [(ngModel)]="package.height"  placeholder="Wysokość [cm]">
+                <div *ngIf="error.height" class="error-message">
+                  {{error.height}}
+                </div>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="form-group">
+                Szerokość: <input type="number" class="form-control" name="width" [(ngModel)]="package.width" placeholder="Szerokość [cm]">
+                <div *ngIf="error.width" class="error-message">
+                  {{error.width}}
+                </div>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="form-group">
+                Długość: <input type="number" class="form-control" name="length" [(ngModel)]="package.length" placeholder="Długość [cm]">
+                <div *ngIf="error.length" class="error-message">
+                  {{error.length}}
+                </div>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="form-group">
+                Uwagi do paczki:
+                <textarea rows = "5" cols = "50" name = "description" [(ngModel)]="package.comments" class="form-control">Uwagi</textarea>
+                <div *ngIf="error.comments" class="error-message">
+                  {{error.comments}}
+                </div>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="form-group">
+                <button class="btn btn-success" type="submit">Dalej</button>
+              </div>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </form>
+    </div>
+  </div>
+</div>

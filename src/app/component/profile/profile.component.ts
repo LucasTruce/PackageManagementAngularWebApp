@@ -23,11 +23,12 @@ export class ProfileComponent implements OnInit {
   ngOnInit() {
     this.error = {};
 
+    //po wejsciu na strone probujemy pobrac dane
     this.userDetailsService.getOne(this.authenticationService.getLogin()).subscribe(
       response => {
-        this.handleSuccessfulResponse(response);
-        this.authenticate = true;
-      },
+        this.handleSuccessfulResponse(response); //jezeli userDetails juz istnieje w bazie to nasz obiekt wypelniamy danymi
+        this.authenticate = true; // userDetails istnieje
+      }, // w przypadku bledu wypelniamy obiekt error wiadomosciami
         err => {
           this.error = err.error.message;
           this.temp = false;
@@ -41,21 +42,30 @@ export class ProfileComponent implements OnInit {
     this.userDetails = response;
   }
 
-  createUser() {
+  createUser() {    // tworzenie uzytkownika lub edycja
     this.error = {};
     this.temp = true;
     this.comunicate = '';
 
-    if(this.authenticate == true) {
+    if(this.authenticate == true) {   //jesli userDetails istnieje to pobieramy dane i robimy update
       this.userDetailsService.update(this.userDetails, this.authenticationService.getLogin()).subscribe(
           response => {
-            this.handleSuccessfulResponse(response);
+            this.handleSuccessfulResponse(response);  //wypelniamy obiekt user details w przypadku powodzenia
             this.comunicate = 'Dane zmienione poprawnie!';
             this.router.navigate(['/profile']);
+          },
+          err => {
+            const errors = err.error.errors;
+
+            for (const err of errors) {
+              const field = err.field;
+              const message = err.defaultMessage;
+              this.error[field] = message;
+            }
           }
       );
     }
-    else {
+    else {     //w przypadku jak uzytkownik nie istnieje to tworzymy nowego
 
       this.userDetailsService.saveUserDetails(this.userDetails, this.authenticationService.getLogin()).subscribe(
         response => {
@@ -65,7 +75,7 @@ export class ProfileComponent implements OnInit {
         er => {
           const errors = er.error.errors;
 
-          for (const err of errors) {
+          for (const err of errors) {   //walidacja, przechwytujemy bledy
             const field = err.field;
             const message = err.defaultMessage;
             this.error[field] = message;

@@ -1,12 +1,19 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 
+export class Role {
+  constructor(
+    public name: string
+  ) {}
+}
 export class User {
   constructor(
     public email: string,
     public login: string,
-    public password: string
-  ) {}
+    public password: string,
+    public roles?: object
+) {}
+
 }
 
 @Injectable({

@@ -1,0 +1,251 @@
+<div class="container">
+  <div class="row justify-content-md-center">
+    <form class="form-registration" (ngSubmit)="myForm.form.valid && createSenderReceiver()" name="createSenderReceiver" #myForm="ngForm">
+      <table class="table">
+        <tbody>
+        <tr><td>Podaj dane nadawcy: </td>
+            <td>Podaj dane odbiorcy:</td>
+        </tr>
+        <tr>
+          <td>
+            <div class="form-group">
+              Imię: <input type="text" class="form-control" name="senderName" [(ngModel)]="sender.name" placeholder="Imię" #name="ngModel" required minlength="3">
+              <div class="form-group">
+                <div *ngIf="name.invalid" class="error-message">
+                  <div *ngIf="name.errors.required">
+                    Imię nie może być puste!
+                  </div>
+                  <div *ngIf="name.errors.minlength">
+                    Imię musi zawierać przynajmniej 3 litery!
+                  </div>
+                </div>
+              </div>
+            </div>
+          </td>
+          <td>
+            <div class="form-group">
+              Imię: <input type="text" class="form-control" name="receiverName"  [(ngModel)]="receiver.name" #name2="ngModel" placeholder="Imię" required minlength="3">
+              <div class="form-group">
+                <div *ngIf="name2.invalid" class="error-message">
+                  <div *ngIf="name2.errors.required">
+                    Imię nie może być puste!
+                  </div>
+                  <div *ngIf="name2.errors.minlength">
+                    Imię musi zawierać przynajmniej 3 litery!
+                  </div>
+                </div>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="form-group">
+              Nazwisko: <input type="text" class="form-control" name="senderLastName"  [(ngModel)]="sender.lastName" #lastName="ngModel" placeholder="Nazwisko" required minlength="2">
+              <div class="form-group">
+                <div *ngIf="lastName.invalid" class="error-message">
+                  <div *ngIf="lastName.errors.required">
+                    Imię nie może być puste!
+                  </div>
+                  <div *ngIf="lastName.errors.minlength">
+                    Imię musi zawierać przynajmniej 3 litery!
+                  </div>
+                </div>
+              </div>
+            </div>
+          </td>
+          <td>
+            <div class="form-group">
+              Nazwisko: <input type="text" class="form-control" name="receiverLastName" [(ngModel)]="receiver.lastName" #lastName2="ngModel"  placeholder="Nazwisko" required minlength="2">
+              <div class="form-group">
+                <div *ngIf="lastName2.invalid" class="error-message">
+                  <div *ngIf="lastName2.errors.required">
+                    Imię nie może być puste!
+                  </div>
+                  <div *ngIf="lastName2.errors.minlength">
+                    Imię musi zawierać przynajmniej 3 litery!
+                  </div>
+                </div>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="form-group">
+              Adres e-mail: <input type="email" class="form-control" name="senderEmail"  [(ngModel)]="sender.email" #email="ngModel" placeholder="Adres email" required="">
+              <div class="form-group">
+                <div *ngIf="email.invalid" class="error-message">
+                  <div *ngIf="email.errors.required">
+                    Email jest wymagany!
+                  </div>
+                </div>
+              </div>
+            </div>
+          </td>
+          <td>
+            <div class="form-group">
+              Adres e-mail: <input type="email" class="form-control" name="receiverEmail" [(ngModel)]="receiver.email" #email2="ngModel" placeholder="Adres email" required>
+              <div class="form-group">
+                <div *ngIf="email.invalid" class="error-message">
+                  <div *ngIf="email.errors.required">
+                    Email jest wymagany!
+                  </div>
+                </div>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="form-group">
+              Nazwa firmy: <input type="text" class="form-control" name="senderCompanyName"  placeholder="Nazwa firmy">
+            </div>
+          </td>
+          <td>
+            <div class="form-group">
+              Nazwa firmy: <input type="text" class="form-control" name="receiverCompanyName"  placeholder="Nazwa firmy">
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="form-group">
+              Miasto: <input type="text" class="form-control" name="senderCity"  [(ngModel)]="sender.city" #city="ngModel" placeholder="Miasto" required minlength="3">
+              <div class="form-group">
+                <div *ngIf="city.invalid" class="error-message">
+                  <div *ngIf="city.errors.required">
+                    Miasto nie może być puste!
+                  </div>
+                  <div *ngIf="city.errors.minlength">
+                    Miasto musi zawierać przynajmniej 3 litery!
+                  </div>
+                </div>
+              </div>
+            </div>
+          </td>
+          <td>
+            <div class="form-group">
+              Miasto: <input type="text" class="form-control" name="receiverCity" [(ngModel)]="receiver.city" #city2="ngModel" placeholder="Miasto" required minlength="3">
+              <div class="form-group">
+                <div *ngIf="city2.invalid" class="error-message">
+                  <div *ngIf="city2.errors.required">
+                    Miasto nie może być puste!
+                  </div>
+                  <div *ngIf="city2.errors.minlength">
+                    Miasto musi zawierać przynajmniej 3 litery!
+                  </div>
+                </div>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="form-group">
+              Ulica: <input type="text" class="form-control" name="senderStreet"  [(ngModel)]="sender.street" #street="ngModel" placeholder="Ulica" required minlength="3">
+              <div class="form-group">
+                <div *ngIf="street.invalid" class="error-message">
+                  <div *ngIf="street.errors.required">
+                    Ulica nie może być pusta!
+                  </div>
+                  <div *ngIf="street.errors.minlength">
+                    Ulica musi zawierać przynajmniej 3 litery!
+                  </div>
+                </div>
+              </div>
+            </div>
+          </td>
+          <td>
+            <div class="form-group">
+              Ulica: <input type="text" class="form-control" name="receiverStreet" [(ngModel)]="receiver.street" #street2="ngModel"  placeholder="Ulica" required minlength="3">
+              <div class="form-group">
+                <div *ngIf="street2.invalid" class="error-message">
+                  <div *ngIf="street2.errors.required">
+                    Ulica nie może być pusta!
+                  </div>
+                  <div *ngIf="street2.errors.minlength">
+                    Ulica musi zawierać przynajmniej 3 litery!
+                  </div>
+                </div>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="form-group">
+              Kod pocztowy: <input type="text" class="form-control" name="senderPostCode" [(ngModel)]="sender.postCode" #postCode="ngModel" placeholder="Kod pocztowy [xx-zzz]" required pattern="([\d]{2})-([\d]{3})">
+              <div class="form-group">
+                <div *ngIf="postCode.invalid" class="error-message">
+                  <div *ngIf="postCode.errors.required">
+                    Kod pocztowy nie może być pusty!
+                  </div>
+                  <div *ngIf="postCode.errors.pattern">
+                    Podaj poprawny format kodu [xx-zzz]
+                  </div>
+                </div>
+              </div>
+            </div>
+          </td>
+          <td>
+            <div class="form-group">
+              Kod pocztowy: <input type="text" class="form-control" name="receiverPostCode" [(ngModel)]="receiver.postCode" #postCode2="ngModel" placeholder="Kod pocztowy [xx-zzz]" required pattern="([\d]{2})-([\d]{3})">
+              <div class="form-group">
+                <div *ngIf="postCode2.invalid" class="error-message">
+                  <div *ngIf="postCode2.errors.required">
+                    Kod pocztowy nie może być pusty!
+                  </div>
+                  <div *ngIf="postCode2.errors.pattern">
+                    Podaj poprawny format kodu [xx-zzz]
+                  </div>
+                </div>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="form-group">
+              Telefon: <input type="text" class="form-control" name="senderNumber" [(ngModel)]="sender.phoneNumber" #phoneNumber="ngModel" placeholder="Numer telefonu" required pattern="([\d]{9})|(\+[\d]{11})">
+              <div class="form-group">
+                <div *ngIf="phoneNumber.invalid" class="error-message">
+                  <div *ngIf="phoneNumber.errors.required">
+                    Telefon nie może być pusty!
+                  </div>
+                  <div *ngIf="phoneNumber.errors.pattern">
+                    Podaj poprawny numer telefonu!
+                  </div>
+                </div>
+              </div>
+            </div>
+          </td>
+          <td>
+            <div class="form-group">
+              Telefon: <input type="text" class="form-control" name="receiverNumber" [(ngModel)]="receiver.phoneNumber" #phoneNumber2="ngModel" placeholder="Numer telefonu" required pattern="([\d]{9})|(\+[\d]{11})">
+              <div class="form-group">
+                <div *ngIf="phoneNumber2.invalid" class="error-message">
+                  <div *ngIf="phoneNumber2.errors.required">
+                    Telefon nie może być pusty!
+                  </div>
+                  <div *ngIf="phoneNumber2.errors.pattern">
+                    Podaj poprawny numer telefonu!
+                  </div>
+                </div>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <div class="form-group">
+              <button class="btn btn-success" type="submit" routerLink="/createPackage" href="/createPackage">Dalej</button>
+            </div>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </form>
+
+  </div>
+</div>

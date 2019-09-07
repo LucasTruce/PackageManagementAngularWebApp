@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
-import { UserListComponent } from './component/user-list/user-list.component';
+import { HomeComponent } from './component/home/home.component';
 import { NavbarComponent } from './component/navbar/navbar.component';
 import { LoginComponent } from './component/login/login.component';
 import {FormsModule} from '@angular/forms';
@@ -14,18 +14,22 @@ import { FooterComponent } from './component/footer/footer.component';
 import { RegistrationComponent } from './component/registration/registration.component';
 import { ProfileComponent } from './component/profile/profile.component';
 import { ChangeLoginComponent } from './component/profile/change-login/change-login.component';
+import { CreatePackageComponent } from './component/create-package/create-package.component';
+import { CreateSenderReceiverComponent } from './component/create-package/create-sender-receiver/create-sender-receiver.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    UserListComponent,
+    HomeComponent,
     NavbarComponent,
     LoginComponent,
     LogoutComponent,
     FooterComponent,
     RegistrationComponent,
     ProfileComponent,
-    ChangeLoginComponent
+    ChangeLoginComponent,
+    CreatePackageComponent,
+    CreateSenderReceiverComponent
   ],
   imports: [
     BrowserModule,
