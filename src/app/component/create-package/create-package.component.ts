@@ -16,6 +16,7 @@ export class CreatePackageComponent implements OnInit {
   error: object = {};
   added: boolean = false;
   senderAdded: boolean = false;
+  productsAdded: boolean = false;
 
   constructor(private packageService: PackageService, private authenticationService: AuthenticationService, private router: Router, private codeService: CodeService) { }
 
@@ -59,6 +60,10 @@ export class CreatePackageComponent implements OnInit {
 
   handleSuccessfulCode(response) {
     this.code = response;
+  }
+
+  handleProductsResponse(ev) {
+    this.productsAdded = ev;
   }
 
 }

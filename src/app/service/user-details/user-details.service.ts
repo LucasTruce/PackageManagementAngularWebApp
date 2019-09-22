@@ -6,8 +6,7 @@ export class UserDetails {
     public id: string,
     public name: string,
     public lastName: string,
-    // tslint:disable-next-line:variable-name
-    public number: string,
+    public phoneNumber: string,
     public street: string,
     public city: string,
     public postCode: string

@@ -28,7 +28,7 @@ export class CreateSenderReceiverComponent implements OnInit {
           this.handleSenderData(response);
       }
     );
-    console.log(this.pack);
+    console.log('PackId:' + this.pack);
   }
 
   handleSenderData(response) {
@@ -40,7 +40,7 @@ export class CreateSenderReceiverComponent implements OnInit {
         this.receiverService.save(this.receiver, this.pack).subscribe(
           res => {
             this.senderReceiverAdded.emit(true);
-            this.router.navigate(['/addPackage']);
+            this.router.navigate(['/createPackage']);
           }
         );
       }

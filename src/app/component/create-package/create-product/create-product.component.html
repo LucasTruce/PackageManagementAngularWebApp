@@ -1,1 +1,65 @@
-<p>create-product works!</p>
+<div class="container">
+  <div class="row justify-content-md-center">
+    <div class="col-md-12">
+      Czy chcesz dokonać kompletacji towaru?
+      <input type="button" (click)="wantAdd = true" value="Tak">
+      <input type="button" (click)="wantAdd = false" value="Nie">
+
+      <div *ngIf="wantAdd === true">
+        <form class="form-registration" (ngSubmit)="createContentProduct()" name="createProduct" #myForm="ngForm">
+          <table class="table">
+            <tbody>
+              <tr><td>Kompletacja towarów</td></tr>
+              <tr>
+                <td>Naciśnij aby dodać produkt
+                  <input type="button" name="addProduct" (click)="addProduct()" value="Dodaj produkt"/>
+                </td>
+              </tr>
+              <tr>
+                <div *ngFor="let item of productList; index as i">
+                  <td>
+                    <div class="form-group">
+                      Wybierz kategorię:
+                      <select class="form-control" id="selectCategory" name="item[{{item.id}}][category]" [(ngModel)]="item.category">
+                          <option *ngFor="let category of productCategories"  [ngValue]="category">
+                            {{category.name}}
+                          </option>
+                      </select>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="form-group">
+                      Podaj nazwę: <input type="text" class="form-control" name="item[{{item.id}}][name]" [(ngModel)]="item.name" placeholder="Nazwa towaru">
+                    </div>
+                  </td>
+                  <td>
+                    <div class="form-group">
+                      Podaj wagę: <input type="number" class="form-control" name="item[{{item.id}}][weight]" [(ngModel)]="item.weight"  placeholder="Waga towaru">
+                    </div>
+                  </td>
+                  <td>
+                    <div class="form-group">
+                      Uwagi: <textarea rows = "2" cols = "50" class="form-control" name="item[{{item.id}}][comments]" [(ngModel)]="item.comments" >Uwagi</textarea>
+                    </div>
+                  </td>
+                  <td>
+                    <input type="button" name="deleteProduct"  class="form-control" (click)="deleteProductFromContent(i)" value="Usuń produkt">
+                  </td>
+                </div>
+              </tr>
+              <tr>
+                <div *ngIf="productList.length > 0">
+                  <div class="form-group">
+                    <button class="btn btn-success" type="submit">Dalej</button>
+                  </div>
+                </div>
+              </tr>
+            </tbody>
+          </table>
+        </form>
+      </div>
+
+    </div>
+
+  </div>
+</div>

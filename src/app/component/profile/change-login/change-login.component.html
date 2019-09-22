@@ -35,7 +35,7 @@
               <td>
                 <div class="form-group">
 
-                  <div *ngIf="user.roles[0]?.name === 'ROLE_USER'" >
+                  <div *ngIf="user.roles[0]?.name === 'ROLE_USER' || user.roles[0]?.name === 'ROLE_ADMIN'" >
                     <button class="btn btn-success" type="submit">Zapisz</button>
                   </div>
                 </div>

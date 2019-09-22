@@ -1,16 +1,21 @@
 <div class="container">
   <div class="row justify-content-md-center">
 
-    <div *ngIf="added && !senderAdded">
+    <div *ngIf="added && !senderAdded && !productsAdded">
       <app-create-sender-receiver
         [packId]="package.id"
         (senderReceiverAdded)="handleSenderReceiverResponse($event)">
       </app-create-sender-receiver>
     </div>
 
+    <div *ngIf="added && senderAdded && !productsAdded">
+      <app-create-product
+        [packId]="package.id"
+        (productsAdded)="handleProductsResponse($event)">
+      </app-create-product>
+    </div>
 
-
-    <div *ngIf="!added && !senderAdded">
+    <div *ngIf="!added && !senderAdded && !productsAdded">
       <form class="form-registration" (ngSubmit)="createPackage()" name="createPackage" #myForm="ngForm">
         <table class="table">
           <tbody>
