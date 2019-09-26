@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {Router} from '@angular/router';
 import {AuthenticationService} from '../../service/authentication/authentication.service';
+import {User, UserService} from '../../service/user/user.service';
+import {NavbarComponent} from '../navbar/navbar.component';
 
 @Component({
   selector: 'app-login',
@@ -21,10 +23,9 @@ export class LoginComponent implements OnInit {
   }
 
   checkLogin() {
-    (this.authenticationService.authenticate(this.login, this.password).subscribe(
+    this.authenticationService.authenticate(this.login, this.password).subscribe(
         data => {
           this.router.navigate(['']);
-          this.invalidLogin = false;
         },
         error => {
           this.errors = error.error.message;
@@ -32,7 +33,7 @@ export class LoginComponent implements OnInit {
 
         }
       )
-    );
+
 
   }
 

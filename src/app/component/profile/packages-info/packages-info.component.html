@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="row justify-content-md-center">
+    <app-navigation></app-navigation>
+
+    <div class="col-md-8">
+      <form class="form-registration" name="packagesInfo" #myForm="ngForm">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Lp</th>
+              <th>Numer paczki</th>
+              <th>Data nadania</th>
+              <th>Długość</th>
+              <th>Szerokość</th>
+              <th>Wysokość</th>
+              <th>Uwagi</th>
+            </tr>
+          </thead>
+          <tbody>
+
+                <tr *ngFor="let package of packages; index as i">
+                  <td>{{i + 1}}</td>
+                  <td>{{package.packageNumber}}</td>
+                  <td>{{package.date}}</td>
+                  <td>{{package.length}}</td>
+                  <td>{{package.width}}</td>
+                  <td>{{package.height}}</td>
+                  <td>{{package.comments}}</td>
+                </tr>
+
+          </tbody>
+        </table>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,12 +1,9 @@
 <div class="container">
   <div class="row justify-content-md-center">
-    <div class="col-md-6">
-      <a routerLink="/profile" class="nav-link" href="/profile">Informacje</a><br/>
-      <a routerLink="/profile/change" class="nav-link" href="/profile/change">Zmień dane logowania</a>
-    </div>
+    <app-navigation></app-navigation>
 
 
-    <div class="col-md-6">
+    <div class="col-md-8">
       <form class="form-registration" name="updateUser" (ngSubmit)="updateUser()"  #myForm="ngForm">
         <table class="table">
           <tbody>
@@ -20,7 +17,7 @@
             <tr>
               <td>
                 <div class="form-group">
-                  Login <input type="text" class="form-control" name="login" [(ngModel)]="user.login" placeholder="Login">
+                  Login: <input type="text" class="form-control" name="login" [(ngModel)]="user.login" placeholder="Login">
                 </div>
               </td>
             </tr>

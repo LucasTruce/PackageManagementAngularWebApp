@@ -4,6 +4,7 @@ import {ProductCategory, ProductCategoryService} from '../../../service/productC
 import {Content, ContentService} from '../../../service/content/content.service';
 import {formatDate} from '@angular/common';
 import {Router} from '@angular/router';
+import {Code, CodeService} from '../../../service/code/code.service';
 
 @Component({
   selector: 'app-create-product',
@@ -19,9 +20,11 @@ export class CreateProductComponent implements OnInit {
   productList: Array<Product> = new Array<Product>();
   productCategories: Array<ProductCategory>;
   content: Content;
+  codes: Array<Code> = new Array<Code>();
 
   constructor(private productService: ProductService, private productCategoryService: ProductCategoryService, private contentService: ContentService,
-              private router: Router) { }
+              private router: Router,
+              private codeService: CodeService) { }
 
   ngOnInit() {
     this.productCategoryService.getAll().subscribe(
@@ -41,7 +44,7 @@ export class CreateProductComponent implements OnInit {
     const format = 'yyyy-MM-dd HH:mm:ss';
     const myDate = new Date().getTime();
     const newDate = formatDate(myDate, format, 'en-US');
-    this.content =  new Content(newDate);
+    this.content = new Content(newDate);
 
     //stworzenie zawartosci w bazie
     this.contentService.saveContent(this.content, this.pack).subscribe(
@@ -51,8 +54,18 @@ export class CreateProductComponent implements OnInit {
         this.productService.saveAll(this.productList, this.content.id).subscribe(
           next => {
             this.succefullResponseProducts(next);
-            this.productsAdded.emit(true);
-            this.router.navigate(['/createPackage']);
+            for (let product of this.productList) {
+              this.codes.push(new Code(product.id));
+            }
+            console.log(this.codes);
+            this.codeService.saveWithProduct(this.codes).subscribe(
+              response => {
+                this.succefullResponseCodes(response);
+                this.productsAdded.emit(true);
+                this.router.navigate(['']);
+              }
+            );
+
           }
         );
       }
@@ -77,6 +90,9 @@ export class CreateProductComponent implements OnInit {
 
   succefullResponseContent(response) {
     this.content = response;
+  }
+  succefullResponseCodes(response) {
+    this.codes = response;
   }
 
 }

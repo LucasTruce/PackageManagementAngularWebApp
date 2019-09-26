@@ -27,12 +27,7 @@ export class ChangeLoginComponent implements OnInit {
   }
 
   handleSuccessfulResponse(response) {
-    this.user.roles = {};
-    this.user.login = '';
-    this.user.email = '';
-    this.user.password = '';
     this.user = response;
-
   }
 
   updateUser() {

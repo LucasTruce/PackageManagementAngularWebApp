@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
+import {log} from 'util';
 
 export class Package {
   constructor(
@@ -9,7 +10,8 @@ export class Package {
     public comments: string,
     public packageNumber?: string,
     public date?: string,
-    public id?: string
+    public id?: string,
+    public packageStatus?: any
   ) {}
 }
 
@@ -28,5 +30,9 @@ export class PackageService {
 
   getPackageNumber() {
     return this.packNumber;
+  }
+
+  getPackagesForUser(login) {
+    return this.httpClient.get('http://localhost:8080/packages/?login=' + login);
   }
 }

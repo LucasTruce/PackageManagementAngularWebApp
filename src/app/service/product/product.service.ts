@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {ProductCategory} from '../productCategory/product-category.service';
+import {Code} from '../code/code.service';
+import {Content} from '../content/content.service';
 
 export class Product {
   constructor(
@@ -8,7 +10,9 @@ export class Product {
     public weight: number,
     public comments: string,
     public id?: string,
-    public category?: ProductCategory
+    public category?: ProductCategory,
+    public code?: Code,
+    public content?: Content
   ) {}
 }
 

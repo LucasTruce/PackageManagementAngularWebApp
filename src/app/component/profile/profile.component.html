@@ -1,12 +1,10 @@
 <div class="container">
   <div class="row justify-content-md-center">
-    <div class="col-md-6">
-      <a routerLink="/profile" class="nav-link" >Informacje</a><br/>
-      <a routerLink="/profile/change" class="nav-link">Zmień dane logowania</a>
-    </div>
+
+    <app-navigation></app-navigation>
 
 
-    <div class="col-md-6">
+    <div class="col-md-8">
 
       <div *ngIf="!temp" class="error-message">
         Uzupełnij dane użytkownika!

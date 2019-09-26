@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {AuthenticationService} from '../../service/authentication/authentication.service';
+import {Role} from '../../service/user/user.service';
 
 @Component({
   selector: 'app-navbar',
@@ -8,9 +9,9 @@ import {AuthenticationService} from '../../service/authentication/authentication
 })
 export class NavbarComponent implements OnInit {
 
+  roles: Array<Role> = new Array<Role>();
   constructor(private authenticationService: AuthenticationService) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
 }

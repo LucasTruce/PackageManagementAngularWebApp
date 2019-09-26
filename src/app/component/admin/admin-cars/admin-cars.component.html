@@ -1,0 +1,32 @@
+<div *ngIf="authService.isAdmin()" class="container">
+  <div class="row justify-content-md-center">
+    <app-navigation></app-navigation>
+
+    <div class="col-md-8">
+      <button type="button" class="btn btn-primary" name="addCar" routerLink="/admin/cars/addCar">Dodaj samochód</button>
+
+      <table class="table table-striped">
+        <thead>
+        <tr>
+          <th>Id</th>
+          <th>Marka</th>
+          <th>Model</th>
+          <th>Typ silnika</th>
+          <th>Numer rejestracyjny</th>
+          <th>Operacje</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let car of cars; index as i">
+          <td>{{i + 1}}</td>
+          <td>{{car.brand}}</td>
+          <td>{{car.model}}</td>
+          <td>{{car.engineType}}</td>
+          <td>{{car.licensePlate}}</td>
+          <td></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

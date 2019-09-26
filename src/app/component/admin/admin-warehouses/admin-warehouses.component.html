@@ -1,0 +1,33 @@
+<div *ngIf="authService.isAdmin()" class="container">
+  <div class="row justify-content-md-center">
+    <app-navigation></app-navigation>
+
+    <div class="col-md-8">
+      <button type="button" class="btn btn-primary" name="addWarehouse" routerLink="/admin/warehouses/addWarehouse">Dodaj magazyn</button>
+
+      <table class="table table-striped">
+        <thead>
+        <tr>
+          <th>Id</th>
+          <th>Kod pocztowy</th>
+          <th>Miasto</th>
+          <th>Ulica</th>
+          <th>Telefon</th>
+          <th>Opis</th>
+          <th>Operacje</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let warehouse of warehouses; index as i">
+          <td>{{i + 1}}</td>
+          <td>{{warehouse.postCode}}</td>
+          <td>{{warehouse.city}}</td>
+          <td>{{warehouse.street}}</td>
+          <td>{{warehouse.phoneNumber}}</td>
+          <td>{{warehouse.description}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

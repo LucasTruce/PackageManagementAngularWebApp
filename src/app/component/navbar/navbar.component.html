@@ -20,7 +20,10 @@
         <a *ngIf="!authenticationService.isUserLoggedIn()" routerLink="/register" class="nav-link">Zarejestruj</a>
     </li>
     <li>
-      <a *ngIf="authenticationService.isUserLoggedIn()" routerLink="/profile" class="nav-link">Profil</a>
+      <a *ngIf="authenticationService.isUserLoggedIn() && authenticationService.isUser()" routerLink="/profile" class="nav-link">Profil</a>
+    </li>
+    <li>
+      <a *ngIf="authenticationService.isUserLoggedIn() && authenticationService.isAdmin()" routerLink="/admin" class="nav-link">Admin</a>
     </li>
 
   </ul>

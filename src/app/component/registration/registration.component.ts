@@ -26,7 +26,7 @@ export class RegistrationComponent implements OnInit {
     this.errors = {};
     this.comunicate = '';
 
-    this.userService.saveUser(this.user).subscribe(
+    this.userService.registerUser(this.user).subscribe(
         data => {
           this.authenticationService.authenticate(this.user.login, this.user.password).subscribe(
             tempData =>

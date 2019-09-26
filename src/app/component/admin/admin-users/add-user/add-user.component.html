@@ -1,0 +1,40 @@
+<div *ngIf="authService.isAdmin()" class="container">
+  <div class="row justify-content-md-center">
+    <app-navigation></app-navigation>
+
+    <div class="col-md-8">
+      <form class="form-registration" name="addUser" (ngSubmit)="addUser()"  #myForm="ngForm">
+        <table class="table">
+          <tr>
+            <td>
+              <div class="form-group">
+                Email: <input type="text" class="form-control" name="email" [(ngModel)]="user.email" placeholder="Email">
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="form-group">
+                Login: <input type="text" class="form-control" name="login" [(ngModel)]="user.login" placeholder="Login">
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="form-group">
+                Hasło: <input type="password" class="form-control" name="password" [(ngModel)]="user.password" placeholder="Hasło">
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="form-group">
+                <button class="btn btn-success" type="submit">Zapisz</button>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </form>
+    </div>
+  </div>
+</div>

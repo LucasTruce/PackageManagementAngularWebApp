@@ -1,0 +1,89 @@
+<div *ngIf="authService.isAdmin()" class="container">
+  <div class="row justify-content-md-center">
+    <app-navigation></app-navigation>
+
+
+    <div class="col-md-8">
+
+      <form class="form-registration" (ngSubmit)="updateUserDetails()" name="updateUser" #myForm="ngForm">
+        <table class="table">
+          <tbody>
+          <tr>
+            <td>
+              <div class="form-group">
+                Imię: <input type="text" class="form-control" name="name" [(ngModel)]="userDetails.name" placeholder="Imię">
+                <div *ngIf="error.name" class="error-message">
+                  {{error.name}}
+                </div>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="form-group">
+                Nazwisko: <input type="text" class="form-control" name="lastName" [(ngModel)]="userDetails.lastName" placeholder="Nazwisko">
+                <div *ngIf="error.lastName" class="error-message">
+                  {{error.lastName}}
+                </div>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="form-group">
+                Telefon: <input type="text" class="form-control" name="number" [(ngModel)]="userDetails.phoneNumber" placeholder="Telefon">
+                <div *ngIf="error.number" class="error-message">
+                  {{error.number}}
+                </div>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="form-group">
+                Miasto: <input type="text" class="form-control" name="city" [(ngModel)]="userDetails.city" placeholder="Miasto">
+                <div *ngIf="error.city" class="error-message">
+                  {{error.city}}
+                </div>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="form-group">
+                Ulica: <input type="text" class="form-control" name="street" [(ngModel)]="userDetails.street" placeholder="Ulica">
+                <div *ngIf="error.street" class="error-message">
+                  {{error.street}}
+                </div>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="form-group">
+                Kod pocztowy: <input type="text" class="form-control" name="postCode" [(ngModel)]="userDetails.postCode" placeholder="Kod pocztowy">
+                <div *ngIf="error.postCode" class="error-message">
+                  {{error.postCode}}
+                </div>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td col="2">
+
+              <div class="form-group">
+                <div *ngIf="!authenticate">
+                  <button class="btn btn-success" type="submit">Zapisz</button>
+                </div>
+                <div *ngIf="authenticate">
+                  <button class="btn btn-warning" type="submit">Zapisz zmiany</button>
+                </div>
+              </div>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </form>
+    </div>
+  </div>
+</div>

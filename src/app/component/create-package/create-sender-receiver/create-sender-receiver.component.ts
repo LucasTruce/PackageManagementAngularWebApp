@@ -28,7 +28,6 @@ export class CreateSenderReceiverComponent implements OnInit {
           this.handleSenderData(response);
       }
     );
-    console.log('PackId:' + this.pack);
   }
 
   handleSenderData(response) {
