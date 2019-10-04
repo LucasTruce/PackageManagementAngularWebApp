@@ -19,10 +19,15 @@ import {AddCarComponent} from './component/admin/admin-cars/add-car/add-car.comp
 import {AddUserComponent} from './component/admin/admin-users/add-user/add-user.component';
 import {UserDetailsComponent} from './component/admin/admin-users/user-details/user-details.component';
 import {UserEditComponent} from './component/admin/admin-users/user-edit/user-edit.component';
+import {LocationPackageComponent} from './component/location-package/location-package.component';
+import {EditWarehouseComponent} from './component/admin/admin-warehouses/edit-warehouse/edit-warehouse.component';
+import {EditCarComponent} from './component/admin/admin-cars/edit-car/edit-car.component';
+import {PackageDetailsComponent} from './component/profile/packages-info/package-details/package-details.component';
+import {EditPackageComponent} from './component/profile/packages-info/edit-package/edit-package.component';
 
 
 const routes: Routes = [
-  { path: '', component: HomeComponent, canActivate: [AuthGuardService] },
+  { path: '', component: HomeComponent},
   { path: 'login', component: LoginComponent },
   { path: 'logout', component: LogoutComponent, canActivate: [AuthGuardService] },
   { path: 'register', component: RegistrationComponent},
@@ -30,7 +35,11 @@ const routes: Routes = [
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuardService]},
   { path: 'profile/change', component: ChangeLoginComponent, canActivate: [AuthGuardService]},
   { path: 'profile/packages-info', component: PackagesInfoComponent, canActivate: [AuthGuardService]},
+  { path: 'profile/packages-info/:id', component: PackageDetailsComponent, canActivate: [AuthGuardService]},
+  { path: 'profile/packages-info/:id/editPackage', component: EditPackageComponent, canActivate: [AuthGuardService]},
+
   { path: 'createPackage', component: CreatePackageComponent, canActivate: [AuthGuardService]},
+  { path: 'locationPackage', component: LocationPackageComponent},
 
   { path: 'admin', component: AdminComponent, canActivate: [AuthGuardService]},
   { path: 'admin/change', component: AdminChangeLoginComponent, canActivate: [AuthGuardService]},
@@ -42,10 +51,12 @@ const routes: Routes = [
 
   { path: 'admin/warehouses', component: AdminWarehousesComponent, canActivate: [AuthGuardService]},
   { path: 'admin/warehouses/addWarehouse', component: AddWarehouseComponent, canActivate: [AuthGuardService]},
+  { path: 'admin/warehouses/:id', component: EditWarehouseComponent, canActivate: [AuthGuardService]},
+
 
   { path: 'admin/cars', component: AdminCarsComponent, canActivate: [AuthGuardService]},
-  { path: 'admin/cars/addCar', component: AddCarComponent, canActivate: [AuthGuardService]}
-
+  { path: 'admin/cars/addCar', component: AddCarComponent, canActivate: [AuthGuardService]},
+  { path: 'admin/cars/:id', component: EditCarComponent, canActivate: [AuthGuardService]}
   ];
 
 @NgModule({

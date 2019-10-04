@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {ProductCategory} from '../productCategory/product-category.service';
 import {Code} from '../code/code.service';
 import {Content} from '../content/content.service';
@@ -23,7 +23,17 @@ export class ProductService {
 
   constructor(private httpClient: HttpClient) { }
 
-  saveAll(products, content) {
-    return this.httpClient.post('http://localhost:8080/products/?contentId=' + content, products);
+  saveAll(products, contentId) {
+    return this.httpClient.post('http://localhost:8080/products/?contentId=' + contentId, products);
+  }
+
+  deleteAll(products) {
+    const options = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+      }),
+      body: products
+    };
+    return this.httpClient.delete('http://localhost:8080/products', options);
   }
 }

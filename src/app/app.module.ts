@@ -30,8 +30,14 @@ import { AddUserComponent } from './component/admin/admin-users/add-user/add-use
 import { UserDetailsComponent } from './component/admin/admin-users/user-details/user-details.component';
 import { UserEditComponent } from './component/admin/admin-users/user-edit/user-edit.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatSelectModule } from '@angular/material';
+import {MatSelectModule, MatSortModule} from '@angular/material';
 import {NgxPaginationModule} from 'ngx-pagination';
+import { LocationPackageComponent } from './component/location-package/location-package.component';
+import { EditWarehouseComponent } from './component/admin/admin-warehouses/edit-warehouse/edit-warehouse.component';
+import { EditCarComponent } from './component/admin/admin-cars/edit-car/edit-car.component';
+import { PackageDetailsComponent } from './component/profile/packages-info/package-details/package-details.component';
+import { EditPackageComponent } from './component/profile/packages-info/edit-package/edit-package.component';
+
 
 
 @NgModule({
@@ -59,7 +65,12 @@ import {NgxPaginationModule} from 'ngx-pagination';
     AddCarComponent,
     AddUserComponent,
     UserDetailsComponent,
-    UserEditComponent
+    UserEditComponent,
+    LocationPackageComponent,
+    EditWarehouseComponent,
+    EditCarComponent,
+    PackageDetailsComponent,
+    EditPackageComponent
   ],
   imports: [
     BrowserModule,
@@ -68,7 +79,9 @@ import {NgxPaginationModule} from 'ngx-pagination';
     FormsModule,
     BrowserAnimationsModule,
     MatSelectModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxPaginationModule,
+    MatSortModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS, useClass: BasicAuthHttpInterceptorService, multi: true

@@ -26,4 +26,8 @@ export class ReceiverService {
   save(receiver, packId) {
     return this.httpClient.post('http://localhost:8080/recipients/?packId=' + packId, receiver);
   }
+
+  update(receiver) {
+    return this.httpClient.put('http://localhost:8080/recipients', receiver);
+  }
 }

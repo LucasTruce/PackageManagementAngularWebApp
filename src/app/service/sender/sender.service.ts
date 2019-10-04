@@ -24,4 +24,8 @@ export class SenderService {
   save(sender, packId) {
     return this.httpClient.post('http://localhost:8080/senders/?packId=' + packId, sender);
   }
+
+  update(sender) {
+    return this.httpClient.put('http://localhost:8080/senders', sender);
+  }
 }

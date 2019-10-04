@@ -1,0 +1,94 @@
+<div class="container">
+  <div class="row justify-content-md-center">
+    <form *ngIf="package.id === ''" class="form-registration" (ngSubmit)="findPackage()" name="findPackage" #myForm="ngForm">
+      Wprowadź numer paczki: <input type="text" class="form-control" name="packageNumber" [(ngModel)]="package.packageNumber"  placeholder="Numer paczki">
+      <div class="form-group">
+        <button class="btn btn-success" type="submit">Szukaj</button>
+      </div>
+    </form>
+
+    <div *ngIf="package.id != ''">
+      <table class="table table-striped table-responsive">
+        <thead>
+          <tr>
+            <th>Numer paczki</th>
+            <th>Data nadania</th>
+            <th>Status</th>
+            <th>Długość</th>
+            <th>Szerokość</th>
+            <th>Wysokość</th>
+            <th>Uwagi</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{package.packageNumber}}</td>
+            <td>{{package.date}}</td>
+            <td>{{package.packageStatus.name}}</td>
+            <td>{{package.length}}</td>
+            <td>{{package.width}}</td>
+            <td>{{package.height}}</td>
+            <td>{{package.comments}}</td>
+          </tr>
+        </tbody>
+      </table>
+      Nadawca:
+      <table class="table table-striped table-responsive">
+        <thead>
+          <tr>
+            <th>Imię i nazwisko</th>
+            <th>Email</th>
+            <th>Nazwa firmy</th>
+            <th>Miasto</th>
+            <th>Ulica</th>
+            <th>Kod pocztowy</th>
+            <th>Telefon</th>
+          </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>{{package.sender.name}} {{package.sender.lastName}}</td>
+          <td>{{package.sender.email}}</td>
+          <td> <div *ngIf="package.sender.companyName === ''">brak</div>
+            {{package.sender.companyName}}
+          </td>
+          <td>{{package.sender.city}}</td>
+          <td>{{package.sender.street}}</td>
+          <td>{{package.sender.postCode}}</td>
+          <td>{{package.sender.phoneNumber}}</td>
+        </tr>
+        </tbody>
+      </table>
+
+        Odbiorca:
+        <table class="table table-striped table-responsive">
+          <thead>
+          <tr>
+            <th>Imię i nazwisko</th>
+            <th>Email</th>
+            <th>Nazwa firmy</th>
+            <th>Miasto</th>
+            <th>Ulica</th>
+            <th>Kod pocztowy</th>
+            <th>Telefon</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>{{package.recipient.name}} {{package.recipient.lastName}}</td>
+            <td>{{package.recipient.email}}</td>
+            <td>
+              <div *ngIf="package.recipient.companyName === ''">brak</div>
+              {{package.recipient.companyName}}
+            </td>
+            <td>{{package.recipient.city}}</td>
+            <td>{{package.recipient.street}}</td>
+            <td>{{package.recipient.postCode}}</td>
+            <td>{{package.recipient.phoneNumber}}</td>
+          </tr>
+          </tbody>
+      </table>
+    </div>
+
+  </div>
+</div>

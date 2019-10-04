@@ -12,7 +12,7 @@ export class User {
     public email: string,
     public login: string,
     public password: string,
-    public roles?: object,
+    public roles?: any,
     public id?: string,
     public userDetails?: UserDetails
 ) {}
@@ -34,8 +34,8 @@ export class UserService {
     return this.httpClient.get('http://localhost:8080/users/' + userId);
   }
 
-  getAllUsers() {
-    return this.httpClient.get('http://localhost:8080/users');
+  getAllUsers(params) {
+    return this.httpClient.get('http://localhost:8080/users', {params});
   }
 
   registerUser(user) {

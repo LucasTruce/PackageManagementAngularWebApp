@@ -1,0 +1,166 @@
+<div class="container">
+  <div class="row justify-content-md-center">
+    <app-navigation></app-navigation>
+
+    <div *ngIf="productsAdd === false" class="col-md-9">
+
+      <form class="form-registration" name="updateUser" (ngSubmit)="updatePackage()" #myForm="ngForm">
+
+        <table class="table table-responsive table-sm">
+          <tbody>
+          <tr>
+            <th>Wysokość:</th>
+            <td>
+              <input type="number" class="form-control" name="height" [(ngModel)]="package.height" placeholder="Wysokość">
+            </td>
+          </tr>
+          <tr>
+            <th>Szerokość:</th>
+            <td><input type="number" class="form-control" name="width" [(ngModel)]="package.width" placeholder="Szerokość"></td>
+          </tr>
+          <tr>
+            <th>Długość:</th>
+            <td><input type="number" class="form-control" name="length" [(ngModel)]="package.length" placeholder="Długość"></td>
+          </tr>
+          <tr>
+            <th>Opis:</th>
+            <td><textarea rows = "2" cols = "20" name = "description" [(ngModel)]="package.comments" class="form-control">Uwagi</textarea></td>
+          </tr>
+          </tbody>
+        </table>
+
+
+
+
+        <div class="row">
+          <div class="col-md-6">
+            Nadawca:
+            <table class="table table-sm">
+              <tbody>
+                <tr>
+                  <th>Imię:</th>
+                  <td><input type="text" class="form-control" name="package.sender.name" [(ngModel)]="package.sender.name" placeholder="Imię"></td>
+                </tr>
+                <tr>
+                  <th>Nazwisko:</th>
+                  <td><input type="text" class="form-control" name="package.sender.lastName" [(ngModel)]="package.sender.lastName" placeholder="Nazwisko"></td>
+                </tr>
+                <tr>
+                  <th>Email:</th>
+                  <td><input type="email" class="form-control" name="package.sender.email" [(ngModel)]="package.sender.email" placeholder="Miasto"></td>
+                </tr>
+                <tr>
+                  <th>Nazwa firmy:</th>
+                  <td><input type="text" class="form-control" name="package.sender.companyName" [(ngModel)]="package.sender.companyName" placeholder="Nazwa firmy"></td>
+                </tr>
+                <tr>
+                  <th>Miasto:</th>
+                  <td><input type="text" class="form-control" name="package.sender.city" [(ngModel)]="package.sender.city" placeholder="Miasto"></td>
+                </tr>
+                <tr>
+                  <th>Kod pocztowy:</th>
+                  <td><input type="text" class="form-control" name="package.sender.postCode" [(ngModel)]="package.sender.postCode" placeholder="Miasto"></td>
+                </tr>
+                <tr>
+                  <th>Ulica:</th>
+                  <td><input type="text" class="form-control" name="package.sender.street" [(ngModel)]="package.sender.street" placeholder="Miasto"></td>
+                </tr>
+                <tr>
+                  <th>Telefon:</th>
+                  <td><input type="text" class="form-control" name="package.sender.phoneNumber" [(ngModel)]="package.sender.phoneNumber" placeholder="Numer telefonu"></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+
+          <div class="col-md-6">
+            Odbiorca:
+            <table class="table table-sm">
+              <tbody>
+              <tr>
+                <th>Imię:</th>
+                <td><input type="text" class="form-control" name="package.recipient.name" [(ngModel)]="package.recipient.name" placeholder="Imię"></td>
+              </tr>
+              <tr>
+                <th>Nazwisko:</th>
+                <td><input type="text" class="form-control" name="package.recipient.lastName" [(ngModel)]="package.recipient.lastName" placeholder="Nazwisko"></td>
+              </tr>
+              <tr>
+                <th>Email:</th>
+                <td><input type="email" class="form-control" name="package.recipient.email" [(ngModel)]="package.recipient.email" placeholder="Miasto"></td>
+              </tr>
+              <tr>
+                <th>Nazwa firmy:</th>
+                <td><input type="text" class="form-control" name="package.recipient.companyName" [(ngModel)]="package.recipient.companyName" placeholder="Nazwa firmy"></td>
+              </tr>
+              <tr>
+                <th>Miasto:</th>
+                <td><input type="text" class="form-control" name="package.recipient.city" [(ngModel)]="package.recipient.city" placeholder="Miasto"></td>
+              </tr>
+              <tr>
+                <th>Kod pocztowy:</th>
+                <td><input type="text" class="form-control" name="package.recipient.postCode" [(ngModel)]="package.recipient.postCode" placeholder="Miasto"></td>
+              </tr>
+              <tr>
+                <th>Ulica:</th>
+                <td><input type="text" class="form-control" name="package.recipient.street" [(ngModel)]="package.recipient.street" placeholder="Miasto"></td>
+              </tr>
+              <tr>
+                <th>Telefon:</th>
+                <td><input type="text" class="form-control" name="package.recipient.phoneNumber" [(ngModel)]="package.recipient.phoneNumber" placeholder="Numer telefonu"></td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div *ngIf="package.content.id != null">
+          Edycja produktów: <input type="button" name="produtcsEdit" (click)="editProduct()" value="Edytuj produkty"/>
+        </div>
+        <button class="btn btn-success" type="submit">Zapisz zmiany</button>
+      </form>
+    </div>
+
+    <div *ngIf="productsAdd != false" class="col-md-9">
+      Naciśnij aby dodać produkt
+      <input type="button" name="addProduct" (click)="addProduct()" value="Dodaj produkt"/>
+
+      <table class="table table-sm">
+        <thead>
+          <tr>
+            <th>Kategoria</th>
+            <th>Nazwa</th>
+            <th>Waga</th>
+            <th>Uwagi</th>
+            <th>Operacje</th>
+          </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let item of package.content.products; index as i">
+          <td>
+            <select class="form-control form-control-sm" id="selectCategory" name="item[{{i}}][category]" [(ngModel)]="item.category" [compareWith]="customCompareCategory">
+                <option *ngFor="let category of productCategories" [ngValue]="category">
+                  {{category.name}}
+                </option>
+            </select>
+
+          </td>
+          <td><input type="text" class="form-control form-control-sm" name="item[{{i}}][name]" [(ngModel)]="item.name" placeholder="Nazwa"></td>
+          <td><input type="number" class="form-control form-control-sm" name="item[{{i}}].weight" [(ngModel)]="item.weight" placeholder="Waga"></td>
+          <td><textarea rows = "1" cols = "20" name = "item[{{i}}].description" [(ngModel)]="item.comments" class="form-control form-control-sm">Uwagi</textarea></td>
+          <td>
+            <input type="button" name="deleteProduct"  class="form-control" (click)="deleteProduct(item, i)" value="Usuń produkt">
+          </td>
+        </tr>
+        <tr>
+          <td colspan="5" class="text-center">
+            <input type="button" name="produtcsEditEnd" (click)="editProductEnd()" value="Zapisz zmiany"/>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+</div>
+

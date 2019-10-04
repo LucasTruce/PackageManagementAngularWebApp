@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {AuthenticationService} from '../../../../service/authentication/authentication.service';
 import {User, UserService} from '../../../../service/user/user.service';
 import {ActivatedRoute} from '@angular/router';
-import {FormControl} from '@angular/forms';
 
 @Component({
   selector: 'app-user-edit',

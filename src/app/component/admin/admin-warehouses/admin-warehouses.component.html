@@ -2,32 +2,37 @@
   <div class="row justify-content-md-center">
     <app-navigation></app-navigation>
 
-    <div class="col-md-8">
+    <div class="col-md-9">
       <button type="button" class="btn btn-primary" name="addWarehouse" routerLink="/admin/warehouses/addWarehouse">Dodaj magazyn</button>
 
-      <table class="table table-striped">
+      <table matSort (matSortChange)="sortWarehouse($event)" class="table table-striped">
         <thead>
         <tr>
-          <th>Id</th>
-          <th>Kod pocztowy</th>
-          <th>Miasto</th>
-          <th>Ulica</th>
-          <th>Telefon</th>
-          <th>Opis</th>
+          <th mat-sort-header="id">Id</th>
+          <th mat-sort-header="postCode">Kod pocztowy</th>
+          <th mat-sort-header="city">Miasto</th>
+          <th mat-sort-header="street">Ulica</th>
+          <th mat-sort-header="phoneNumber">Telefon</th>
+          <th mat-sort-header="description">Opis</th>
           <th>Operacje</th>
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let warehouse of warehouses; index as i">
-          <td>{{i + 1}}</td>
+        <tr *ngFor="let warehouse of warehouses | paginate: config">
+          <td>{{warehouse.id}}</td>
           <td>{{warehouse.postCode}}</td>
           <td>{{warehouse.city}}</td>
           <td>{{warehouse.street}}</td>
           <td>{{warehouse.phoneNumber}}</td>
           <td>{{warehouse.description}}</td>
+          <td>
+            <button type="button" class="btn  btn-danger" name="deleteWarehouse" (click)="deleteWarehouse(warehouse.id)">Usuń</button>
+            <button type="button" class="btn  btn-warning" name="editWarehouse" [routerLink]="['/admin/warehouses/', warehouse.id]">Edytuj</button>
+          </td>
         </tr>
         </tbody>
       </table>
+      <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
     </div>
   </div>
 </div>

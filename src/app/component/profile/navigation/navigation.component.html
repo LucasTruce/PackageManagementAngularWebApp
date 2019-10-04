@@ -1,10 +1,10 @@
-<div *ngIf="authService.isUser()" class="col-md-4" style="max-width: 100%">
+<div *ngIf="authService.isUser()" class="col-md-3" style="max-width: 100%">
   <a routerLink="/profile" class="nav-link" >Informacje</a><br/>
   <a routerLink="/profile/change" class="nav-link">Zmień dane logowania</a><br/>
   <a routerLink="/profile/packages-info" class="nav-link">Moje paczki</a>
 </div>
 
-<div *ngIf="authService.isAdmin()" class="col-md-6" style="max-width: 100%">
+<div *ngIf="authService.isAdmin()" class="col-md-3" style="max-width: 100%">
   <a routerLink="/admin" class="nav-link" >Informacje</a><br/>
   <a routerLink="/admin/change" class="nav-link">Zmień dane logowania</a><br/>
   <a routerLink="/admin/users" class="nav-link">Zarządzaj użytkownikami</a><br/>

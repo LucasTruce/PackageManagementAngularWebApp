@@ -24,11 +24,24 @@ export class CarService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getAll() {
-    return this.httpClient.get('http://localhost:8080/cars');
+  getAll(params) {
+    return this.httpClient.get('http://localhost:8080/cars', {params});
+  }
+
+  getCarById(id) {
+    return this.httpClient.get('http://localhost:8080/cars/' + id);
   }
 
   saveCar(car) {
     return this.httpClient.post('http://localhost:8080/cars', car);
+  }
+
+  deleteCar(id) {
+    return this.httpClient.delete('http://localhost:8080/cars?id=' + id);
+  }
+
+
+  updateCar(car) {
+    return this.httpClient.put('http://localhost:8080/cars', car);
   }
 }

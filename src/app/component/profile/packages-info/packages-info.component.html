@@ -2,34 +2,33 @@
   <div class="row justify-content-md-center">
     <app-navigation></app-navigation>
 
-    <div class="col-md-8">
+    <div class="col-md-9">
       <form class="form-registration" name="packagesInfo" #myForm="ngForm">
-        <table class="table">
+        <table matSort (matSortChange)="sortPackages($event)" class="table table-striped table-responsive">
           <thead>
             <tr>
-              <th>Lp</th>
-              <th>Numer paczki</th>
-              <th>Data nadania</th>
-              <th>Długość</th>
-              <th>Szerokość</th>
-              <th>Wysokość</th>
-              <th>Uwagi</th>
+              <th mat-sort-header="id">Lp</th>
+              <th mat-sort-header="packageNumber">Numer paczki</th>
+              <th mat-sort-header="date">Data nadania</th>
+              <th mat-sort-header="packageStatus">Status paczki</th>
+              <th>Operacje</th>
             </tr>
           </thead>
           <tbody>
-
-                <tr *ngFor="let package of packages; index as i">
-                  <td>{{i + 1}}</td>
-                  <td>{{package.packageNumber}}</td>
-                  <td>{{package.date}}</td>
-                  <td>{{package.length}}</td>
-                  <td>{{package.width}}</td>
-                  <td>{{package.height}}</td>
-                  <td>{{package.comments}}</td>
-                </tr>
-
+            <tr *ngFor="let package of packages | paginate: config; index as i">
+              <td>{{i + 1}}</td>
+              <td>{{package.packageNumber}}</td>
+              <td>{{package.date | date:'MM/dd/yyyy'}}</td>
+              <td>{{package.packageStatus.name}}</td>
+              <td>
+                <button type="button" class="btn  btn-danger" name="editPackage" (click)="deletePackage(package.id)">Usuń</button>
+                <button type="button" class="btn  btn-info" name="packageDetails" [routerLink]="['/profile/packages-info/', package.id]">Szczegóły</button>
+                <button type="button" class="btn  btn-warning" name="packageEdit" [routerLink]="['/profile/packages-info/', package.id, 'editPackage']">Edytuj</button>
+              </td>
+            </tr>
           </tbody>
         </table>
+        <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
       </form>
     </div>
   </div>

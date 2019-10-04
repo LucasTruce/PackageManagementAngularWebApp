@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {log} from 'util';
+import {Receiver} from '../receiver/receiver.service';
 
 export class Package {
   constructor(
@@ -11,7 +12,10 @@ export class Package {
     public packageNumber?: string,
     public date?: string,
     public id?: string,
-    public packageStatus?: any
+    public packageStatus?: any,
+    public sender?: any,
+    public recipient?: any,
+    public content?: any
   ) {}
 }
 
@@ -19,8 +23,6 @@ export class Package {
   providedIn: 'root'
 })
 export class PackageService {
-  public packNumber?: string;
-
 
   constructor(private httpClient: HttpClient) { }
 
@@ -28,11 +30,27 @@ export class PackageService {
     return this.httpClient.post('http://localhost:8080/packages/?login=' + login, pack);
   }
 
-  getPackageNumber() {
-    return this.packNumber;
+  update(pack) {
+    return this.httpClient.put('http://localhost:8080/packages', pack);
   }
 
-  getPackagesForUser(login) {
-    return this.httpClient.get('http://localhost:8080/packages/?login=' + login);
+  findPackageByNumber(packageNumber) {
+    if(packageNumber === ''){
+      packageNumber = 0;
+    }
+    return this.httpClient.get('http://localhost:8080/packages/number/' + packageNumber);
+  }
+
+  findById(id) {
+    return this.httpClient.get('http://localhost:8080/packages/' + id);
+  }
+
+
+  getPackagesForUser(login, params) {
+    return this.httpClient.get('http://localhost:8080/packages/?login=' + login, {params});
+  }
+
+  deletePackage(id) {
+    return this.httpClient.delete('http://localhost:8080/packages?id=' + id);
   }
 }

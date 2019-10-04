@@ -18,11 +18,23 @@ export class WarehouseService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getAll() {
-    return this.httpClient.get('http://localhost:8080/warehouses');
+  getAll(params) {
+    return this.httpClient.get('http://localhost:8080/warehouses', {params});
   }
 
   saveWarehouse(warehouse) {
     return this.httpClient.post('http://localhost:8080/warehouses', warehouse);
+  }
+
+  deleteWarehouse(id) {
+    return this.httpClient.delete('http://localhost:8080/warehouses?id=' + id);
+  }
+
+  getWarehouseById(id) {
+    return this.httpClient.get('http://localhost:8080/warehouses/' + id);
+  }
+
+  updateWarehouse(warehouse) {
+    return this.httpClient.put('http://localhost:8080/warehouses', warehouse);
   }
 }

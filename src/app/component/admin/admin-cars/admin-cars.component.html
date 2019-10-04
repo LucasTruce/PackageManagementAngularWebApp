@@ -2,31 +2,35 @@
   <div class="row justify-content-md-center">
     <app-navigation></app-navigation>
 
-    <div class="col-md-8">
+    <div class="col-md-9">
       <button type="button" class="btn btn-primary" name="addCar" routerLink="/admin/cars/addCar">Dodaj samochód</button>
 
-      <table class="table table-striped">
+      <table matSort (matSortChange)="sortCars($event)" class="table table-striped">
         <thead>
         <tr>
-          <th>Id</th>
-          <th>Marka</th>
-          <th>Model</th>
-          <th>Typ silnika</th>
-          <th>Numer rejestracyjny</th>
+          <th mat-sort-header="id">Id</th>
+          <th mat-sort-header="brand">Marka</th>
+          <th mat-sort-header="model">Model</th>
+          <th mat-sort-header="engineType">Typ silnika</th>
+          <th mat-sort-header="licensePlate">Numer rejestracyjny</th>
           <th>Operacje</th>
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let car of cars; index as i">
-          <td>{{i + 1}}</td>
+        <tr *ngFor="let car of cars | paginate: config">
+          <td>{{car.id}}</td>
           <td>{{car.brand}}</td>
           <td>{{car.model}}</td>
           <td>{{car.engineType}}</td>
           <td>{{car.licensePlate}}</td>
-          <td></td>
+          <td>
+            <button type="button" class="btn  btn-danger" name="deleteCar" (click)="deleteCar(car.id)">Usuń</button>
+            <button type="button" class="btn  btn-warning" name="editCar" [routerLink]="['/admin/cars/', car.id]">Edytuj</button>
+          </td>
         </tr>
         </tbody>
       </table>
+      <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
     </div>
   </div>
 </div>

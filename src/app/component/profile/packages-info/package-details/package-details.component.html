@@ -1,0 +1,124 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <app-navigation></app-navigation>
+
+    <div class="col-md-9">
+      <div class="row">
+        <div class="col-md-6">
+          Informacje o paczce:
+          <table class="table-responsive table-sm">
+            <tbody>
+              <tr>
+                <th>Numer paczki:</th>
+                <td>{{package.packageNumber}}</td>
+              </tr>
+              <tr>
+                <th>Status paczki:</th>
+                <td>{{package.packageStatus.name}}</td>
+              </tr>
+              <tr>
+                <th>Data nadania:</th>
+                <td>{{package.packageStatus.name}}</td>
+              </tr>
+              <tr>
+                <th>WxDxS:</th>
+                <td>{{package.height}}x{{package.length}}x{{package.width}}</td>
+              </tr>
+              <tr>
+                <th>Uwagi do paczki:</th>
+                <td>{{package.comments}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="col-md-6">
+          Produkty:
+          <table class="table table-responsive table-sm">
+            <thead>
+              <th>Nazwa</th>
+              <th>Waga</th>
+              <th>Kategoria</th>
+              <th>Uwagi</th>
+            </thead>
+            <tbody>
+              <tr *ngFor="let product of package.content.products">
+                <td>{{product.name}}</td>
+                <td>{{product.weight}}</td>
+                <td>{{product.category.name}}</td>
+                <td>{{product.comments}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <br/>
+      <div class="row">
+        <div class="col-md-6">
+          Nadawca:
+          <table class="table table-responsive table-sm">
+            <tbody>
+              <tr>
+                <th>Imię i nazwisko:</th>
+                <td>{{package.sender.name}} {{package.sender.lastName}}</td>
+              </tr>
+              <tr>
+                <th>Adres email:</th>
+                <td>{{package.sender.email}}</td>
+              </tr>
+              <tr>
+                <th>Nazwa firmy:</th>
+                <td>{{package.sender.companyName}}</td>
+              </tr>
+              <tr>
+                <th>Miasto:</th>
+                <td>{{package.sender.postCode}}, {{package.sender.city}}</td>
+              </tr>
+              <tr>
+                <th>Ulica:</th>
+                <td>{{package.sender.street}}</td>
+              </tr>
+              <tr>
+                <th>Telefon:</th>
+                <td>{{package.sender.phoneNumber}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="col-md-6">
+          Odbiorca:
+          <table class="table table-responsive table-sm">
+            <tbody>
+            <tr>
+              <th>Imię i nazwisko:</th>
+              <td>{{package.recipient.name}} {{package.recipient.lastName}}</td>
+            </tr>
+            <tr>
+              <th>Adres email:</th>
+              <td>{{package.recipient.email}}</td>
+            </tr>
+            <tr>
+              <th>Nazwa firmy:</th>
+              <td>{{package.recipient.companyName}}</td>
+            </tr>
+            <tr>
+              <th>Miasto:</th>
+              <td>{{package.recipient.postCode}}, {{package.recipient.city}}</td>
+            </tr>
+            <tr>
+              <th>Ulica:</th>
+              <td>{{package.recipient.street}}</td>
+            </tr>
+            <tr>
+              <th>Telefon:</th>
+              <td>{{package.recipient.phoneNumber}}</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

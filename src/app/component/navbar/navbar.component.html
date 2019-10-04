@@ -7,22 +7,25 @@
     <li class="nav-item">
         <a *ngIf="authenticationService.isUserLoggedIn()" routerLink="/" class="nav-link">Strona główna</a>
     </li>
-    <li>
+    <li class="nav-item">
+      <a routerLink="/locationPackage" class="nav-link">Zlokalizuj paczkę</a>
+    </li>
+    <li class="nav-item">
       <a *ngIf="authenticationService.isUserLoggedIn()" routerLink="/createPackage" class="nav-link">Nadaj paczkę</a>
     </li>
-    <li>
+    <li class="nav-item">
         <a *ngIf="!authenticationService.isUserLoggedIn()" routerLink="/login" class="nav-link">Zaloguj</a>
     </li>
-    <li>
+    <li class="nav-item">
         <a *ngIf="authenticationService.isUserLoggedIn()" routerLink="/logout" class="nav-link">Wyloguj</a>
     </li>
-    <li>
+    <li class="nav-item">
         <a *ngIf="!authenticationService.isUserLoggedIn()" routerLink="/register" class="nav-link">Zarejestruj</a>
     </li>
-    <li>
+    <li class="nav-item">
       <a *ngIf="authenticationService.isUserLoggedIn() && authenticationService.isUser()" routerLink="/profile" class="nav-link">Profil</a>
     </li>
-    <li>
+    <li class="nav-item">
       <a *ngIf="authenticationService.isUserLoggedIn() && authenticationService.isAdmin()" routerLink="/admin" class="nav-link">Admin</a>
     </li>
 

@@ -1,9 +1,10 @@
 <div *ngIf="authService.isAdmin()" class="container">
+
   <div class="row justify-content-md-center">
     <app-navigation></app-navigation>
 
     <div class="col-md-9">
-      <form class="form-registration" name="addWarehouse" (ngSubmit)="addWarehouse()"  #myForm="ngForm">
+      <form class="form-registration" name="updateUser" (ngSubmit)="updateWarehouse()"  #myForm="ngForm">
         <table class="table">
           <tr>
             <td>
