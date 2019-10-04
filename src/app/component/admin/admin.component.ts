@@ -3,7 +3,7 @@ import {AuthenticationService} from '../../service/authentication/authentication
 import {AuthGuardService} from '../../service/authentication/auth-guard.service';
 import {UserDetails, UserDetailsService} from '../../service/user-details/user-details.service';
 import {UserService} from '../../service/user/user.service';
-
+// AC AC AC
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
