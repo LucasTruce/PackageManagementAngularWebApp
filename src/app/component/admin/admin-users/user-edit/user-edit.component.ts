@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {AuthenticationService} from '../../../../service/authentication/authentication.service';
 import {User, UserService} from '../../../../service/user/user.service';
 import {ActivatedRoute} from '@angular/router';
+import {ReactiveFormsModule} from '@angular/forms';
 
 @Component({
   selector: 'app-user-edit',
@@ -11,7 +12,7 @@ import {ActivatedRoute} from '@angular/router';
 export class UserEditComponent implements OnInit {
   id: string;
   user: User = new User('', '', '');
-  roles: object[] = [{id: '1', name: 'ROLE_USER'}, {id: '2', name: 'ROLE_WORKER'}, {id: '3', name: 'ROLE_ADMIN'}];
+  roles: object[] = [{id: 1, name: 'ROLE_USER'}, {id: 2, name: 'ROLE_WORKER'}, {id: 3, name: 'ROLE_ADMIN'}];
 
   constructor(private authService: AuthenticationService,
               private route: ActivatedRoute,
@@ -27,6 +28,10 @@ export class UserEditComponent implements OnInit {
 
       }
     );
+  }
+
+  customCompareCategory(o1: any, o2: any) {
+    return JSON.stringify(o1) === JSON.stringify(o2);
   }
 
   updateUser() {
