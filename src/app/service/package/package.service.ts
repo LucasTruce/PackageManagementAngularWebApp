@@ -15,7 +15,8 @@ export class Package {
     public packageStatus?: any,
     public sender?: any,
     public recipient?: any,
-    public content?: any
+    public content?: any,
+    public code?: any
   ) {}
 }
 

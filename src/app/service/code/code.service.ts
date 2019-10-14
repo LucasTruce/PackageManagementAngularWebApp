@@ -36,4 +36,8 @@ export class CodeService {
   saveWithProduct(codes) {
     return this.httpClient.post('http://localhost:8080/codes', codes);
   }
+
+  getQrCode(id) {
+    return this.httpClient.get('http://localhost:8080/codes/' + id + "/qrcode");
+  }
 }

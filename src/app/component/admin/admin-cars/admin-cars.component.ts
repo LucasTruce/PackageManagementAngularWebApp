@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Car, CarService} from '../../../service/car/car.service';
 import {AuthenticationService} from '../../../service/authentication/authentication.service';
-import {CodeService} from '../../../service/code/code.service';
 
 @Component({
   selector: 'app-admin-cars',
@@ -21,6 +20,7 @@ export class AdminCarsComponent implements OnInit {
         currentPage: 1,
         totalItems: 10
       };
+
   }
 
   ngOnInit() {
@@ -88,4 +88,6 @@ export class AdminCarsComponent implements OnInit {
   successfulResponseCars(response) {
     this.cars = response.content;
   }
+
+
 }

@@ -28,6 +28,10 @@
                 <th>Uwagi do paczki:</th>
                 <td>{{package.comments}}</td>
               </tr>
+              <tr>
+                <th>Kod QR:</th>
+                <td><img *ngIf="qrcode != null" style="width: 100px; height: 100px;" [src]="qrcode" /> </td>
+              </tr>
             </tbody>
           </table>
         </div>

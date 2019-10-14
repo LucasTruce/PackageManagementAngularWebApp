@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {Package, PackageService} from '../../../../service/package/package.service';
 import {ActivatedRoute} from '@angular/router';
+import {CodeService} from '../../../../service/code/code.service';
+import {DomSanitizer} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-package-details',
@@ -10,9 +12,11 @@ import {ActivatedRoute} from '@angular/router';
 export class PackageDetailsComponent implements OnInit {
 
   id: string;
-  package: Package = new Package(0, 0, 0, '', '', '', '', '', '', '', '');
+  package: Package = new Package(0, 0, 0, '', '', '', '', '', '', '', '', '');
+  qrcode: any;
 
-  constructor(private packageService: PackageService, private route: ActivatedRoute) { }
+  constructor(private packageService: PackageService, private route: ActivatedRoute, private sanitizer: DomSanitizer, private codeService: CodeService) {
+  }
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
@@ -21,6 +25,11 @@ export class PackageDetailsComponent implements OnInit {
     this.packageService.findById(this.id).subscribe(
       results => {
         this.sucessfullPackageResponse(results);
+        this.codeService.getQrCode(this.package.code.id).subscribe(
+          response => {
+            this.successfullCodeResponse(response);
+          }
+        );
       }
     );
 
@@ -28,6 +37,11 @@ export class PackageDetailsComponent implements OnInit {
 
   sucessfullPackageResponse(response) {
     this.package = response;
+  }
+
+  successfullCodeResponse(response) {
+    let objectURL = 'data:image/png;base64,' + response.content;
+    this.qrcode = this.sanitizer.bypassSecurityTrustUrl(objectURL);
   }
 
 }
