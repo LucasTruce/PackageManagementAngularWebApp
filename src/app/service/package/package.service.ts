@@ -16,7 +16,8 @@ export class Package {
     public sender?: any,
     public recipient?: any,
     public content?: any,
-    public code?: any
+    public code?: any,
+    public users?: any
   ) {}
 }
 

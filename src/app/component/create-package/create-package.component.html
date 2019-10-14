@@ -23,7 +23,7 @@
           <tr>
             <td>
               <div class="form-group">
-                Wysokość: <input type="number" class="form-control" name="height" [(ngModel)]="package.height"  placeholder="Wysokość [cm]">
+                Wysokość[cm]: <input type="number" class="form-control" name="height" [(ngModel)]="package.height"  placeholder="Wysokość [cm]">
                 <div *ngIf="error.height" class="error-message">
                   {{error.height}}
                 </div>
@@ -33,7 +33,7 @@
           <tr>
             <td>
               <div class="form-group">
-                Szerokość: <input type="number" class="form-control" name="width" [(ngModel)]="package.width" placeholder="Szerokość [cm]">
+                Szerokość[cm]: <input type="number" class="form-control" name="width" [(ngModel)]="package.width" placeholder="Szerokość [cm]">
                 <div *ngIf="error.width" class="error-message">
                   {{error.width}}
                 </div>
@@ -43,7 +43,7 @@
           <tr>
             <td>
               <div class="form-group">
-                Długość: <input type="number" class="form-control" name="length" [(ngModel)]="package.length" placeholder="Długość [cm]">
+                Długość[cm]: <input type="number" class="form-control" name="length" [(ngModel)]="package.length" placeholder="Długość [cm]">
                 <div *ngIf="error.length" class="error-message">
                   {{error.length}}
                 </div>

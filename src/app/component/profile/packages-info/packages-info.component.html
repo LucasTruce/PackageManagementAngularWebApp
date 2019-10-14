@@ -23,7 +23,7 @@
               <td>
                 <button type="button" class="btn  btn-danger" name="editPackage" (click)="deletePackage(package.id)">Usuń</button>
                 <button type="button" class="btn  btn-info" name="packageDetails" [routerLink]="['/profile/packages-info/', package.id]">Szczegóły</button>
-                <button type="button" class="btn  btn-warning" name="packageEdit" [routerLink]="['/profile/packages-info/', package.id, 'editPackage']">Edytuj</button>
+                <button *ngIf="package.packageStatus.name === 'W oczekiwaniu na kuriera'" type="button" class="btn  btn-warning" name="packageEdit" [routerLink]="['/profile/packages-info/', package.id, 'editPackage']">Edytuj</button>
               </td>
             </tr>
           </tbody>

@@ -6,6 +6,7 @@ import {Product, ProductService} from '../../../../service/product/product.servi
 import {SenderService} from '../../../../service/sender/sender.service';
 import {ReceiverService} from '../../../../service/receiver/receiver.service';
 import {Code, CodeService} from '../../../../service/code/code.service';
+import {AuthenticationService} from '../../../../service/authentication/authentication.service';
 
 @Component({
   selector: 'app-edit-package',
@@ -19,12 +20,12 @@ export class EditPackageComponent implements OnInit {
   productsWasEdited: boolean = false;
   codes: Array<Code> = new Array<Code>();
 
-  package: Package = new Package(0, 0, 0, '', '', '', '', '', '', '', '');
+  package: Package = new Package(0, 0, 0, '', '', '', '', '', '', '', '', '', '');
 
   removeItems: Array<any> = new Array<any>();
   productCategories: Array<ProductCategory> = new Array<ProductCategory>();
 
-  constructor(private route: ActivatedRoute,
+  constructor(private authService: AuthenticationService, private route: ActivatedRoute,
               private packageService: PackageService,
               private productCategoryService: ProductCategoryService,
               private senderService: SenderService,
@@ -42,12 +43,16 @@ export class EditPackageComponent implements OnInit {
       this.id = params.get('id');
     });
 
+
     this.packageService.findById(this.id).subscribe(
       response => {
         this.successfulResponsePackage(response);
         this.productCategoryService.getAll().subscribe(
           results => {
             this.successfulCategory(results);
+            if(this.authService.getLogin() != this.package.users[0].login || this.package.packageStatus.name != "W oczekiwaniu na kuriera"){
+              this.router.navigate(['profile/packages-info']);
+            }
           }
         );
       }
