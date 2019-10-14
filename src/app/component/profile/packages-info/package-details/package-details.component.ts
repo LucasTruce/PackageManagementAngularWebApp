@@ -27,7 +27,7 @@ export class PackageDetailsComponent implements OnInit {
         this.sucessfullPackageResponse(results);
         this.codeService.getQrCode(this.package.code.id).subscribe(
           response => {
-            this.successfullCodeResponse(response);
+            this.successfullCodeResponse(response); //nowy
           }
         );
       }
