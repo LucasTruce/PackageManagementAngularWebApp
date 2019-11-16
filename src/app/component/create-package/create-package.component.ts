@@ -83,6 +83,7 @@ export class CreatePackageComponent implements OnInit {
                     this.packageService.save(this.package, this.authenticationService.getLogin()).subscribe(  //dodawanie paczki (paczka musi mieć kod)
                       response => {
                         this.successfullResponsePackage(response);
+                        this.router.navigate(['/profile/packages-info']);
                       }
                       );});});
             }
@@ -91,7 +92,7 @@ export class CreatePackageComponent implements OnInit {
               this.packageService.save(this.package, this.authenticationService.getLogin()).subscribe(
                 respo => {
                   this.successfullResponsePackage(respo);
-                  this.router.navigate(['/profile/packages-info'])
+                  this.router.navigate(['/profile/packages-info']);
                 }
               );
             }
