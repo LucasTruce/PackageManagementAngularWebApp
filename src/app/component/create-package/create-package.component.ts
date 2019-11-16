@@ -73,7 +73,7 @@ export class CreatePackageComponent implements OnInit {
         this.receiverService.save(this.receiverAdded).subscribe( //dodawanie odbiorcy
           res => {
             this.package.recipient = res;
-            if(this.wantAddProducts == false) {
+            if(this.wantAddProducts == false) {  //przypadek gdzie uzytkownik chce dodać towary
               this.productService.saveAll(this.productsAdded).subscribe( //dodawanie produktow (produkt musi mieć kod)
                 nx => {
                   this.successfulResponseProducts(nx);
@@ -86,11 +86,12 @@ export class CreatePackageComponent implements OnInit {
                       }
                       );});});
             }
-            else {
+            else { //przypadek gdy uzytkownik nie chce dodać towarów (wstawiamy sama paczke, bez content'u i towarow)
               this.package.code = new Code('');
               this.packageService.save(this.package, this.authenticationService.getLogin()).subscribe(
                 respo => {
                   this.successfullResponsePackage(respo);
+                  this.router.navigate(['/profile/packages-info'])
                 }
               );
             }

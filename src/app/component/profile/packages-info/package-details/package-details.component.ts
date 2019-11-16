@@ -12,7 +12,7 @@ import {DomSanitizer} from '@angular/platform-browser';
 export class PackageDetailsComponent implements OnInit {
 
   id: string;
-  package: Package = new Package(0, 0, 0, '', '', '', '', '', '', '', '', '');
+  package: Package = new Package(0, 0, 0, '', '', '', '', '', '', '', '');
   qrcode: any;
 
   constructor(private packageService: PackageService, private route: ActivatedRoute, private sanitizer: DomSanitizer, private codeService: CodeService) {
