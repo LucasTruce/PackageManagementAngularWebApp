@@ -70,7 +70,7 @@ export class EditPackageComponent implements OnInit {
                   if (this.removeItems.length > 0) {
                     this.productService.deleteAll(this.removeItems).subscribe();
                   }
-                  this.productService.saveAll(this.package.content.products, this.package.content.id).subscribe(
+                  this.productService.saveAll(this.package.content.products).subscribe(
                     res => {
                       this.successfulProducts(res);
                       for(let item of this.package.content.products) {

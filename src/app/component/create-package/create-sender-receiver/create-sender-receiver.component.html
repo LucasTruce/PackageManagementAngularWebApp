@@ -73,10 +73,10 @@
         <tr>
           <td>
             <div class="form-group">
-              Adres e-mail: <input type="email" class="form-control" name="senderEmail"  [(ngModel)]="sender.email" #email="ngModel" placeholder="Adres email" required="">
+              Adres e-mail: <input type="email" class="form-control" name="senderEmail"  [(ngModel)]="sender.email" #senderEmail="ngModel" placeholder="Adres email" required="true">
               <div class="form-group">
-                <div *ngIf="email.invalid" class="error-message">
-                  <div *ngIf="email.errors.required">
+                <div *ngIf="senderEmail.invalid" class="error-message">
+                  <div *ngIf="senderEmail.errors.required">
                     Email jest wymagany!
                   </div>
                 </div>
@@ -85,10 +85,10 @@
           </td>
           <td>
             <div class="form-group">
-              Adres e-mail: <input type="email" class="form-control" name="receiverEmail" [(ngModel)]="receiver.email" #email2="ngModel" placeholder="Adres email" required>
+              Adres e-mail: <input type="email" class="form-control" name="receiverEmail" [(ngModel)]="receiver.email" #email2="ngModel" placeholder="Adres email" required="true">
               <div class="form-group">
-                <div *ngIf="email.invalid" class="error-message">
-                  <div *ngIf="email.errors.required">
+                <div *ngIf="email2.invalid" class="error-message">
+                  <div *ngIf="email2.errors.required">
                     Email jest wymagany!
                   </div>
                 </div>

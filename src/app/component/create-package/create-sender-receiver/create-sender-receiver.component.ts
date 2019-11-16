@@ -14,12 +14,12 @@ import {AuthenticationService} from '../../../service/authentication/authenticat
 })
 export class CreateSenderReceiverComponent implements OnInit {
 
-  sender: Sender = new Sender('', '', '', '', '', '', '');
-  receiver: Receiver = new Receiver('', '', '', '', '', '', '');
+  sender: Sender = new Sender('', '', '', '', '', '', '', '', new Package(0,0,0, ''), '');
+  receiver: Receiver = new Receiver('', '', '', '', '', '', '', '', '');
 
-  @Input('packId') pack: string; // from create-package component
-  @Output() senderReceiverAdded = new EventEmitter();
-
+  @Input('pack') pack: Package; // from create-package component
+  @Output() senderAdded = new EventEmitter();
+  @Output() receiverAdded = new EventEmitter();
   constructor(private senderService: SenderService, private receiverService: ReceiverService, private router: Router, private userDetailsService: UserDetailsService, private auth: AuthenticationService) { }
 
   ngOnInit() {
@@ -32,18 +32,13 @@ export class CreateSenderReceiverComponent implements OnInit {
 
   handleSenderData(response) {
     this.sender = response;
+    this.sender.email = this.auth.getLogin();
+    this.sender.id = '';
   }
+
   createSenderReceiver() {
-    this.senderService.save(this.sender, this.pack).subscribe(
-      response => {
-        this.receiverService.save(this.receiver, this.pack).subscribe(
-          res => {
-            this.senderReceiverAdded.emit(true);
-            this.router.navigate(['/createPackage']);
-          }
-        );
-      }
-    );
+    this.senderAdded.emit(this.sender);
+    this.receiverAdded.emit(this.receiver);
   }
 
 }

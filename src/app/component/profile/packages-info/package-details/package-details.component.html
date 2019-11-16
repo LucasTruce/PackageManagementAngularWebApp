@@ -18,7 +18,7 @@
               </tr>
               <tr>
                 <th>Data nadania:</th>
-                <td>{{package.packageStatus.name}}</td>
+                <td>{{package.date}}</td>
               </tr>
               <tr>
                 <th>WxDxS:</th>
@@ -35,7 +35,7 @@
             </tbody>
           </table>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-6" *ngIf="package.content != null">
           Produkty:
           <table class="table table-responsive table-sm">
             <thead>

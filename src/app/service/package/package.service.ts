@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {log} from 'util';
 import {Receiver} from '../receiver/receiver.service';
+import {Code} from '../code/code.service';
 
 export class Package {
   constructor(
@@ -16,7 +17,7 @@ export class Package {
     public sender?: any,
     public recipient?: any,
     public content?: any,
-    public code?: any,
+    public code?: Code,
     public users?: any
   ) {}
 }

@@ -3,7 +3,7 @@
     <div class="col-md-12">
       Czy chcesz dokonać kompletacji towaru?
       <input type="button" (click)="wantAdd = true" value="Tak">
-      <input type="button" (click)="wantAdd = false" value="Nie">
+      <input type="button" (click)="wantAdd2()" value="Nie">
 
       <div *ngIf="wantAdd === true">
         <form class="form-registration" (ngSubmit)="createContentProduct()" name="createProduct" #myForm="ngForm">

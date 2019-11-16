@@ -1,21 +1,27 @@
 <div class="container">
   <div class="row justify-content-md-center">
-
-    <div *ngIf="added && !senderAdded && !productsAdded">
+    <div *ngIf="packageAdded && !senderAdded && !productsAdded">
       <app-create-sender-receiver
-        [packId]="package.id"
-        (senderReceiverAdded)="handleSenderReceiverResponse($event)">
+        [pack]="package"
+        (senderAdded)="handleSenderResponse($event)"
+        (receiverAdded)="handleReceiverResponse($event)">
       </app-create-sender-receiver>
     </div>
 
-    <div *ngIf="added && senderAdded && !productsAdded">
+
+
+    <div *ngIf="packageAdded && senderAdded && receiverAdded && !productsAdded && !wantAddProducts">
       <app-create-product
-        [packId]="package.id"
-        (productsAdded)="handleProductsResponse($event)">
+        [pack]="package"
+        (productsAdded)="handleProductsResponse($event)"
+        (contentAdded)="handleContentResponse($event)"
+        (wantAddProducts)="handleDontAddProducts($event)">
       </app-create-product>
     </div>
 
-    <div *ngIf="!added && !senderAdded && !productsAdded">
+
+
+    <div *ngIf="!packageAdded && !senderAdded && !productsAdded">
       <form class="form-registration" (ngSubmit)="createPackage()" name="createPackage" #myForm="ngForm">
         <table class="table">
           <tbody>
@@ -72,5 +78,134 @@
         </table>
       </form>
     </div>
+
+
+
+
+
+    <div *ngIf="packageAdded && senderAdded && receiverAdded && (productsAdded || wantAddProducts)">
+      <form class="form-registration" (ngSubmit)="addToDatabase()" name="addToDatabase" #myForm1="ngForm">
+        <div class="col-md-12">
+          <div class="row">
+            <div class="col-md-12">
+              Informacje o paczce:
+              <table class="table-responsive table-sm">
+                <tbody>
+                  <tr>
+                    <th>WysxSzerxDl[cm]:</th>
+                    <td>{{package.height}}x{{package.width}}x{{package.length}}</td>
+                  </tr>
+                  <tr>
+                    <th>Opis:</th>
+                    <td><textarea rows = "3" cols = "25" name = "description" disabled [(ngModel)]="package.comments" class="form-control">Uwagi</textarea></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="row">
+              <div class="col-md-6">
+                Informacje o nadawcy:
+                <table class="table table-responsive table-sm">
+                  <tbody>
+                  <tr>
+                    <th>Imię i nazwisko:</th>
+                    <td>{{package.sender.name}} {{package.sender.lastName}}</td>
+                  </tr>
+                  <tr>
+                    <th>Adres email:</th>
+                    <td>{{package.sender.email}}</td>
+                  </tr>
+                  <tr>
+                    <th>Nazwa firmy:</th>
+                    <td>{{package.sender.companyName}}</td>
+                  </tr>
+                  <tr>
+                    <th>Miasto:</th>
+                    <td>{{package.sender.postCode}}, {{package.sender.city}}</td>
+                  </tr>
+                  <tr>
+                    <th>Ulica:</th>
+                    <td>{{package.sender.street}}</td>
+                  </tr>
+                  <tr>
+                    <th>Telefon:</th>
+                    <td>{{package.sender.phoneNumber}}</td>
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
+            <div class="col-md-6">
+                Informacje o odbiorcy:
+              <table class="table table-responsive table-sm">
+                <tbody>
+                <tr>
+                  <th>Imię i nazwisko:</th>
+                  <td>{{package.recipient.name}} {{package.recipient.lastName}}</td>
+                </tr>
+                <tr>
+                  <th>Adres email:</th>
+                  <td>{{package.recipient.email}}</td>
+                </tr>
+                <tr>
+                  <th>Nazwa firmy:</th>
+                  <td>{{package.recipient.companyName}}</td>
+                </tr>
+                <tr>
+                  <th>Miasto:</th>
+                  <td>{{package.recipient.postCode}}, {{package.recipient.city}}</td>
+                </tr>
+                <tr>
+                  <th>Ulica:</th>
+                  <td>{{package.recipient.street}}</td>
+                </tr>
+                <tr>
+                  <th>Telefon:</th>
+                  <td>{{package.recipient.phoneNumber}}</td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="row" *ngIf="!wantAddProducts">
+              <div class="col-md-12">
+                Produkty:
+                <table class="table table-responsive table-sm">
+                  <thead>
+                  <th>Nazwa</th>
+                  <th>Waga</th>
+                  <th>Kategoria</th>
+                  <th>Uwagi</th>
+                  </thead>
+                  <tbody>
+                  <tr *ngFor="let product of productsAdded">
+                    <td>{{product.name}}</td>
+                    <td>{{product.weight}}</td>
+                    <td>{{product.category.name}}</td>
+                    <td>{{product.comments}}</td>
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
+          </div>
+          <table class="table table-responsive table-sm">
+            <tbody>
+            <td><button class="btn btn-success" type="submit">Nadaj paczkę</button></td>
+            </tbody>
+          </table>
+        </div>
+      </form>
+    </div>
+
+
+
+
+
+    <div *ngIf="summary">
+
+
+    </div>
+
   </div>
 </div>

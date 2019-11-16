@@ -10,7 +10,8 @@ export class Receiver {
     public street: string,
     public postCode: string,
     public phoneNumber: string,
-    public email?: string
+    public email?: string,
+    public id?: string
   ) {}
 
 }
@@ -23,8 +24,8 @@ export class ReceiverService {
   constructor(private httpClient: HttpClient) { }
 
 
-  save(receiver, packId) {
-    return this.httpClient.post('http://localhost:8080/recipients/?packId=' + packId, receiver);
+  save(receiver) {
+    return this.httpClient.post('http://localhost:8080/recipients', receiver);
   }
 
   update(receiver) {

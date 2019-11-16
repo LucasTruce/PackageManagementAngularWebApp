@@ -3,6 +3,10 @@ import {Package, PackageService} from '../../service/package/package.service';
 import {AuthenticationService} from '../../service/authentication/authentication.service';
 import {Router} from '@angular/router';
 import {Code, CodeService} from '../../service/code/code.service';
+import {Sender, SenderService} from '../../service/sender/sender.service';
+import {Receiver, ReceiverService} from '../../service/receiver/receiver.service';
+import {Product, ProductService} from '../../service/product/product.service';
+import {Content, ContentService} from '../../service/content/content.service';
 
 @Component({
   selector: 'app-create-package',
@@ -14,56 +18,101 @@ export class CreatePackageComponent implements OnInit {
   package: Package = new Package(0, 0, 0, '');
   code: Code = new Code('');
   error: object = {};
-  added: boolean = false;
-  senderAdded: boolean = false;
-  productsAdded: boolean = false;
 
-  constructor(private packageService: PackageService, private authenticationService: AuthenticationService, private router: Router, private codeService: CodeService) { }
+  packageAdded: boolean = false;
+  senderAdded: Sender = null;
+  receiverAdded: Receiver= null;
+  productsAdded: Array<Product>;
+  contentAdded: Content= null;
+  wantAddProducts: boolean = false;
 
-  ngOnInit() {
+  summary: boolean = false;
 
-  }
+  constructor(private packageService: PackageService,
+              private authenticationService: AuthenticationService,
+              private router: Router,
+              private codeService: CodeService,
+              private senderService: SenderService,
+              private receiverService: ReceiverService,
+              private contentService: ContentService,
+              private productService: ProductService) { }
+
+  ngOnInit() {}
 
   createPackage(){
-    this.added = false;
-    this.packageService.save(this.package, this.authenticationService.getLogin()).subscribe(
-      response => {
-        this.handleSuccessfulResponse(response);
-        this.codeService.save(this.code, this.package.id).subscribe(
-          res => {
-            this.handleSuccessfulCode(res);
-            this.router.navigate(['/createPackage']);
-            this.added = true;
-          }
-        );
-      },
-        err => {
-          const errors = err.error.errors;
-
-          for (const err of errors) {
-            const field = err.field;
-            const message = err.defaultMessage;
-            this.error[field] = message;
-          }
-        }
-    );
-  }
-
-  handleSuccessfulResponse(response) {
-    this.package = response;
-    this.code.filePath = this.package.packageNumber;
-  }
-
-  handleSenderReceiverResponse(ev) {
-    this.senderAdded = ev;
-  }
-
-  handleSuccessfulCode(response) {
-    this.code = response;
+    this.packageAdded = true;
   }
 
   handleProductsResponse(ev) {
     this.productsAdded = ev;
+    this.package.content = this.contentAdded;
   }
+
+  handleSenderResponse(ev) {
+    this.senderAdded = ev;
+    this.package.sender = ev;
+  }
+
+  handleReceiverResponse(ev) {
+    this.receiverAdded = ev;
+    this.package.recipient = ev;
+  }
+
+  handleContentResponse(ev) {
+    this.contentAdded = ev;
+  }
+
+  handleDontAddProducts(ev) {
+    this.wantAddProducts = ev;
+  }
+
+  addToDatabase() {
+   this.senderService.save(this.senderAdded).subscribe(  //dodawanie nadawcy
+      results => {
+        this.package.sender = results;
+        this.receiverService.save(this.receiverAdded).subscribe( //dodawanie odbiorcy
+          res => {
+            this.package.recipient = res;
+            if(this.wantAddProducts == false) {
+              this.productService.saveAll(this.productsAdded).subscribe( //dodawanie produktow (produkt musi mieć kod)
+                nx => {
+                  this.successfulResponseProducts(nx);
+                  this.contentService.saveContent(this.contentAdded).subscribe( //dodawanie zawartosci (zawartosc musi miec produkty)
+                  next => {
+                    this.successfulResponseContent(next);
+                    this.packageService.save(this.package, this.authenticationService.getLogin()).subscribe(  //dodawanie paczki (paczka musi mieć kod)
+                      response => {
+                        this.successfullResponsePackage(response);
+                      }
+                      );});});
+            }
+            else {
+              this.package.code = new Code('');
+              this.packageService.save(this.package, this.authenticationService.getLogin()).subscribe(
+                respo => {
+                  this.successfullResponsePackage(respo);
+                }
+              );
+            }
+          }
+          );
+      }
+      );
+  }
+
+
+  successfulResponseContent(response) {
+    this.package.content = response;
+    this.package.code = new Code('');
+  }
+  successfulResponseProducts(response) {
+    this.productsAdded = response;
+    this.contentAdded.products = this.productsAdded;
+  }
+
+  successfullResponsePackage(response) {
+    this.package = response;
+  }
+
 
 }

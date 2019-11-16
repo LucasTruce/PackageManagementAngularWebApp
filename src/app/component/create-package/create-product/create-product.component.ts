@@ -5,6 +5,7 @@ import {Content, ContentService} from '../../../service/content/content.service'
 import {formatDate} from '@angular/common';
 import {Router} from '@angular/router';
 import {Code, CodeService} from '../../../service/code/code.service';
+import {Package} from '../../../service/package/package.service';
 
 @Component({
   selector: 'app-create-product',
@@ -13,18 +14,18 @@ import {Code, CodeService} from '../../../service/code/code.service';
 })
 export class CreateProductComponent implements OnInit {
 
-  wantAdd: boolean;
-  @Input('packId') pack: string;
+  wantAdd: boolean = false;
+  @Input('pack') pack: Package;
   @Output() productsAdded = new EventEmitter();
+  @Output() contentAdded = new EventEmitter();
+  @Output() wantAddProducts = new EventEmitter();
 
   productList: Array<Product> = new Array<Product>();
   productCategories: Array<ProductCategory>;
   content: Content;
   codes: Array<Code> = new Array<Code>();
 
-  constructor(private productService: ProductService, private productCategoryService: ProductCategoryService, private contentService: ContentService,
-              private router: Router,
-              private codeService: CodeService) { }
+  constructor(private productService: ProductService, private productCategoryService: ProductCategoryService) { }
 
   ngOnInit() {
     this.productCategoryService.getAll().subscribe(
@@ -46,30 +47,17 @@ export class CreateProductComponent implements OnInit {
     const newDate = formatDate(myDate, format, 'en-US');
     this.content = new Content(newDate);
 
-    //stworzenie zawartosci w bazie
-    this.contentService.saveContent(this.content, this.pack).subscribe(
-      results => {
-        this.succefullResponseContent(results);
-        //zapisanie produktow w bazie i powiazanie ich z zawartoscia
-        this.productService.saveAll(this.productList, this.content.id).subscribe(
-          next => {
-            this.succefullResponseProducts(next);
-            for (let product of this.productList) {
-              this.codes.push(new Code(product.id));
-            }
-            console.log(this.codes);
-            this.codeService.saveWithProduct(this.codes).subscribe(
-              response => {
-                this.succefullResponseCodes(response);
-                this.productsAdded.emit(true);
-                this.router.navigate(['']);
-              }
-            );
+    this.contentAdded.emit(this.content);
 
-          }
-        );
-      }
-    );
+    for (let product of this.productList) {
+      product.code = new Code(product.name);
+    }
+
+    this.productsAdded.emit(this.productList);
+  }
+
+  wantAdd2() {
+    this.wantAddProducts.emit(true);
   }
 
   addProduct() {
@@ -82,17 +70,6 @@ export class CreateProductComponent implements OnInit {
 
   getCategories(response) {
     this.productCategories = response;
-  }
-
-  succefullResponseProducts(response) {
-    this.productList = response;
-  }
-
-  succefullResponseContent(response) {
-    this.content = response;
-  }
-  succefullResponseCodes(response) {
-    this.codes = response;
   }
 
 }

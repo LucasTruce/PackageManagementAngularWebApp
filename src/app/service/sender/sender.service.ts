@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
+import {Package} from '../package/package.service';
 
 
 export class Sender {
@@ -11,7 +12,9 @@ export class Sender {
     public street: string,
     public postCode: string,
     public phoneNumber: string,
-    public email?: string
+    public email?: string,
+    public pack?: Package,
+    public id?: string
   ) {}
 }
 @Injectable({
@@ -21,8 +24,8 @@ export class SenderService {
 
   constructor(private httpClient: HttpClient) { }
 
-  save(sender, packId) {
-    return this.httpClient.post('http://localhost:8080/senders/?packId=' + packId, sender);
+  save(sender) {
+    return this.httpClient.post('http://localhost:8080/senders', sender);
   }
 
   update(sender) {

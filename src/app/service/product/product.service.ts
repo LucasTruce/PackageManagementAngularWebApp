@@ -23,8 +23,8 @@ export class ProductService {
 
   constructor(private httpClient: HttpClient) { }
 
-  saveAll(products, contentId) {
-    return this.httpClient.post('http://localhost:8080/products/?contentId=' + contentId, products);
+  saveAll(products) {
+    return this.httpClient.post('http://localhost:8080/products', products);
   }
 
   deleteAll(products) {
