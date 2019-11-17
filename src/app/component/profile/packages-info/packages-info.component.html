@@ -18,39 +18,15 @@
             <tr *ngFor="let package of packages | paginate: config; index as i">
               <td>{{i + 1}}</td>
               <td>{{package.packageNumber}}</td>
-              <td>{{package.date | date:'MM/dd/yyyy'}}</td>
+              <td *ngIf="package.date == null">Brak</td>
+              <td *ngIf="package.date != null">{{package.date | date:'MM/dd/yyyy'}}</td>
               <td>{{package.packageStatus.name}}</td>
               <td>
-                <button type="button" class="btn  btn-danger" name="editPackage" data-toggle="modal" data-target="#myModal">Usuń</button>
-                <button type="button" class="btn  btn-info" name="packageDetails" [routerLink]="['/profile/packages-info/', package.id]">Szczegóły</button>
-                <button *ngIf="package.packageStatus.name === 'W oczekiwaniu na kuriera'" type="button" class="btn  btn-warning" name="packageEdit" [routerLink]="['/profile/packages-info/', package.id, 'editPackage']">Edytuj</button>
+                <button *ngIf="package.packageStatus.name === 'W oczekiwaniu na kuriera'" type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#myModal" (click)="deletingPackage(package)">Usuń</button>
+                <button type="button" class="btn btn-sm btn-info" name="packageDetails" [routerLink]="['/profile/packages-info/', package.id]">Szczegóły</button>
+                <button *ngIf="package.packageStatus.name === 'W oczekiwaniu na kuriera'" type="button" class="btn btn-sm btn-warning" name="packageEdit" [routerLink]="['/profile/packages-info/', package.id, 'editPackage']">Edytuj</button>
+
               </td>
-
-              <div class="modal" id="myModal">
-                <div class="modal-dialog modal-lg">
-                  <div class="modal-content">
-
-                    <!-- Modal Header -->
-                    <div class="modal-header">
-                      <h4 class="modal-title">Usuwanie paczki</h4>
-                      <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    </div>
-
-                    <!-- Modal body -->
-                    <div class="modal-body">
-                      <p><strong>Czy na pewno chcesz usunąć paczkę o numerze <span class="text-primary">"{{package.packageNumber}}"</span>?</strong></p>
-                      Wszystkie informacje powiązane z tą paczką zostaną usunięte. Ta operacja jest nieodwracalna.
-                    </div>
-
-                    <!-- Modal footer -->
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Anuluj</button>
-                      <button type="button" class="btn btn-danger" (click)="deletePackage(package.id)" data-dismiss="modal">Usuń</button>
-                    </div>
-
-                  </div>
-                </div>
-              </div>
             </tr>
           </tbody>
         </table>
@@ -60,5 +36,26 @@
   </div>
 </div>
 
+<div class="modal" id="myModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content" role="document">
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Usuwanie paczki</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <!-- Modal body -->
+      <div class="modal-body">
+        <p><strong>Czy na pewno chcesz usunąć paczkę o numerze <span class="text-primary">"{{tempPack.packageNumber}}"</span>?</strong></p>
+        Wszystkie informacje powiązane z tą paczką zostaną usunięte. Ta operacja jest nieodwracalna.
+      </div>
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Anuluj</button>
+        <button type="button" class="btn btn-danger" (click)="deletePackage(tempPack.id)" data-dismiss="modal">Usuń</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 

@@ -12,6 +12,7 @@ export class PackagesInfoComponent implements OnInit {
   packages: Array<Package> = new Array<Package>();
   config: any;
   param: object = {pageNumber: 0};
+  tempPack: Package = new Package(0, 0,0, '', '', '', '', '');
 
   constructor(private packageService: PackageService, private authenticationService: AuthenticationService) {
     this.config = {
@@ -85,6 +86,10 @@ export class PackagesInfoComponent implements OnInit {
 
   successfulResponsePackages(response) {
     this.packages = response.content;
+  }
+
+  deletingPackage(pack) {
+   this.tempPack = pack;
   }
 
 }

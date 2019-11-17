@@ -16,9 +16,9 @@
                 <th>Status paczki:</th>
                 <td>{{package.packageStatus.name}}</td>
               </tr>
-              <tr>
+              <tr *ngIf="package.date != null">
                 <th>Data nadania:</th>
-                <td>{{package.date}}</td>
+                <td >{{package.date | date:'MM/dd/yyyy hh:mm:ss'}}</td>
               </tr>
               <tr>
                 <th>WxDxS:</th>

@@ -8,6 +8,7 @@ import {ReceiverService} from '../../../../service/receiver/receiver.service';
 import {Code, CodeService} from '../../../../service/code/code.service';
 import {AuthenticationService} from '../../../../service/authentication/authentication.service';
 import {ContentService} from '../../../../service/content/content.service';
+import {error} from 'util';
 
 @Component({
   selector: 'app-edit-package',
@@ -52,11 +53,16 @@ export class EditPackageComponent implements OnInit {
         this.productCategoryService.getAll().subscribe(
           results => {
             this.successfulCategory(results);
-            if(this.authService.getLogin() != this.package.users[0].login || this.package.packageStatus.name != "W oczekiwaniu na kuriera"){
-              this.router.navigate(['profile/packages-info']);
-            }
+            //if(this.authService.getLogin() != this.package.users[0].login || this.package.packageStatus.name != "W oczekiwaniu na kuriera"){
+              //this.router.navigate(['profile/packages-info']);
+            //}
           }
         );
+      },
+      error => {
+        if(error.status == 404){
+          this.router.navigate(['profile/packages-info']);
+        }
       }
     );
   }
