@@ -21,10 +21,36 @@
               <td>{{package.date | date:'MM/dd/yyyy'}}</td>
               <td>{{package.packageStatus.name}}</td>
               <td>
-                <button type="button" class="btn  btn-danger" name="editPackage" (click)="deletePackage(package.id)">Usuń</button>
+                <button type="button" class="btn  btn-danger" name="editPackage" data-toggle="modal" data-target="#myModal">Usuń</button>
                 <button type="button" class="btn  btn-info" name="packageDetails" [routerLink]="['/profile/packages-info/', package.id]">Szczegóły</button>
                 <button *ngIf="package.packageStatus.name === 'W oczekiwaniu na kuriera'" type="button" class="btn  btn-warning" name="packageEdit" [routerLink]="['/profile/packages-info/', package.id, 'editPackage']">Edytuj</button>
               </td>
+
+              <div class="modal" id="myModal">
+                <div class="modal-dialog modal-lg">
+                  <div class="modal-content">
+
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                      <h4 class="modal-title">Usuwanie paczki</h4>
+                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                      <p><strong>Czy na pewno chcesz usunąć paczkę o numerze <span class="text-primary">"{{package.packageNumber}}"</span>?</strong></p>
+                      Wszystkie informacje powiązane z tą paczką zostaną usunięte. Ta operacja jest nieodwracalna.
+                    </div>
+
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Anuluj</button>
+                      <button type="button" class="btn btn-danger" (click)="deletePackage(package.id)" data-dismiss="modal">Usuń</button>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
             </tr>
           </tbody>
         </table>
@@ -33,3 +59,6 @@
     </div>
   </div>
 </div>
+
+
+

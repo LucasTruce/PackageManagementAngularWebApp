@@ -7,6 +7,7 @@ import {SenderService} from '../../../../service/sender/sender.service';
 import {ReceiverService} from '../../../../service/receiver/receiver.service';
 import {Code, CodeService} from '../../../../service/code/code.service';
 import {AuthenticationService} from '../../../../service/authentication/authentication.service';
+import {ContentService} from '../../../../service/content/content.service';
 
 @Component({
   selector: 'app-edit-package',
@@ -20,7 +21,7 @@ export class EditPackageComponent implements OnInit {
   productsWasEdited: boolean = false;
   codes: Array<Code> = new Array<Code>();
 
-  package: Package = new Package(0, 0, 0, '', '', '', '', '', '', '', '', '', '');
+  package: Package = new Package(0, 0, 0, '', '', '', '', '', '', '', '', new Code(''), '');
 
   removeItems: Array<any> = new Array<any>();
   productCategories: Array<ProductCategory> = new Array<ProductCategory>();
@@ -32,7 +33,8 @@ export class EditPackageComponent implements OnInit {
               private receiverService: ReceiverService,
               private productService: ProductService,
               private codeService: CodeService,
-              private router: Router) {}
+              private router: Router,
+              private contentService: ContentService) {}
 
 
 
@@ -70,18 +72,18 @@ export class EditPackageComponent implements OnInit {
                   if (this.removeItems.length > 0) {
                     this.productService.deleteAll(this.removeItems).subscribe();
                   }
+                  //dodac produkt
+                  for(let product of this.package.content.products){
+                      console.log('przed: ' + product.code.filePath);
+                      product.code.filePath = product.name;
+                      console.log('po' + product.code.filePath);
+                  }
                   this.productService.saveAll(this.package.content.products).subscribe(
                     res => {
                       this.successfulProducts(res);
-                      for(let item of this.package.content.products) {
-                        if(item.code != null)
-                          this.codes.push(item.code);
-                        else
-                          this.codes.push(new Code(item.id));
-                      }
-                      console.log(this.codes);
-                      this.codeService.saveWithProduct(this.codes).subscribe(
-                        done => {
+                      this.contentService.saveContent(this.package.content).subscribe(
+                        temp => {
+                            this.package.content = temp;
                           this.router.navigate(['/profile/packages-info']);
                         }
                       );
@@ -109,7 +111,7 @@ export class EditPackageComponent implements OnInit {
   }
 
   addProduct() {
-    this.package.content.products.push(new Product('', 0 ,'', '', new ProductCategory('','')));
+    this.package.content.products.push(new Product('', 0 ,'', '', new ProductCategory('',''), new Code('')));
     console.log(this.package.content.products);
   }
 
