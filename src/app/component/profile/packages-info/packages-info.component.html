@@ -4,6 +4,7 @@
 
     <div class="col-md-9">
       <form class="form-registration" name="packagesInfo" #myForm="ngForm">
+        Jeśli paczka została nadana to nie można jej usunąć ani zmienić danych!
         <table matSort (matSortChange)="sortPackages($event)" class="table table-striped table-responsive">
           <thead>
             <tr>
@@ -23,8 +24,10 @@
               <td>{{package.packageStatus.name}}</td>
               <td>
                 <button *ngIf="package.packageStatus.name === 'W oczekiwaniu na kuriera'" type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#myModal" (click)="deletingPackage(package)">Usuń</button>
-                <button type="button" class="btn btn-sm btn-info" name="packageDetails" [routerLink]="['/profile/packages-info/', package.id]">Szczegóły</button>
+                <button *ngIf="package.packageStatus.name != 'W oczekiwaniu na kuriera'" type="button" class="btn btn-sm btn-danger" disabled>Usuń</button>
                 <button *ngIf="package.packageStatus.name === 'W oczekiwaniu na kuriera'" type="button" class="btn btn-sm btn-warning" name="packageEdit" [routerLink]="['/profile/packages-info/', package.id, 'editPackage']">Edytuj</button>
+                <button *ngIf="package.packageStatus.name != 'W oczekiwaniu na kuriera'" type="button" class="btn btn-sm btn-warning" disabled>Edytuj</button>
+                <button type="button" class="btn btn-sm btn-info" name="packageDetails" [routerLink]="['/profile/packages-info/', package.id]">Szczegóły</button>
                 <button type="button" class="btn btn-sm btn-secondary" (click)="goToPdf(package.id)">Pobierz</button>
               </td>
             </tr>

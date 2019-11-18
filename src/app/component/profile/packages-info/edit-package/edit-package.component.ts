@@ -7,7 +7,7 @@ import {SenderService} from '../../../../service/sender/sender.service';
 import {ReceiverService} from '../../../../service/receiver/receiver.service';
 import {Code, CodeService} from '../../../../service/code/code.service';
 import {AuthenticationService} from '../../../../service/authentication/authentication.service';
-import {ContentService} from '../../../../service/content/content.service';
+import {Content, ContentService} from '../../../../service/content/content.service';
 import {error} from 'util';
 
 @Component({
@@ -20,7 +20,6 @@ export class EditPackageComponent implements OnInit {
   id: string;
   productsAdd: boolean = false;
   productsWasEdited: boolean = false;
-  codes: Array<Code> = new Array<Code>();
 
   package: Package = new Package(0, 0, 0, '', '', '', '', '', '', '', '', new Code(''), '');
 
@@ -87,12 +86,12 @@ export class EditPackageComponent implements OnInit {
                   this.productService.saveAll(this.package.content.products).subscribe(
                     res => {
                       this.successfulProducts(res);
-                      this.contentService.saveContent(this.package.content).subscribe(
-                        temp => {
-                            this.package.content = temp;
-                          this.router.navigate(['/profile/packages-info']);
-                        }
-                      );
+                        this.contentService.saveContent(this.package.content).subscribe(
+                          temp => {
+                              this.package.content = temp;
+                            this.router.navigate(['/profile/packages-info']);
+                          }
+                        );
                     }
                   );
                 }
@@ -117,6 +116,9 @@ export class EditPackageComponent implements OnInit {
   }
 
   addProduct() {
+    if(this.package.content == null) {
+      this.package.content = new Content('','', '0', new Array<Product>())
+    }
     this.package.content.products.push(new Product('', 0 ,'', '', new ProductCategory('',''), new Code('')));
     console.log(this.package.content.products);
   }
