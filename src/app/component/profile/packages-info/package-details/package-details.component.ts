@@ -25,7 +25,7 @@ export class PackageDetailsComponent implements OnInit {
     });
     this.packageService.findById(this.id).subscribe(
       results => {
-        this.sucessfullPackageResponse(results);
+        this.sucessfullPackageResponse(results)
         if(this.authService.getLogin() != this.package.users[0].login){
           this.router.navigate(['profile/packages-info']);
         }

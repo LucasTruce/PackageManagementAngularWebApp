@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Package, PackageService} from '../../../service/package/package.service';
 import {AuthenticationService} from '../../../service/authentication/authentication.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-packages-info',
@@ -92,4 +93,7 @@ export class PackagesInfoComponent implements OnInit {
    this.tempPack = pack;
   }
 
+  goToPdf(packageId){
+    window.open('http://localhost:8080/packages/raport/' + packageId, "_blank");
+  }
 }
