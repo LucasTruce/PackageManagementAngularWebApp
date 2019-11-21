@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Car, CarService} from '../../../service/car/car.service';
 import {AuthenticationService} from '../../../service/authentication/authentication.service';
-
+import { saveAs } from 'file-saver'
 @Component({
   selector: 'app-admin-cars',
   templateUrl: './admin-cars.component.html',
@@ -12,6 +12,7 @@ export class AdminCarsComponent implements OnInit {
   cars: Array<Car> = new Array<Car>();
   config: any;
   param: object = {pageNumber: 0};
+  tempCar: Car = new Car('', '', '', 0, 0, '', '', '', 0, '');
 
   constructor(private authService: AuthenticationService,
               private carService: CarService) {
@@ -65,6 +66,10 @@ export class AdminCarsComponent implements OnInit {
     );
   }
 
+  deletingCar(car){
+    this.tempCar = car;
+  }
+
   deleteCar(id) {
     this.carService.deleteCar(id).subscribe(
       response => {
@@ -90,7 +95,13 @@ export class AdminCarsComponent implements OnInit {
   }
 
   goToPdf(carId){
-    window.open('http://localhost:8080/cars/' + carId + "/document", "_blank");
+    this.carService.getPdf(carId).subscribe(
+      pdf => {
+        saveAs(pdf.body, pdf.headers.get('content-disposition'));
+        //let fileURL = window.URL.createObjectURL(pdf); //otwieranie w nowej karcie (NALEŻY WYŁĄCZYĆ ADBLOCKA!!!)
+        //window.open(fileURL);
+      }
+    );
   }
 
 

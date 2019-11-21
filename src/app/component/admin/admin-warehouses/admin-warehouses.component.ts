@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {AuthenticationService} from '../../../service/authentication/authentication.service';
 import {Warehouse, WarehouseService} from '../../../service/warehouse/warehouse.service';
 import {CodeService} from '../../../service/code/code.service';
+import { saveAs } from 'file-saver';
 
 @Component({
   selector: 'app-admin-warehouses',
@@ -13,6 +14,7 @@ export class AdminWarehousesComponent implements OnInit {
   warehouses: Array<Warehouse> = new Array<Warehouse>();
   config: any;
   param: object = {pageNumber: 0};
+  tempWarehouse: Warehouse = new Warehouse('', '', '', '', '', '');
 
   constructor(private authService: AuthenticationService, private warehouseService: WarehouseService, private codeService: CodeService) {
     this.config = {
@@ -66,6 +68,10 @@ export class AdminWarehousesComponent implements OnInit {
     );
   }
 
+  deletingWarehouse(warehouse){
+    this.tempWarehouse = warehouse;
+  }
+
   deleteWarehouse(id) {
     this.warehouseService.deleteWarehouse(id).subscribe(
       response => {
@@ -92,7 +98,12 @@ export class AdminWarehousesComponent implements OnInit {
     this.warehouses = response.content;
   }
 
-  goToPdf(carId){
-    window.open('http://localhost:8080/cars/' + carId + "/document", "_blank");
+  goToPdf(warehouseId){
+    this.warehouseService.getPdf(warehouseId).subscribe(
+      pdf => {
+        console.log();
+        saveAs(pdf.body, pdf.headers.get('content-disposition'));
+      }
+    );
   }
 }

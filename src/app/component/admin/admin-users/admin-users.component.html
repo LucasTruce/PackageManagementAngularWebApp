@@ -25,9 +25,9 @@
               </div>
           </td>
             <td>
-              <button type="button" class="btn  btn-danger" name="deleteUser" (click)="deleteUser(user.id)">Usuń</button>
-              <button type="button" class="btn  btn-info" name="userDeails" [routerLink]="['/admin/users/', user.id, 'userDetails']">Szczegóły</button>
-              <button type="button" class="btn  btn-warning" name="editUser" [routerLink]="['/admin/users/', user.id]">Edytuj</button>
+              <button type="button" class="btn btn-sm btn-danger" name="deleteUser" (click)="deleteUser(user.id)">Usuń</button>
+              <button type="button" class="btn btn-sm btn-info" name="userDeails" [routerLink]="['/admin/users/', user.id, 'userDetails']">Szczegóły</button>
+              <button type="button" class="btn btn-sm btn-warning" name="editUser" [routerLink]="['/admin/users/', user.id]">Edytuj</button>
             </td>
         </tr>
        </tbody>

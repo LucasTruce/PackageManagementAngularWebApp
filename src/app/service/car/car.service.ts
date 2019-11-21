@@ -46,4 +46,8 @@ export class CarService {
   updateCar(car) {
     return this.httpClient.put('http://localhost:8080/cars', car);
   }
+
+  getPdf(carId){
+    return this.httpClient.get('http://localhost:8080/cars/' + carId + "/document", {responseType: 'blob', observe: 'response'});
+  }
 }

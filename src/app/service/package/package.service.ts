@@ -56,4 +56,8 @@ export class PackageService {
   deletePackage(id) {
     return this.httpClient.delete('http://localhost:8080/packages?id=' + id);
   }
+
+  getPdf(packageId) {  //list przewozowy paczki
+    return this.httpClient.get('http://localhost:8080/packages/' + packageId + '/raport', {responseType: 'blob', observe: 'response'});
+  }
 }

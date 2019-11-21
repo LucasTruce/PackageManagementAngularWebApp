@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpResponse} from '@angular/common/http';
 import {Code} from '../code/code.service';
+import {Observable} from 'rxjs';
 
 export class Warehouse {
   constructor(public phoneNumber: string,
@@ -38,5 +39,9 @@ export class WarehouseService {
 
   updateWarehouse(warehouse) {
     return this.httpClient.put('http://localhost:8080/warehouses', warehouse);
+  }
+
+  getPdf(warehouseId) {  //list przewozowy paczki
+    return this.httpClient.get('http://localhost:8080/warehouses/' + warehouseId + '/document', {responseType: "blob", observe: 'response'});
   }
 }

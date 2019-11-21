@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Package, PackageService} from '../../../service/package/package.service';
 import {AuthenticationService} from '../../../service/authentication/authentication.service';
 import {Router} from '@angular/router';
+import { saveAs } from 'file-saver';
 
 @Component({
   selector: 'app-packages-info',
@@ -93,7 +94,12 @@ export class PackagesInfoComponent implements OnInit {
    this.tempPack = pack;
   }
 
-  goToPdf(packageId){
-    window.open('http://localhost:8080/packages/raport/' + packageId, "_blank");
+  goToPdf(packageId, packageNumber){
+   // window.open('http://localhost:8080/packages/raport/' + packageId, "_blank"); //przejscie do nowego okna
+    this.packageService.getPdf(packageId).subscribe(
+      pdf => {
+        saveAs(pdf.body, "List-przewozowy-" + packageNumber + ".pdf");
+      }
+    );
   }
 }

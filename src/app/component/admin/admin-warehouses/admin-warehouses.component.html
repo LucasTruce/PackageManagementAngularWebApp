@@ -26,7 +26,7 @@
           <td>{{warehouse.phoneNumber}}</td>
           <td>{{warehouse.description}}</td>
           <td>
-            <button type="button" class="btn btn-sm btn-danger" name="deleteWarehouse" (click)="deleteWarehouse(warehouse.id)">Usuń</button>
+            <button type="button" class="btn btn-sm btn-danger" name="deleteWarehouse" (click)="deletingWarehouse(warehouse)" data-toggle="modal" data-target="#myModal">Usuń</button>
             <button type="button" class="btn btn-sm btn-warning" name="editWarehouse" [routerLink]="['/admin/warehouses/', warehouse.id]">Edytuj</button>
             <button type="button" class="btn btn-sm btn-secondary" (click)="goToPdf(warehouse.id)">Pobierz</button>
           </td>
@@ -36,4 +36,26 @@
       <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
     </div>
   </div>
+</div>
+
+<div class="modal" id="myModal" tabindex="-1" role="dialog">
+<div class="modal-dialog modal-lg">
+  <div class="modal-content" role="document">
+    <!-- Modal Header -->
+    <div class="modal-header">
+      <h4 class="modal-title">Usuwanie paczki</h4>
+      <button type="button" class="close" data-dismiss="modal">&times;</button>
+    </div>
+    <!-- Modal body -->
+    <div class="modal-body">
+      <p><strong>Czy na pewno chcesz usunąć magazyn znajdujący się w <span class="text-primary">"{{tempWarehouse.city}}"</span> na ulicy <span class="text-primary">"{{tempWarehouse.street}}"</span>?</strong></p>
+      Wszystkie informacje powiązane z tym magazynem zostaną usunięte. Ta operacja jest nieodwracalna.
+    </div>
+    <!-- Modal footer -->
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Anuluj</button>
+      <button type="button" class="btn btn-danger" (click)="deleteWarehouse(tempWarehouse.id)" data-dismiss="modal">Usuń</button>
+    </div>
+  </div>
+</div>
 </div>

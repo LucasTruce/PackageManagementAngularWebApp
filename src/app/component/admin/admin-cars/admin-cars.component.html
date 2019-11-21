@@ -24,7 +24,7 @@
           <td>{{car.engineType}}</td>
           <td>{{car.licensePlate}}</td>
           <td>
-            <button type="button" class="btn btn-sm btn-danger" name="deleteCar" (click)="deleteCar(car.id)">Usuń</button>
+            <button type="button" class="btn btn-sm btn-danger" name="deleteCar" (click)="deletingCar(car)" data-toggle="modal" data-target="#myModal">Usuń</button>
             <button type="button" class="btn btn-sm btn-warning" name="editCar" [routerLink]="['/admin/cars/', car.id]">Edytuj</button>
             <button type="button" class="btn btn-sm btn-secondary" (click)="goToPdf(car.id)">Pobierz</button>
           </td>
@@ -32,6 +32,28 @@
         </tbody>
       </table>
       <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="myModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content" role="document">
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Usuwanie paczki</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <!-- Modal body -->
+      <div class="modal-body">
+        <p><strong>Czy na pewno chcesz usunąć samochód marki <span class="text-primary">"{{tempCar.brand}}"</span> o numerze rejestracyjnym <span class="text-primary">"{{tempCar.licensePlate}}"</span>?</strong></p>
+        Wszystkie informacje powiązane z tym samochodem zostaną usunięte. Ta operacja jest nieodwracalna.
+      </div>
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Anuluj</button>
+        <button type="button" class="btn btn-danger" (click)="deleteCar(tempCar.id)" data-dismiss="modal">Usuń</button>
+      </div>
     </div>
   </div>
 </div>
