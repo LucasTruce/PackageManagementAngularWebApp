@@ -24,8 +24,9 @@
           <td>{{car.engineType}}</td>
           <td>{{car.licensePlate}}</td>
           <td>
-            <button type="button" class="btn  btn-danger" name="deleteCar" (click)="deleteCar(car.id)">Usuń</button>
-            <button type="button" class="btn  btn-warning" name="editCar" [routerLink]="['/admin/cars/', car.id]">Edytuj</button>
+            <button type="button" class="btn btn-sm btn-danger" name="deleteCar" (click)="deleteCar(car.id)">Usuń</button>
+            <button type="button" class="btn btn-sm btn-warning" name="editCar" [routerLink]="['/admin/cars/', car.id]">Edytuj</button>
+            <button type="button" class="btn btn-sm btn-secondary" (click)="goToPdf(car.id)">Pobierz</button>
           </td>
         </tr>
         </tbody>

@@ -89,5 +89,9 @@ export class AdminCarsComponent implements OnInit {
     this.cars = response.content;
   }
 
+  goToPdf(carId){
+    window.open('http://localhost:8080/cars/' + carId + "/document", "_blank");
+  }
+
 
 }

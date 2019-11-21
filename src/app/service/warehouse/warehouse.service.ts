@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
+import {Code} from '../code/code.service';
 
 export class Warehouse {
   constructor(public phoneNumber: string,
@@ -7,7 +8,8 @@ export class Warehouse {
               public city: string,
               public postCode: string,
               public description: string,
-              public id?: string) {
+              public id?: string,
+              public code?: Code) {
   }
 }
 

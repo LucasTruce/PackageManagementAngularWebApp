@@ -11,7 +11,7 @@ import {Router} from '@angular/router';
 })
 export class AddCarComponent implements OnInit {
 
-  car: Car = new Car('', '', '', 0, 0, '', '', '', 0, '');
+  car: Car = new Car('', '', '', 0, 0, '', '', '', 0, '', '', new Code(''));
 
   constructor(private authService: AuthenticationService, private carService: CarService, private codeService: CodeService, private router: Router) { }
 
@@ -19,14 +19,12 @@ export class AddCarComponent implements OnInit {
   }
 
   addCar() {
+    this.car.code.filePath = this.car.licensePlate;
+
     this.carService.saveCar(this.car).subscribe(
       response => {
         this.successfulResponseCar(response);
-        this.codeService.saveWithCar(this.car.id, new Code(this.car.id)).subscribe(
-          results => {
-            this.router.navigate(['/admin/cars']);
-          }
-        );
+        this.router.navigate(['/admin/cars']);
       }
     );
   }

@@ -26,8 +26,9 @@
           <td>{{warehouse.phoneNumber}}</td>
           <td>{{warehouse.description}}</td>
           <td>
-            <button type="button" class="btn  btn-danger" name="deleteWarehouse" (click)="deleteWarehouse(warehouse.id)">Usuń</button>
-            <button type="button" class="btn  btn-warning" name="editWarehouse" [routerLink]="['/admin/warehouses/', warehouse.id]">Edytuj</button>
+            <button type="button" class="btn btn-sm btn-danger" name="deleteWarehouse" (click)="deleteWarehouse(warehouse.id)">Usuń</button>
+            <button type="button" class="btn btn-sm btn-warning" name="editWarehouse" [routerLink]="['/admin/warehouses/', warehouse.id]">Edytuj</button>
+            <button type="button" class="btn btn-sm btn-secondary" (click)="goToPdf(warehouse.id)">Pobierz</button>
           </td>
         </tr>
         </tbody>

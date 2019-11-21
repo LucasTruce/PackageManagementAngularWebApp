@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
+import {Code} from '../code/code.service';
 
 export class Car {
   constructor(
@@ -13,7 +14,8 @@ export class Car {
     public licensePlate: string,
     public load: number,
     public comments: string,
-    public id?: string
+    public id?: string,
+    public code?: Code
   ) {}
 }
 

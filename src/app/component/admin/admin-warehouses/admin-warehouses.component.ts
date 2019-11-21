@@ -91,4 +91,8 @@ export class AdminWarehousesComponent implements OnInit {
   successfulResponseWarehouses(response) {
     this.warehouses = response.content;
   }
+
+  goToPdf(carId){
+    window.open('http://localhost:8080/cars/' + carId + "/document", "_blank");
+  }
 }
