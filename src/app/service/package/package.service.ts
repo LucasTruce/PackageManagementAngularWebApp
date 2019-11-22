@@ -60,4 +60,8 @@ export class PackageService {
   getPdf(packageId) {  //list przewozowy paczki
     return this.httpClient.get('http://localhost:8080/packages/' + packageId + '/raport', {responseType: 'blob', observe: 'response'});
   }
+
+  getPackagesForAdmin(params) {
+    return this.httpClient.get('http://localhost:8080/packages/admin', {params});
+  }
 }

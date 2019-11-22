@@ -37,6 +37,7 @@ import { EditWarehouseComponent } from './component/admin/admin-warehouses/edit-
 import { EditCarComponent } from './component/admin/admin-cars/edit-car/edit-car.component';
 import { PackageDetailsComponent } from './component/profile/packages-info/package-details/package-details.component';
 import { EditPackageComponent } from './component/profile/packages-info/edit-package/edit-package.component';
+import { AdminPackagesComponent } from './component/admin/admin-packages/admin-packages.component';
 
 
 
@@ -70,7 +71,8 @@ import { EditPackageComponent } from './component/profile/packages-info/edit-pac
     EditWarehouseComponent,
     EditCarComponent,
     PackageDetailsComponent,
-    EditPackageComponent
+    EditPackageComponent,
+    AdminPackagesComponent
   ],
   imports: [
     BrowserModule,

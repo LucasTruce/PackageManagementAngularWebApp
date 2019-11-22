@@ -24,6 +24,7 @@ import {EditWarehouseComponent} from './component/admin/admin-warehouses/edit-wa
 import {EditCarComponent} from './component/admin/admin-cars/edit-car/edit-car.component';
 import {PackageDetailsComponent} from './component/profile/packages-info/package-details/package-details.component';
 import {EditPackageComponent} from './component/profile/packages-info/edit-package/edit-package.component';
+import {AdminPackagesComponent} from './component/admin/admin-packages/admin-packages.component';
 
 
 const routes: Routes = [
@@ -56,7 +57,9 @@ const routes: Routes = [
 
   { path: 'admin/cars', component: AdminCarsComponent, canActivate: [AuthGuardService]},
   { path: 'admin/cars/addCar', component: AddCarComponent, canActivate: [AuthGuardService]},
-  { path: 'admin/cars/:id', component: EditCarComponent, canActivate: [AuthGuardService]}
+  { path: 'admin/cars/:id', component: EditCarComponent, canActivate: [AuthGuardService]},
+
+  { path: 'admin/packages', component: AdminPackagesComponent, canActivate: [AuthGuardService]}
   ];
 
 @NgModule({
