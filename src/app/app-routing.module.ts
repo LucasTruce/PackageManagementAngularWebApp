@@ -59,7 +59,9 @@ const routes: Routes = [
   { path: 'admin/cars/addCar', component: AddCarComponent, canActivate: [AuthGuardService]},
   { path: 'admin/cars/:id', component: EditCarComponent, canActivate: [AuthGuardService]},
 
-  { path: 'admin/packages', component: AdminPackagesComponent, canActivate: [AuthGuardService]}
+  { path: 'admin/packages', component: AdminPackagesComponent, canActivate: [AuthGuardService]},
+  { path: 'admin/packages/:id', component: PackageDetailsComponent, canActivate: [AuthGuardService]},
+  { path: 'admin/packages/:id/edit', component: EditPackageComponent, canActivate: [AuthGuardService]}
   ];
 
 @NgModule({

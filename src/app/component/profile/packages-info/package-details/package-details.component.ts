@@ -23,10 +23,13 @@ export class PackageDetailsComponent implements OnInit {
     this.route.paramMap.subscribe(params => {
       this.id = params.get('id');
     });
+    if(this.router.url.startsWith('/admin/packages/') && !this.authService.isAdmin())
+      this.router.navigate(['profile/packages-info']);
+
     this.packageService.findById(this.id).subscribe(
       results => {
         this.sucessfullPackageResponse(results)
-        if(this.authService.getLogin() != this.package.users[0].login){
+        if(this.authService.getLogin() != this.package.users[0].login && !this.authService.isAdmin()){
           this.router.navigate(['profile/packages-info']);
         }
         this.codeService.getQrCode(this.package.code.id).subscribe(

@@ -37,13 +37,13 @@ export class EditPackageComponent implements OnInit {
               private contentService: ContentService) {}
 
 
-
-
-
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
       this.id = params.get('id');
     });
+
+    if(this.router.url.startsWith('/admin/packages/') && !this.authService.isAdmin())
+      this.router.navigate(['profile/packages-info']);
 
 
     this.packageService.findById(this.id).subscribe(
@@ -60,6 +60,9 @@ export class EditPackageComponent implements OnInit {
       },
       error => {
         if(error.status == 404){
+          if(this.authService.isAdmin())
+          this.router.navigate(['admin/packages']);
+          else
           this.router.navigate(['profile/packages-info']);
         }
       }
@@ -89,14 +92,20 @@ export class EditPackageComponent implements OnInit {
                         this.contentService.saveContent(this.package.content).subscribe(
                           temp => {
                               this.package.content = temp;
-                            this.router.navigate(['/profile/packages-info']);
+                              if(this.authService.isAdmin())
+                                this.router.navigate(['admin/packages']);
+                              else
+                              this.router.navigate(['/profile/packages-info']);
                           }
                         );
                     }
                   );
                 }
                 else{
-                  this.router.navigate(['/profile/packages-info']);
+                  if(this.authService.isAdmin())
+                    this.router.navigate(['admin/packages']);
+                  else
+                    this.router.navigate(['/profile/packages-info']);
                 }
               }
             );
