@@ -65,13 +65,4 @@ export class AuthenticationService {
         }
       }
   }
-
-  isWorker() {
-    this.roles = this.getRoles();
-    for(let role of this.roles) {
-      if(role.name === 'ROLE_WORKER') {
-        return true;
-      }
-    }
-  }
 }

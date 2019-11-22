@@ -13,7 +13,7 @@ export class UserDetailsComponent implements OnInit {
 
   id: string;
   user: User = new User('', '', '');
-  userDetails: UserDetails = new UserDetails('', '', '', '', '', '', '');
+  userDetails: UserDetails = new UserDetails('', '', '', '', '', '', '', '', '');
   error: object = {};
 
   constructor(private authService: AuthenticationService,

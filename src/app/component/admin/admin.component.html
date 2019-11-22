@@ -61,6 +61,27 @@
           <tr>
             <td>
               <div class="form-group">
+                Numer domu: <input type="text" class="form-control" name="houseNumber" [(ngModel)]="userDetails.houseNumber" placeholder="Numer domu">
+                <div *ngIf="error.houseNumber" class="error-message">
+                  {{error.houseNumber}}
+                </div>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="form-group">
+                Numer mieszkania: <input type="text" class="form-control" name="apartmentNumber" [(ngModel)]="userDetails.apartmentNumber" placeholder="Numer mieszkania">
+                <div *ngIf="error.apartmentNumber" class="error-message">
+                  {{error.apartmentNumber}}
+                </div>
+              </div>
+            </td>
+          </tr>
+          <tr>
+          <tr>
+            <td>
+              <div class="form-group">
                 Kod pocztowy: <input type="text" class="form-control" name="postCode" [(ngModel)]="userDetails.postCode" placeholder="Kod pocztowy">
                 <div *ngIf="error.postCode" class="error-message">
                   {{error.postCode}}

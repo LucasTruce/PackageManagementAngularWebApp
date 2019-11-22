@@ -11,7 +11,7 @@ import {UserService} from '../../service/user/user.service';
 })
 export class ProfileComponent implements OnInit {
 
-  userDetails: UserDetails = new UserDetails('', '', '', '', '', '', '');
+  userDetails: UserDetails = new UserDetails('', '', '', '', '', '', '', '', '');
 
   error: object = {};
   temp = true;

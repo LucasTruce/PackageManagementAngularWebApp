@@ -12,7 +12,7 @@ import {UserService} from '../../service/user/user.service';
 export class AdminComponent implements OnInit {
 
   error: object = {};
-  userDetails: UserDetails = new UserDetails('', '', '', '', '', '', '');
+  userDetails: UserDetails = new UserDetails('', '', '', '', '', '', '', '', '');
 
   constructor(private authService: AuthenticationService,
               private userDetailsService: UserDetailsService,

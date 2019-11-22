@@ -175,6 +175,70 @@
         <tr>
           <td>
             <div class="form-group">
+              Numer domu: <input type="text" class="form-control" name="senderHouseNumber"  [(ngModel)]="sender.houseNumber" #houseNumber="ngModel" placeholder="Numer domu" required minlength="1">
+              <div class="form-group">
+                <div *ngIf="houseNumber.invalid" class="error-message">
+                  <div *ngIf="houseNumber.errors.required">
+                    Numer domu nie może być pusty!
+                  </div>
+                  <div *ngIf="houseNumber.errors.minlength">
+                    Numer domu musi zawierać przynajmniej 1 literę bądź cyfrę!
+                  </div>
+                </div>
+              </div>
+            </div>
+          </td>
+          <td>
+            <div class="form-group">
+              Numer domu: <input type="text" class="form-control" name="receiverHouseNumber" [(ngModel)]="receiver.houseNumber" #houseNumber2="ngModel"  placeholder="Numer domu" required minlength="1">
+              <div class="form-group">
+                <div *ngIf="houseNumber2.invalid" class="error-message">
+                  <div *ngIf="houseNumber2.errors.required">
+                    Numer domu nie może być pusty!
+                  </div>
+                  <div *ngIf="houseNumber2.errors.minlength">
+                    Numer domu musi zawierać przynajmniej 1 literę bądź cyfrę!
+                  </div>
+                </div>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="form-group">
+              Numer mieszkania: <input type="text" class="form-control" name="senderApartmentNumber"  [(ngModel)]="sender.apartmentNumber" #apartmentNumber="ngModel" placeholder="Numer mieszkania" required minlength="1">
+              <div class="form-group">
+                <div *ngIf="apartmentNumber.invalid" class="error-message">
+                  <div *ngIf="apartmentNumber.errors.required">
+                    Numer mieszkania nie może być pusty!
+                  </div>
+                  <div *ngIf="apartmentNumber.errors.minlength">
+                    Numer mieszkania musi zawierać przynajmniej 1 literę bądź cyfrę!
+                  </div>
+                </div>
+              </div>
+            </div>
+          </td>
+          <td>
+            <div class="form-group">
+              Numer mieszkania: <input type="text" class="form-control" name="receiverApartmentNumber" [(ngModel)]="receiver.apartmentNumber" #apartmentNumber2="ngModel"  placeholder="Numer mieszkania" required minlength="1">
+              <div class="form-group">
+                <div *ngIf="apartmentNumber2.invalid" class="error-message">
+                  <div *ngIf="apartmentNumber2.errors.required">
+                    Numer mieszkania nie może być pusty!
+                  </div>
+                  <div *ngIf="apartmentNumber2.errors.minlength">
+                    Numer mieszkania musi zawierać przynajmniej 1 literę bądź cyfrę!
+                  </div>
+                </div>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="form-group">
               Kod pocztowy: <input type="text" class="form-control" name="senderPostCode" [(ngModel)]="sender.postCode" #postCode="ngModel" placeholder="Kod pocztowy [xx-zzz]" required pattern="([\d]{2})-([\d]{3})">
               <div class="form-group">
                 <div *ngIf="postCode.invalid" class="error-message">

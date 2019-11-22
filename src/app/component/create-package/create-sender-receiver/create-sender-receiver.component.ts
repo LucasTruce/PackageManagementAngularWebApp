@@ -14,8 +14,8 @@ import {AuthenticationService} from '../../../service/authentication/authenticat
 })
 export class CreateSenderReceiverComponent implements OnInit {
 
-  sender: Sender = new Sender('', '', '', '', '', '', '', '', new Package(0,0,0, ''), '');
-  receiver: Receiver = new Receiver('', '', '', '', '', '', '', '', '');
+  sender: Sender = new Sender('', '', '', '', '', '', '', '', '', '', new Package(0,0,0, ''));
+  receiver: Receiver = new Receiver('', '', '', '', '', '', '', '', '', '', '');
 
   @Input('pack') pack: Package; // from create-package component
   @Output() senderAdded = new EventEmitter();

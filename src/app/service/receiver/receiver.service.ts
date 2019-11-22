@@ -10,6 +10,8 @@ export class Receiver {
     public street: string,
     public postCode: string,
     public phoneNumber: string,
+    public houseNumber: string,
+    public apartmentNumber: string,
     public email?: string,
     public id?: string
   ) {}

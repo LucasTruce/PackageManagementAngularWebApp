@@ -9,7 +9,9 @@ export class UserDetails {
     public phoneNumber: string,
     public street: string,
     public city: string,
-    public postCode: string
+    public postCode: string,
+    public houseNumber: string,
+    public apartmentNumber: string
   ) {}
 }
 

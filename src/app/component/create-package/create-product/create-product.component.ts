@@ -23,7 +23,6 @@ export class CreateProductComponent implements OnInit {
   productList: Array<Product> = new Array<Product>();
   productCategories: Array<ProductCategory>;
   content: Content;
-  codes: Array<Code> = new Array<Code>();
 
   constructor(private productService: ProductService, private productCategoryService: ProductCategoryService) { }
 
