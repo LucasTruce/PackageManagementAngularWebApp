@@ -59,6 +59,16 @@
           <tr>
             <td>
               <div class="form-group">
+                Waga[kg]: <input type="number" class="form-control" name="weight" [(ngModel)]="package.weight" placeholder="Waga [kg]">
+                <div *ngIf="error.weight" class="error-message">
+                  {{error.weight}}
+                </div>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="form-group">
                 Uwagi do paczki:
                 <textarea style="resize: none;" rows = "5" cols = "50" name = "description" [(ngModel)]="package.comments" class="form-control">Uwagi</textarea>
                 <div *ngIf="error.comments" class="error-message">

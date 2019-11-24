@@ -13,7 +13,7 @@ export class AdminPackagesComponent implements OnInit {
   packages: Array<Package> = new Array<Package>();
   param: object = {pageNumber: 0};
   config: any;
-  tempPack: Package = new Package(0, 0,0, '', '', '', '', '');
+  tempPack: Package = new Package(0, 0,0, 0, '', '', '', '', '');
 
   constructor(private authService: AuthenticationService, private packageService: PackageService) {
     this.config = {

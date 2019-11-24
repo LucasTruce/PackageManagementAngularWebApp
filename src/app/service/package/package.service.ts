@@ -9,6 +9,7 @@ export class Package {
     public height: number,
     public width: number,
     public length: number,
+    public weight: number,
     public comments: string,
     public packageNumber?: string,
     public date?: string,

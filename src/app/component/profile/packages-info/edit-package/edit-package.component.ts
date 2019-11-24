@@ -21,7 +21,7 @@ export class EditPackageComponent implements OnInit {
   productsAdd: boolean = false;
   productsWasEdited: boolean = false;
 
-  package: Package = new Package(0, 0, 0, '', '', '', '', '', '', '', '', new Code(''), '');
+  package: Package = new Package(0, 0, 0, 0, '', '', '', '', '', '', '', '', new Code(''));
 
   removeItems: Array<any> = new Array<any>();
   productCategories: Array<ProductCategory> = new Array<ProductCategory>();

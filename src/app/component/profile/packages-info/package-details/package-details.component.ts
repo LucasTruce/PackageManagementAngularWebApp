@@ -13,7 +13,7 @@ import {AuthenticationService} from '../../../../service/authentication/authenti
 export class PackageDetailsComponent implements OnInit {
 
   id: string;
-  package: Package = new Package(0, 0, 0, '', '', '', '', '', '', '', '');
+  package: Package = new Package(0, 0, 0, 0, '', '', '', '', '', '', '', '');
   qrcode: any;
 
   constructor(private authService: AuthenticationService, private packageService: PackageService, private route: ActivatedRoute, private sanitizer: DomSanitizer, private codeService: CodeService, private router: Router) {

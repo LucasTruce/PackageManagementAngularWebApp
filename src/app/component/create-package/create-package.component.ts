@@ -15,7 +15,7 @@ import {Content, ContentService} from '../../service/content/content.service';
 })
 export class CreatePackageComponent implements OnInit {
 
-  package: Package = new Package(0, 0, 0, '');
+  package: Package = new Package(0, 0, 0, 0, '');
   code: Code = new Code('');
   error: object = {};
 

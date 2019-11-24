@@ -8,7 +8,7 @@ import {Package, PackageService} from '../../service/package/package.service';
 })
 export class LocationPackageComponent implements OnInit {
 
-  package: Package = new Package(0, 0, 0, '', '', '', '', '', '', '');
+  package: Package = new Package(0, 0, 0, 0, '', '', '', '', '', '', '');
 
   constructor(private packageService: PackageService) { }
 
