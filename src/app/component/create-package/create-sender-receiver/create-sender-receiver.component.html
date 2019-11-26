@@ -99,12 +99,14 @@
         <tr>
           <td>
             <div class="form-group">
-              Nazwa firmy: <input type="text" class="form-control" name="senderCompanyName"  placeholder="Nazwa firmy">
+              Nazwa firmy: <input type="text" class="form-control" name="senderCompanyName" [(ngModel)]="sender.companyName" placeholder="Nazwa firmy">
+              <div class="form-group">
+              </div>
             </div>
           </td>
           <td>
             <div class="form-group">
-              Nazwa firmy: <input type="text" class="form-control" name="receiverCompanyName"  placeholder="Nazwa firmy">
+              Nazwa firmy: <input type="text" class="form-control" name="receiverCompanyName"  [(ngModel)]="receiver.companyName" placeholder="Nazwa firmy">
             </div>
           </td>
         </tr>
