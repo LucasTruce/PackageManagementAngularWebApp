@@ -2,26 +2,29 @@
   <div class="row justify-content-md-center">
     <app-navigation></app-navigation>
 
-    <div class="col-md-9">
-      <button type="button" class="btn btn-primary" name="addUser" routerLink="/admin/users/addUser">Dodaj użytkownika</button>
+    <div class="card card-image mt-4 col-sm-9"
+         style="background-color: #333333; width: 30rem; margin: 0 auto;">
+      <div class="card card-image col-sm-12"
+           style="background-color: #333333; width: 45rem; margin: 0 auto ;border-color: #333333;">
+      <button type="button" class="btn btn-primary mt-2" name="addUser" routerLink="/admin/users/addUser">Dodaj użytkownika</button>
 
       <table matSort (matSortChange)="sortUser($event)" class="table table-striped table-responsive">
         <thead>
           <tr>
-            <th mat-sort-header="id">Id</th>
-            <th mat-sort-header="login">Login</th>
-            <th mat-sort-header="email">Email</th>
-            <th>Role</th>
-            <th>Operacje</th>
+            <th mat-sort-header="id"><p class="text-white">Id</th>
+            <th mat-sort-header="login"><p class="text-white">Login</th>
+            <th mat-sort-header="email"><p class="text-white">Email</th>
+            <th><p class="text-white">Role</th>
+            <th><p class="text-white">Operacje</th>
           </tr>
         </thead>
         <tbody>
         <tr *ngFor="let user of users | paginate: config; index as i">
-          <td>{{user.id}}</td>
-          <td>{{user.login}}</td>
-          <td>{{user.email}}</td>
+          <td><p class="text-white">{{user.id}}</td>
+          <td><p class="text-white">{{user.login}}</td>
+          <td><p class="text-white">{{user.email}}</td>
           <td>
-              <div *ngFor="let role of user.roles">{{role.name}}
+              <div *ngFor="let role of user.roles"><p class="text-white">{{role.name}}
               </div>
           </td>
             <td>
@@ -36,4 +39,5 @@
 
    </div>
  </div>
+</div>
 </div>

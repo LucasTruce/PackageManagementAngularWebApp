@@ -2,29 +2,32 @@
   <div class="row justify-content-md-center">
     <app-navigation></app-navigation>
 
-    <div class="col-md-9">
+    <div class="card card-image mt-4 col-sm-9"
+         style="background-color: #333333; width: 30rem; margin: 0 auto;">
+      <div class="card card-image col-sm-12"
+           style="background-color: #333333; width: 50rem; margin: 0 auto ;border-color: #333333;">
       <button type="button" class="btn btn-primary" name="addWarehouse" routerLink="/admin/warehouses/addWarehouse">Dodaj magazyn</button>
 
       <table matSort (matSortChange)="sortWarehouse($event)" class="table table-striped">
         <thead>
         <tr>
-          <th mat-sort-header="id">Id</th>
-          <th mat-sort-header="postCode">Kod pocztowy</th>
-          <th mat-sort-header="city">Miasto</th>
-          <th mat-sort-header="street">Ulica</th>
-          <th mat-sort-header="phoneNumber">Telefon</th>
-          <th mat-sort-header="description">Opis</th>
-          <th>Operacje</th>
+          <th mat-sort-header="id"><p class="text-white">Id</th>
+          <th mat-sort-header="postCode"><p class="text-white">Kod pocztowy</th>
+          <th mat-sort-header="city"><p class="text-white">Miasto</th>
+          <th mat-sort-header="street"><p class="text-white">Ulica</th>
+          <th mat-sort-header="phoneNumber"><p class="text-white">Telefon</th>
+          <th mat-sort-header="description"><p class="text-white">Opis</th>
+          <th><p class="text-white">Operacje</th>
         </tr>
         </thead>
         <tbody>
         <tr *ngFor="let warehouse of warehouses | paginate: config">
-          <td>{{warehouse.id}}</td>
-          <td>{{warehouse.postCode}}</td>
-          <td>{{warehouse.city}}</td>
-          <td>{{warehouse.street}}</td>
-          <td>{{warehouse.phoneNumber}}</td>
-          <td>{{warehouse.description}}</td>
+          <td><p class="text-white">{{warehouse.id}}</td>
+          <td><p class="text-white">{{warehouse.postCode}}</td>
+          <td><p class="text-white">{{warehouse.city}}</td>
+          <td><p class="text-white">{{warehouse.street}}</td>
+          <td><p class="text-white">{{warehouse.phoneNumber}}</td>
+          <td><p class="text-white">{{warehouse.description}}</td>
           <td>
             <button type="button" class="btn btn-sm btn-danger" name="deleteWarehouse" (click)="deletingWarehouse(warehouse)" data-toggle="modal" data-target="#myModal">Usuń</button>
             <button type="button" class="btn btn-sm btn-warning" name="editWarehouse" [routerLink]="['/admin/warehouses/', warehouse.id]">Edytuj</button>
@@ -57,5 +60,6 @@
       <button type="button" class="btn btn-danger" (click)="deleteWarehouse(tempWarehouse.id)" data-dismiss="modal">Usuń</button>
     </div>
   </div>
+</div>
 </div>
 </div>

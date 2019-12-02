@@ -2,27 +2,30 @@
   <div class="row justify-content-md-center">
     <app-navigation></app-navigation>
 
-    <div class="col-md-9">
+    <div class="card card-image mt-4 col-sm-9"
+         style="background-color: #333333; width: 30rem; margin: 0 auto;">
+      <div class="card card-image col-sm-12"
+           style="background-color: #333333; width: 50rem; margin: 0 auto ;border-color: #333333;">
       <button type="button" class="btn btn-primary" name="addCar" routerLink="/admin/cars/addCar">Dodaj samochód</button>
 
       <table matSort (matSortChange)="sortCars($event)" class="table table-striped">
         <thead>
         <tr>
-          <th mat-sort-header="id">Id</th>
-          <th mat-sort-header="brand">Marka</th>
-          <th mat-sort-header="model">Model</th>
-          <th mat-sort-header="engineType">Typ silnika</th>
-          <th mat-sort-header="licensePlate">Numer rejestracyjny</th>
-          <th>Operacje</th>
+          <th mat-sort-header="id"><p class="text-white">Id</th>
+          <th mat-sort-header="brand"><p class="text-white">Marka</th>
+          <th mat-sort-header="model"><p class="text-white">Model</th>
+          <th mat-sort-header="engineType"><p class="text-white">Typ silnika</th>
+          <th mat-sort-header="licensePlate"><p class="text-white">Numer rejestracyjny</th>
+          <th><p class="text-white">Operacje</th>
         </tr>
         </thead>
         <tbody>
         <tr *ngFor="let car of cars | paginate: config">
-          <td>{{car.id}}</td>
-          <td>{{car.brand}}</td>
-          <td>{{car.model}}</td>
-          <td>{{car.engineType}}</td>
-          <td>{{car.licensePlate}}</td>
+          <td><p class="text-white">{{car.id}}</td>
+          <td><p class="text-white">{{car.brand}}</td>
+          <td><p class="text-white">{{car.model}}</td>
+          <td><p class="text-white">{{car.engineType}}</td>
+          <td><p class="text-white">{{car.licensePlate}}</td>
           <td>
             <button type="button" class="btn btn-sm btn-danger" name="deleteCar" (click)="deletingCar(car)" data-toggle="modal" data-target="#myModal">Usuń</button>
             <button type="button" class="btn btn-sm btn-warning" name="editCar" [routerLink]="['/admin/cars/', car.id]">Edytuj</button>
@@ -56,4 +59,5 @@
       </div>
     </div>
   </div>
+</div>
 </div>

@@ -1,90 +1,91 @@
-<div class="container">
-  <div class="row justify-content-md-center">
+<div class="card card-image mt-4 "
+     style="background-color: #333333; width: 60rem; margin: 0 auto; padding: 5 px; height: 37rem;">
+  <div class="row justify-content-md-center mt-5" >
     <form *ngIf="package.id === ''" class="form-registration" (ngSubmit)="findPackage()" name="findPackage" #myForm="ngForm">
-      Wprowadź numer paczki: <input type="text" class="form-control" name="packageNumber" [(ngModel)]="package.packageNumber"  placeholder="Numer paczki">
-      <div class="form-group">
-        <button class="btn btn-success" type="submit">Szukaj</button>
+      <p class="text-white">    Wprowadź numer paczki:</p> <input type="text" class="form-control" name="packageNumber" [(ngModel)]="package.packageNumber"  placeholder="Numer paczki">
+      <div class="form-group ">
+        <button class="btn btn-success mt-2" type="submit">Szukaj</button>
       </div>
     </form>
 
     <div *ngIf="package.id != ''">
-      <table class="table table-striped table-responsive">
+      <table class="table table-striped table-bordered" cellspacing="0" width="100%">
         <thead>
           <tr>
-            <th>Numer paczki</th>
-            <th>Data nadania</th>
-            <th>Status</th>
-            <th>Długość</th>
-            <th>Szerokość</th>
-            <th>Wysokość</th>
-            <th>Uwagi</th>
+            <th><p class="text-white"> Numer paczki</p></th>
+            <th><p class="text-white"> Data nadania</p></th>
+            <th><p class="text-white"> Status</p></th>
+            <th><p class="text-white"> Długość</p></th>
+            <th><p class="text-white"> Szerokość</p></th>
+            <th><p class="text-white"> Wysokość</p></th>
+            <th><p class="text-white"> Uwagi</p></th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>{{package.packageNumber}}</td>
-            <td>{{package.date}}</td>
-            <td>{{package.packageStatus.name}}</td>
-            <td>{{package.length}}</td>
-            <td>{{package.width}}</td>
-            <td>{{package.height}}</td>
-            <td>{{package.comments}}</td>
+            <td><p class="text-white"> {{package.packageNumber}}</p></td>
+            <td><p class="text-white"> {{package.date}}</p></td>
+            <td><p class="text-white"> {{package.packageStatus.name}}</p></td>
+            <td><p class="text-white"> {{package.length}}</p></td>
+            <td><p class="text-white"> {{package.width}}</p></td>
+            <td><p class="text-white"> {{package.height}}</p></td>
+            <td><p class="text-white"> {{package.comments}}</p></td>
           </tr>
         </tbody>
       </table>
-      Nadawca:
-      <table class="table table-striped table-responsive">
+      <p class="text-white"> Nadawca:
+      <table class="table table-striped table-bordered" cellspacing="0" width="100%">
         <thead>
           <tr>
-            <th>Imię i nazwisko</th>
-            <th>Email</th>
-            <th>Nazwa firmy</th>
-            <th>Miasto</th>
-            <th>Ulica</th>
-            <th>Kod pocztowy</th>
-            <th>Telefon</th>
+            <th><p class="text-white"> Imię i nazwisko</p></th>
+            <th><p class="text-white"> Email</p></th>
+            <th><p class="text-white"> Nazwa firmy</p></th>
+            <th><p class="text-white"> Miasto</th>
+            <th><p class="text-white"> Ulica</th>
+            <th><p class="text-white"> Kod pocztowy</th>
+            <th><p class="text-white"> Telefon</th>
           </tr>
         </thead>
         <tbody>
         <tr>
-          <td>{{package.sender.name}} {{package.sender.lastName}}</td>
-          <td>{{package.sender.email}}</td>
-          <td> <div *ngIf="package.sender.companyName === ''">brak</div>
-            {{package.sender.companyName}}
+          <td><p class="text-white"> {{package.sender.name}} {{package.sender.lastName}}</td>
+          <td><p class="text-white"> {{package.sender.email}}</td>
+          <td>  <div *ngIf="package.sender.companyName === ''"><p class="text-white">brak</div>
+    <p class="text-white">{{package.sender.companyName}}
           </td>
-          <td>{{package.sender.city}}</td>
-          <td>{{package.sender.street}}</td>
-          <td>{{package.sender.postCode}}</td>
-          <td>{{package.sender.phoneNumber}}</td>
+          <td><p class="text-white"> {{package.sender.city}}</td>
+          <td><p class="text-white"> {{package.sender.street}}</td>
+          <td><p class="text-white"> {{package.sender.postCode}}</td>
+          <td><p class="text-white"> {{package.sender.phoneNumber}}</td>
         </tr>
         </tbody>
       </table>
 
-        Odbiorca:
-        <table class="table table-striped table-responsive">
+      <p class="text-white">  Odbiorca:
+        <table class="table table-striped table-bordered" cellspacing="0" width="100%">
           <thead>
           <tr>
-            <th>Imię i nazwisko</th>
-            <th>Email</th>
-            <th>Nazwa firmy</th>
-            <th>Miasto</th>
-            <th>Ulica</th>
-            <th>Kod pocztowy</th>
-            <th>Telefon</th>
+            <th><p class="text-white"> Imię i nazwisko</th>
+            <th><p class="text-white"> Email</th>
+            <th><p class="text-white"> Nazwa firmy</th>
+            <th><p class="text-white"> Miasto</th>
+            <th><p class="text-white"> Ulica</th>
+            <th><p class="text-white"> Kod pocztowy</th>
+            <th><p class="text-white"> Telefon</th>
           </tr>
           </thead>
           <tbody>
           <tr>
-            <td>{{package.recipient.name}} {{package.recipient.lastName}}</td>
-            <td>{{package.recipient.email}}</td>
+            <td><p class="text-white"> {{package.recipient.name}} {{package.recipient.lastName}}</td>
+            <td><p class="text-white"> {{package.recipient.email}}</td>
             <td>
-              <div *ngIf="package.recipient.companyName === ''">brak</div>
-              {{package.recipient.companyName}}
+              <div *ngIf="package.recipient.companyName === ''"><p class="text-white">brak</div>
+    <p class="text-white"> {{package.recipient.companyName}}
             </td>
-            <td>{{package.recipient.city}}</td>
-            <td>{{package.recipient.street}}</td>
-            <td>{{package.recipient.postCode}}</td>
-            <td>{{package.recipient.phoneNumber}}</td>
+            <td><p class="text-white"> {{package.recipient.city}}</td>
+            <td><p class="text-white"> {{package.recipient.street}}</td>
+            <td><p class="text-white"> {{package.recipient.postCode}}</td>
+            <td><p class="text-white"> {{package.recipient.phoneNumber}}</td>
           </tr>
           </tbody>
       </table>

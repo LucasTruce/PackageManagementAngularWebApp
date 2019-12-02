@@ -1,3 +1,4 @@
+
 <div class="container">
   <div class="row justify-content-md-center">
     <div *ngIf="packageAdded && !senderAdded && !productsAdded">
@@ -20,16 +21,19 @@
     </div>
 
 
-
+    <div class="card card-image mt-4 "
+         style="background-color: #333333; width: 50rem; margin: 0 auto; padding: 5 px">
+      <div class="card card-image mt-4 "
+           style="background-color: #333333; width: 30rem; margin: 0 auto; padding: 5 px; border-color: #333333;">
     <div *ngIf="!packageAdded && !senderAdded && !productsAdded">
       <form class="form-registration" (ngSubmit)="createPackage()" name="createPackage" #myForm="ngForm">
         <table class="table">
           <tbody>
-          <tr><td>Wprowadź wymiary paczki:</td></tr>
+          <tr><td><p class="text-white">Wprowadź wymiary paczki:</p></td></tr>
           <tr>
             <td>
               <div class="form-group">
-                Wysokość[cm]: <input type="number" class="form-control" name="height" [(ngModel)]="package.height"  placeholder="Wysokość [cm]">
+                <p class="text-white">   Wysokość[cm]: </p><input type="number" class="form-control" name="height" [(ngModel)]="package.height"  placeholder="Wysokość [cm]">
                 <div *ngIf="error.height" class="error-message">
                   {{error.height}}
                 </div>
@@ -39,7 +43,7 @@
           <tr>
             <td>
               <div class="form-group">
-                Szerokość[cm]: <input type="number" class="form-control" name="width" [(ngModel)]="package.width" placeholder="Szerokość [cm]">
+                <p class="text-white">  Szerokość[cm]:</p> <input type="number" class="form-control" name="width" [(ngModel)]="package.width" placeholder="Szerokość [cm]">
                 <div *ngIf="error.width" class="error-message">
                   {{error.width}}
                 </div>
@@ -49,7 +53,7 @@
           <tr>
             <td>
               <div class="form-group">
-                Długość[cm]: <input type="number" class="form-control" name="length" [(ngModel)]="package.length" placeholder="Długość [cm]">
+                <p class="text-white">  Długość[cm]: </p><input type="number" class="form-control" name="length" [(ngModel)]="package.length" placeholder="Długość [cm]">
                 <div *ngIf="error.length" class="error-message">
                   {{error.length}}
                 </div>
@@ -59,7 +63,7 @@
           <tr>
             <td>
               <div class="form-group">
-                Waga[kg]: <input type="number" class="form-control" name="weight" [(ngModel)]="package.weight" placeholder="Waga [kg]">
+                <p class="text-white">   Waga[kg]:</p> <input type="number" class="form-control" name="weight" [(ngModel)]="package.weight" placeholder="Waga [kg]">
                 <div *ngIf="error.weight" class="error-message">
                   {{error.weight}}
                 </div>
@@ -69,7 +73,7 @@
           <tr>
             <td>
               <div class="form-group">
-                Uwagi do paczki:
+                <p class="text-white">  Uwagi do paczki:</p>
                 <textarea style="resize: none;" rows = "5" cols = "50" name = "description" [(ngModel)]="package.comments" class="form-control">Uwagi</textarea>
                 <div *ngIf="error.comments" class="error-message">
                   {{error.comments}}
@@ -88,7 +92,7 @@
         </table>
       </form>
     </div>
-
+    </div>
 
 
 
@@ -98,15 +102,15 @@
         <div class="col-md-12">
           <div class="row">
             <div class="col-md-12">
-              Informacje o paczce:
+              <p class="text-white"> Informacje o paczce:
               <table class="table-responsive table-sm">
                 <tbody>
                   <tr>
-                    <th>WysxSzerxDl[cm]:</th>
-                    <td>{{package.height}}x{{package.width}}x{{package.length}}</td>
+                    <th><p class="text-white">WysxSzerxDl[cm]:</th>
+                    <td><p class="text-white">{{package.height}}x{{package.width}}x{{package.length}}</td>
                   </tr>
                   <tr>
-                    <th>Opis:</th>
+                    <th><p class="text-white">Opis:</th>
                     <td><textarea rows = "3" cols = "25" name = "description" disabled [(ngModel)]="package.comments" class="form-control">Uwagi</textarea></td>
                   </tr>
                 </tbody>
@@ -116,63 +120,63 @@
 
           <div class="row">
               <div class="col-md-6">
-                Informacje o nadawcy:
+                <p class="text-white">Informacje o nadawcy:
                 <table class="table table-responsive table-sm">
                   <tbody>
                   <tr>
-                    <th>Imię i nazwisko:</th>
-                    <td>{{package.sender.name}} {{package.sender.lastName}}</td>
+                    <th><p class="text-white">Imię i nazwisko:</th>
+                    <td><p class="text-white">{{package.sender.name}} {{package.sender.lastName}}</td>
                   </tr>
                   <tr>
-                    <th>Adres email:</th>
-                    <td>{{package.sender.email}}</td>
+                    <th><p class="text-white">Adres email:</th>
+                    <td><p class="text-white">{{package.sender.email}}</td>
                   </tr>
                   <tr>
-                    <th>Nazwa firmy:</th>
-                    <td>{{package.sender.companyName}}</td>
+                    <th><p class="text-white">Nazwa firmy:</th>
+                    <td><p class="text-white">{{package.sender.companyName}}</td>
                   </tr>
                   <tr>
-                    <th>Miasto:</th>
-                    <td>{{package.sender.postCode}}, {{package.sender.city}}</td>
+                    <th><p class="text-white">Miasto:</th>
+                    <td><p class="text-white">{{package.sender.postCode}}, {{package.sender.city}}</td>
                   </tr>
                   <tr>
-                    <th>Ulica:</th>
-                    <td>{{package.sender.street}} {{package.recipient.houseNumber}}/{{package.recipient.apartmentNumber}}</td>
+                    <th><p class="text-white">Ulica:</th>
+                    <td><p class="text-white">{{package.sender.street}} {{package.recipient.houseNumber}}/{{package.recipient.apartmentNumber}}</td>
                   </tr>
                   <tr>
-                    <th>Telefon:</th>
-                    <td>{{package.sender.phoneNumber}}</td>
+                    <th><p class="text-white">Telefon:</th>
+                    <td><p class="text-white">{{package.sender.phoneNumber}}</td>
                   </tr>
                   </tbody>
                 </table>
               </div>
             <div class="col-md-6">
-                Informacje o odbiorcy:
+              <p class="text-white"> Informacje o odbiorcy:
               <table class="table table-responsive table-sm">
                 <tbody>
                 <tr>
-                  <th>Imię i nazwisko:</th>
-                  <td>{{package.recipient.name}} {{package.recipient.lastName}}</td>
+                  <th><p class="text-white">Imię i nazwisko:</th>
+                  <td><p class="text-white">{{package.recipient.name}} {{package.recipient.lastName}}</td>
                 </tr>
                 <tr>
-                  <th>Adres email:</th>
-                  <td>{{package.recipient.email}}</td>
+                  <th><p class="text-white">Adres email:</th>
+                  <td><p class="text-white">{{package.recipient.email}}</td>
                 </tr>
                 <tr>
-                  <th>Nazwa firmy:</th>
-                  <td>{{package.recipient.companyName}}</td>
+                  <th><p class="text-white">Nazwa firmy:</th>
+                  <td><p class="text-white">{{package.recipient.companyName}}</td>
                 </tr>
                 <tr>
-                  <th>Miasto:</th>
-                  <td>{{package.recipient.postCode}}, {{package.recipient.city}}</td>
+                  <th><p class="text-white">Miasto:</th>
+                  <td><p class="text-white">{{package.recipient.postCode}}, {{package.recipient.city}}</td>
                 </tr>
                 <tr>
-                  <th>Ulica:</th>
-                  <td>{{package.recipient.street}} {{package.recipient.houseNumber}}/{{package.recipient.apartmentNumber}}</td>
+                  <th><p class="text-white">Ulica:</th>
+                  <td><p class="text-white">{{package.recipient.street}} {{package.recipient.houseNumber}}/{{package.recipient.apartmentNumber}}</td>
                 </tr>
                 <tr>
-                  <th>Telefon:</th>
-                  <td>{{package.recipient.phoneNumber}}</td>
+                  <th><p class="text-white">Telefon:</th>
+                  <td><p class="text-white">{{package.recipient.phoneNumber}}</td>
                 </tr>
                 </tbody>
               </table>
@@ -180,20 +184,20 @@
           </div>
           <div class="row" *ngIf="!wantAddProducts">
               <div class="col-md-12">
-                Produkty:
+                <p class="text-white"> Produkty:
                 <table class="table table-responsive table-sm">
                   <thead>
-                  <th>Nazwa</th>
-                  <th>Waga</th>
-                  <th>Kategoria</th>
-                  <th>Uwagi</th>
+                  <th><p class="text-white">Nazwa</th>
+                  <th><p class="text-white">Waga</th>
+                  <th><p class="text-white">Kategoria</th>
+                  <th><p class="text-white">Uwagi</th>
                   </thead>
                   <tbody>
                   <tr *ngFor="let product of productsAdded">
-                    <td>{{product.name}}</td>
-                    <td>{{product.weight}}</td>
-                    <td>{{product.category.name}}</td>
-                    <td>{{product.comments}}</td>
+                    <td><p class="text-white">{{product.name}}</td>
+                    <td><p class="text-white">{{product.weight}}</td>
+                    <td><p class="text-white">{{product.category.name}}</td>
+                    <td><p class="text-white">{{product.comments}}</td>
                   </tr>
                   </tbody>
                 </table>
@@ -209,4 +213,5 @@
     </div>
 
   </div>
+</div>
 </div>

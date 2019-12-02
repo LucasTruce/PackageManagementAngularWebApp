@@ -1,42 +1,73 @@
 <form class="form-registration" name="formRegistration" #myForm="ngForm" (ngSubmit)="onSumbit()">
-    <table class="table">
-      <tbody>
-        <div *ngIf="comunicate != ''" class="error-message">
-          {{comunicate}}
+    <div *ngIf="comunicate != ''" class="error-message">
+      {{comunicate}}
+    </div>
+
+
+<section class="form-dark">
+
+  <!--Form without header-->
+  <div class="card card-image mt-4 "
+       style="background-color: #333333; width: 50rem; margin: 0 auto; padding: 5 px">
+    <div class="text-white rgba-stylish-strong py-5 px-5 z-depth-4">
+
+      <!--Header-->
+      <div class="text-center">
+        <h3 class="white-text mb-5 mt-4 font-weight-bold"><strong>Zarejestruj</strong> <a
+          class="green-text font-weight-bold"><strong> się</strong></a></h3>
+      </div>
+
+      <!--Body-->
+      <div class="md-form">
+      <input type="text" id="Form-email5" class="form-control white-text" name="email" [(ngModel)]="user.email" placeholder="E-mail">
+      <label for="Form-email5">Twój email</label>
+      <div *ngIf="errors.email" class="error-message">
+        {{errors.email}}
+      </div>
+    </div>
+
+      <div class="md-form">
+        <input type="text" id="Form-login" class="form-control white-text" name="login" [(ngModel)]="user.login" placeholder="Login">
+        <label for="Form-login">Twój login</label>
+        <div *ngIf="errors.login" class="error-message">
+          {{errors.login}}
         </div>
-        <tr>
-          <td>
-            <div class="form-group">
-              Email: <input type="email" class="form-control" name="email" [(ngModel)]="user.email" placeholder="E-mail">
-              <div *ngIf="errors.email" class="error-message">
-                {{errors.email}}
-              </div>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <div class="form-group">
-              Login: <input type="text" class="form-control" name="login" [(ngModel)]="user.login" placeholder="Login">
-              <div *ngIf="errors.login" class="error-message">
-                {{errors.login}}
-              </div>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <div class="form-group">
-              Password: <input type="password" class="form-control" name="password" [(ngModel)]="user.password" placeholder="Hasło">
-              <div *ngIf="errors.password" class="error-message">
-                {{errors.password}}
-              </div>
-            </div>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  <div class="form-group">
-    <button class="btn btn-success" type="submit">Register</button>
+      </div>
+
+      <div class="md-form pb-3">
+        <input type="password" id="Form-pass5" class="form-control white-text" name="password" [(ngModel)]="user.password" placeholder="Hasło">
+        <label for="Form-pass5">Twoje hasło</label>
+        <div *ngIf="errors.password" class="error-message">
+          {{errors.password}}
+        </div>
+        <div class="form-check my-4">
+          <input class="form-check-input" type="checkbox" value="" id="defaultCheck17">
+          <label class="form-check-label white-text" for="defaultCheck17">Zakceptuj<a href="#"
+                                                                                       class="green-text font-weight-bold"> warunki korzystania</a></label>
+        </div>
+      </div>
+
+      <!--Grid row-->
+      <div class="row d-flex align-items-center mb-4">
+
+        <!--Grid column-->
+        <div class="text-center mb-3 col-md-12">
+          <button type="submit" class="btn btn-success btn-block btn-rounded z-depth-1">Zarejestruj się</button>
+        </div>
+        <!--Grid column-->
+      </div>
+      <!--Grid row-->
+
+      <!--Grid column-->
+      <div class="col-md-12">
+        <p class="font-small white-text d-flex justify-content-end">Masz konto? <a routerLink="/login"
+                                                                                        class="green-text ml-1 font-weight-bold"> Zaloguj się</a></p>
+      </div>
+      <!--Grid column-->
+
+    </div>
   </div>
+  <!--/Form without header-->
+
+</section>
 </form>

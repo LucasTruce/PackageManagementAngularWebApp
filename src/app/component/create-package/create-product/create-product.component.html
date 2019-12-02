@@ -1,7 +1,10 @@
 <div class="container">
   <div class="row justify-content-md-center">
-    <div class="col-md-12">
-      Czy chcesz dokonać kompletacji towaru?
+    <div class="card card-image mt-4 "
+    style="background-color: #333333; width: 50rem; margin: 0 auto; padding: 5 px">
+    <div class="card card-image mt-4 "
+         style="background-color: #333333; width: 30rem; margin: 0 auto; padding: 5 px; border-color: #333333;">
+      <p class="text-white">Czy chcesz dokonać kompletacji towaru?
       <input type="button" (click)="wantAdd = true" value="Tak">
       <input type="button" (click)="wantAdd2()" value="Nie">
 
@@ -9,9 +12,9 @@
         <form class="form-registration" (ngSubmit)="createContentProduct()" name="createProduct" #myForm="ngForm">
           <table class="table">
             <tbody>
-              <tr><td>Kompletacja towarów</td></tr>
+              <tr><td><p class="text-white">Kompletacja towarów</td></tr>
               <tr>
-                <td>Naciśnij aby dodać produkt
+                <td><p class="text-white">Naciśnij aby dodać produkt
                   <input type="button" name="addProduct" (click)="addProduct()" value="Dodaj produkt"/>
                 </td>
               </tr>
@@ -19,7 +22,7 @@
                 <div *ngFor="let item of productList; index as i">
                   <td>
                     <div class="form-group">
-                      Wybierz kategorię:
+      <p class="text-white"> Wybierz kategorię:
                       <select class="form-control" id="selectCategory" name="item[{{item.id}}][category]" [(ngModel)]="item.category">
                           <option *ngFor="let category of productCategories"  [ngValue]="category">
                             {{category.name}}
@@ -29,17 +32,17 @@
                   </td>
                   <td>
                     <div class="form-group">
-                      Podaj nazwę: <input type="text" class="form-control" name="item[{{item.id}}][name]" [(ngModel)]="item.name" placeholder="Nazwa towaru">
+                      <p class="text-white">  Podaj nazwę: <input type="text" class="form-control" name="item[{{item.id}}][name]" [(ngModel)]="item.name" placeholder="Nazwa towaru">
                     </div>
                   </td>
                   <td>
                     <div class="form-group">
-                      Podaj wagę[kg]: <input type="number" class="form-control" name="item[{{item.id}}][weight]" [(ngModel)]="item.weight"  placeholder="Waga towaru">
+                      <p class="text-white">  Podaj wagę[kg]: <input type="number" class="form-control" name="item[{{item.id}}][weight]" [(ngModel)]="item.weight"  placeholder="Waga towaru">
                     </div>
                   </td>
                   <td>
                     <div class="form-group">
-                      Uwagi: <textarea rows = "2" cols = "50" class="form-control" name="item[{{item.id}}][comments]" [(ngModel)]="item.comments" >Uwagi</textarea>
+                      <p class="text-white">  Uwagi: <textarea rows = "2" cols = "50" class="form-control" name="item[{{item.id}}][comments]" [(ngModel)]="item.comments" >Uwagi</textarea>
                     </div>
                   </td>
                   <td>

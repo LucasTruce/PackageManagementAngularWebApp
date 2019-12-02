@@ -1,23 +1,73 @@
+
 <form class="form-registration" name="formRegistration" #myForm="ngForm" (ngSubmit)="checkLogin()">
-  <table class="table table-sm col-md-3">
-    <tbody>
-      <div *ngIf="errors" class="error-message">
-        {{errors}}
+
+
+  <section class="form-dark">
+
+    <!--Form without header-->
+    <div class="card card-image mt-4 col-sm-12"
+         style="background-color: #333333; width: 50rem; margin: 0 auto;">
+      <div class="card card-image "
+           style="background-color: #333333; width: 30rem; margin: 0 auto; padding: 5px; border-color: #333333">
+      <div class="text-white rgba-stylish-strong py-5 px-5 z-depth-4">
+
+        <!--Header-->
+        <div class="text-center">
+          <h3 class="white-text mb-5 mt-4 font-weight-bold"><strong>Zaloguj</strong> <a
+            class="green-text font-weight-bold"><strong> się</strong></a></h3>
+        </div>
+
+
+        <div class="md-form">
+          <input type="text" id="Form-login" class="form-control white-text" name="username" [(ngModel)]="login" placeholder="Login">
+          <label for="Form-login">Twój login</label>
+          <div *ngIf="errors.login" class="error-message">
+            {{errors.login}}
+          </div>
+        </div>
+
+        <div class="md-form pb-3">
+          <input type="password" id="Form-pass5" class="form-control white-text" name="password" [(ngModel)]="password" placeholder="Hasło">
+          <label for="Form-pass5">Twoje hasło</label>
+          <div *ngIf="errors.password" class="error-message">
+            {{errors.password}}
+          </div>
+
+        </div>
+
+        <!--Grid row-->
+        <div class="row d-flex align-items-center mb-4">
+
+          <!--Grid column-->
+          <div class="text-center mb-3 col-md-12">
+            <button (click)=checkLogin() type="submit" class="btn btn-success btn-block btn-rounded z-depth-1">Zaloguj się</button>
+          </div>
+          <!--Grid column-->
+        </div>
+        <!--Grid row-->
+
+        <!--Grid column-->
+        <div class="col-md-12">
+          <p class="font-small white-text d-flex justify-content-end">Nie masz konta? <a href="#"
+                                                                                     class="green-text ml-1 font-weight-bold"> Zarejestruj się</a></p>
+        </div>
+        <!--Grid column-->
+
       </div>
-    <tr>
-      <th>Login:</th>
-      <td><input type="text" name="username" [(ngModel)]="login"></td>
-    </tr>
-    <tr>
-      <th>Hasło:</th>
-      <td><input type="password" name="password" [(ngModel)]="password"></td>
-    </tr>
-    </tbody>
-  </table>
-  <div class="form-group">
-    <button (click)=checkLogin() class="btn btn-success" type="submit">Login</button>
-  </div>
+    </div>
+    </div>
+
+  </section>
+
+
+
+
+
+
+
 </form>
+
+
 
 
 

@@ -3,28 +3,31 @@
     <app-navigation></app-navigation>
 
 
-    <div class="col-md-9">
+    <div class="card card-image mt-4 col-sm-9"
+         style="background-color: #333333; width: 30rem; margin: 0 auto;">
+      <div class="card card-image col-sm-12"
+           style="background-color: #333333; width: 45rem; margin: 0 auto ;border-color: #333333;">
       <form class="form-registration" name="updateUser" (ngSubmit)="updateUserAdmin()"  #myForm="ngForm">
         <table class="table">
           <tbody>
           <tr>
             <td>
               <div class="form-group">
-                Email: <input type="email" class="form-control" name="email" [(ngModel)]="user.email" placeholder="Email">
+                <p class="text-white">  Email: <input type="email" class="form-control" name="email" [(ngModel)]="user.email" placeholder="Email">
               </div>
             </td>
           </tr>
           <tr>
             <td>
               <div class="form-group">
-                Login <input type="text" class="form-control" name="login" [(ngModel)]="user.login" placeholder="Login">
+                <p class="text-white">   Login <input type="text" class="form-control" name="login" [(ngModel)]="user.login" placeholder="Login">
               </div>
             </td>
           </tr>
           <tr>
             <td>
               <div class="form-group">
-                Password: <input type="password" class="form-control" name="password" [(ngModel)]="user.password" placeholder="Password">
+                <p class="text-white">   Password: <input type="password" class="form-control" name="password" [(ngModel)]="user.password" placeholder="Password">
               </div>
             </td>
           </tr>
@@ -44,4 +47,4 @@
     </div>
   </div>
 </div>
-
+</div>

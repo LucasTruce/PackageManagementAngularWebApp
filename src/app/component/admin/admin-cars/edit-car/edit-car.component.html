@@ -2,77 +2,80 @@
   <div class="row justify-content-md-center">
     <app-navigation></app-navigation>
 
-    <div class="col-md-9">
+    <div class="card card-image mt-4 col-sm-9"
+         style="background-color: #333333; width: 30rem; margin: 0 auto;">
+      <div class="card card-image col-sm-12"
+           style="background-color: #333333; width: 45rem; margin: 0 auto ;border-color: #333333;">
       <form class="form-registration" name="addCar" (ngSubmit)="updateCar()"  #myForm="ngForm">
-        <table class="table col-md-6">
+        <table class="table col-md-12">
           <tbody>
             <tr>
               <td>
                 <div class="form-group">
-                  Marka: <input type="text" class="form-control" name="brand" [(ngModel)]="car.brand" placeholder="Marka">
+                  <p class="text-white">Marka: <input type="text" class="form-control" name="brand" [(ngModel)]="car.brand" placeholder="Marka">
                 </div>
               </td>
             </tr>
             <tr>
               <td>
                 <div class="form-group">
-                  Model: <input type="text" class="form-control" name="model" [(ngModel)]="car.model" placeholder="Model">
+                  <p class="text-white">Model: <input type="text" class="form-control" name="model" [(ngModel)]="car.model" placeholder="Model">
                 </div>
               </td>
             </tr>
             <tr>
               <td>
                 <div class="form-group">
-                  Typ silnika: <input type="text" class="form-control" name="engineType" [(ngModel)]="car.engineType" placeholder="Typ silnika">
+                  <p class="text-white"> Typ silnika: <input type="text" class="form-control" name="engineType" [(ngModel)]="car.engineType" placeholder="Typ silnika">
                 </div>
               </td>
             </tr>
             <tr>
               <td>
                 <div class="form-group">
-                  Moc: <input type="number" class="form-control" name="power" [(ngModel)]="car.power" placeholder="Moc">
+                  <p class="text-white">  Moc: <input type="number" class="form-control" name="power" [(ngModel)]="car.power" placeholder="Moc">
                 </div>
               </td>
             </tr>
             <tr>
               <td>
                 <div class="form-group">
-                  Pojemność: <input type="number" class="form-control" name="capacity" [(ngModel)]="car.capacity" placeholder="Pojemność">
+                  <p class="text-white">  Pojemność: <input type="number" class="form-control" name="capacity" [(ngModel)]="car.capacity" placeholder="Pojemność">
                 </div>
               </td>
             </tr>
             <tr>
               <td>
                 <div class="form-group">
-                  Kolor: <input type="text" class="form-control" name="color" [(ngModel)]="car.color" placeholder="Kolor">
+                  <p class="text-white"> Kolor: <input type="text" class="form-control" name="color" [(ngModel)]="car.color" placeholder="Kolor">
                 </div>
               </td>
             </tr>
             <tr>
               <td>
                 <div class="form-group">
-                  Rodzaj: <input type="text" class="form-control" name="type" [(ngModel)]="car.type" placeholder="Rodzaj">
+                  <p class="text-white"> Rodzaj: <input type="text" class="form-control" name="type" [(ngModel)]="car.type" placeholder="Rodzaj">
                 </div>
               </td>
             </tr>
             <tr>
               <td>
                 <div class="form-group">
-                  Numer rejestracyjny: <input type="text" class="form-control" name="licensePlate" [(ngModel)]="car.licensePlate" placeholder="Numer rejestracyjny">
+                  <p class="text-white"> Numer rejestracyjny: <input type="text" class="form-control" name="licensePlate" [(ngModel)]="car.licensePlate" placeholder="Numer rejestracyjny">
                 </div>
               </td>
             </tr>
             <tr>
               <td>
                 <div class="form-group">
-                  Ładowność: <input type="number" class="form-control" name="load" [(ngModel)]="car.load" placeholder="Ładowność">
+                  <p class="text-white">  Ładowność: <input type="number" class="form-control" name="load" [(ngModel)]="car.load" placeholder="Ładowność">
                 </div>
               </td>
             </tr>
             <tr>
               <td>
                 <div class="form-group">
-                  Uwagi:
+                  <p class="text-white"> Uwagi:
                   <textarea rows = "5" cols = "50" name = "comments" [(ngModel)]="car.comments" class="form-control">Uwagi</textarea>
                 </div>
               </td>
@@ -90,4 +93,5 @@
       </form>
     </div>
   </div>
+</div>
 </div>

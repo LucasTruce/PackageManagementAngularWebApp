@@ -2,41 +2,44 @@
   <div class="row justify-content-md-center">
     <app-navigation></app-navigation>
 
-    <div class="col-md-9">
+    <div class="card card-image mt-4 col-sm-9"
+         style="background-color: #333333; width: 30rem; margin: 0 auto;">
+      <div class="card card-image col-sm-12"
+           style="background-color: #333333; width: 50rem; margin: 0 auto ;border-color: #333333;">
       <form class="form-registration" name="addWarehouse" (ngSubmit)="addWarehouse()"  #myForm="ngForm">
         <table class="table">
           <tr>
             <td>
               <div class="form-group">
-                Miasto: <input type="text" class="form-control" name="city" [(ngModel)]="warehouse.city" placeholder="Miasto">
+                <p class="text-white"> Miasto: <input type="text" class="form-control" name="city" [(ngModel)]="warehouse.city" placeholder="Miasto">
               </div>
             </td>
           </tr>
           <tr>
             <td>
               <div class="form-group">
-                Ulica: <input type="text" class="form-control" name="street" [(ngModel)]="warehouse.street" placeholder="Ulica">
+                <p class="text-white">  Ulica: <input type="text" class="form-control" name="street" [(ngModel)]="warehouse.street" placeholder="Ulica">
               </div>
             </td>
           </tr>
           <tr>
             <td>
               <div class="form-group">
-                Kod pocztowy: <input type="text" class="form-control" name="postCode" [(ngModel)]="warehouse.postCode" placeholder="Kod pocztowy">
+                <p class="text-white"> Kod pocztowy: <input type="text" class="form-control" name="postCode" [(ngModel)]="warehouse.postCode" placeholder="Kod pocztowy">
               </div>
             </td>
           </tr>
           <tr>
             <td>
               <div class="form-group">
-                Numer telefonu: <input type="text" class="form-control" name="phoneNumber" [(ngModel)]="warehouse.phoneNumber" placeholder="Numer telefonu">
+                <p class="text-white"> Numer telefonu: <input type="text" class="form-control" name="phoneNumber" [(ngModel)]="warehouse.phoneNumber" placeholder="Numer telefonu">
               </div>
             </td>
           </tr>
           <tr>
             <td>
               <div class="form-group">
-                Opis magazynu:
+                <p class="text-white"> Opis magazynu:
                 <textarea rows = "5" cols = "50" name = "description" [(ngModel)]="warehouse.description" class="form-control">Opis magazynu</textarea>
               </div>
             </td>

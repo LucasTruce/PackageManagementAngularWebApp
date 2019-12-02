@@ -1,22 +1,25 @@
 <div class="container">
-  <div class="row justify-content-md-center">
+  <div class="card card-image mt-4 "
+       style="background-color: #333333; width: 50rem; margin: 0 auto; padding: 5 px">
+    <div class="card card-image mt-4 "
+         style="background-color: #333333; width: 30rem; margin: 0 auto; padding: 5 px; border-color: #333333;">
     <form class="form-registration" (ngSubmit)="myForm.form.valid && createSenderReceiver()" name="createSenderReceiver" #myForm="ngForm">
       <table class="table table-sm">
         <tbody>
-        <tr><td>Podaj dane nadawcy: </td>
-            <td>Podaj dane odbiorcy:</td>
+        <tr><td><p class="text-white">Podaj dane nadawcy: </td>
+            <td><p class="text-white">Podaj dane odbiorcy:</td>
         </tr>
         <tr>
           <td>
             <div class="form-group">
-              Imię: <input type="text" class="form-control" name="senderName" [(ngModel)]="sender.name" placeholder="Imię" #name="ngModel" required minlength="3">
+              <p class="text-white"> Imię: <input type="text" class="form-control" name="senderName" [(ngModel)]="sender.name" placeholder="Imię" #name="ngModel" required minlength="3">
               <div class="form-group">
                 <div *ngIf="name.invalid" class="error-message">
                   <div *ngIf="name.errors.required">
-                    Imię nie może być puste!
+              <p class="text-white"> Imię nie może być puste!
                   </div>
                   <div *ngIf="name.errors.minlength">
-                    Imię musi zawierać przynajmniej 3 litery!
+                    <p class="text-white">   Imię musi zawierać przynajmniej 3 litery!
                   </div>
                 </div>
               </div>
@@ -24,14 +27,14 @@
           </td>
           <td>
             <div class="form-group">
-              Imię: <input type="text" class="form-control" name="receiverName"  [(ngModel)]="receiver.name" #name2="ngModel" placeholder="Imię" required minlength="3">
+              <p class="text-white">  Imię: <input type="text" class="form-control" name="receiverName"  [(ngModel)]="receiver.name" #name2="ngModel" placeholder="Imię" required minlength="3">
               <div class="form-group">
                 <div *ngIf="name2.invalid" class="error-message">
                   <div *ngIf="name2.errors.required">
-                    Imię nie może być puste!
+              <p class="text-white">    Imię nie może być puste!
                   </div>
                   <div *ngIf="name2.errors.minlength">
-                    Imię musi zawierać przynajmniej 3 litery!
+                    <p class="text-white">    Imię musi zawierać przynajmniej 3 litery!
                   </div>
                 </div>
               </div>
@@ -41,14 +44,14 @@
         <tr>
           <td>
             <div class="form-group">
-              Nazwisko: <input type="text" class="form-control" name="senderLastName"  [(ngModel)]="sender.lastName" #lastName="ngModel" placeholder="Nazwisko" required minlength="2">
+              <p class="text-white"> Nazwisko: <input type="text" class="form-control" name="senderLastName"  [(ngModel)]="sender.lastName" #lastName="ngModel" placeholder="Nazwisko" required minlength="2">
               <div class="form-group">
                 <div *ngIf="lastName.invalid" class="error-message">
                   <div *ngIf="lastName.errors.required">
-                    Imię nie może być puste!
+              <p class="text-white">  Imię nie może być puste!
                   </div>
                   <div *ngIf="lastName.errors.minlength">
-                    Imię musi zawierać przynajmniej 3 litery!
+                    <p class="text-white">  Imię musi zawierać przynajmniej 3 litery!
                   </div>
                 </div>
               </div>
@@ -56,14 +59,14 @@
           </td>
           <td>
             <div class="form-group">
-              Nazwisko: <input type="text" class="form-control" name="receiverLastName" [(ngModel)]="receiver.lastName" #lastName2="ngModel"  placeholder="Nazwisko" required minlength="2">
+              <p class="text-white"> Nazwisko: <input type="text" class="form-control" name="receiverLastName" [(ngModel)]="receiver.lastName" #lastName2="ngModel"  placeholder="Nazwisko" required minlength="2">
               <div class="form-group">
                 <div *ngIf="lastName2.invalid" class="error-message">
                   <div *ngIf="lastName2.errors.required">
-                    Imię nie może być puste!
+              <p class="text-white">   Imię nie może być puste!
                   </div>
                   <div *ngIf="lastName2.errors.minlength">
-                    Imię musi zawierać przynajmniej 3 litery!
+                    <p class="text-white">      Imię musi zawierać przynajmniej 3 litery!
                   </div>
                 </div>
               </div>
@@ -73,11 +76,11 @@
         <tr>
           <td>
             <div class="form-group">
-              Adres e-mail: <input type="email" class="form-control" name="senderEmail"  [(ngModel)]="sender.email" #senderEmail="ngModel" placeholder="Adres email" required="true">
+              <p class="text-white">  Adres e-mail: <input type="email" class="form-control" name="senderEmail"  [(ngModel)]="sender.email" #senderEmail="ngModel" placeholder="Adres email" required="true">
               <div class="form-group">
                 <div *ngIf="senderEmail.invalid" class="error-message">
                   <div *ngIf="senderEmail.errors.required">
-                    Email jest wymagany!
+              <p class="text-white">      Email jest wymagany!
                   </div>
                 </div>
               </div>
@@ -85,11 +88,11 @@
           </td>
           <td>
             <div class="form-group">
-              Adres e-mail: <input type="email" class="form-control" name="receiverEmail" [(ngModel)]="receiver.email" #email2="ngModel" placeholder="Adres email" required="true">
+              <p class="text-white">   Adres e-mail: <input type="email" class="form-control" name="receiverEmail" [(ngModel)]="receiver.email" #email2="ngModel" placeholder="Adres email" required="true">
               <div class="form-group">
                 <div *ngIf="email2.invalid" class="error-message">
                   <div *ngIf="email2.errors.required">
-                    Email jest wymagany!
+              <p class="text-white">       Email jest wymagany!
                   </div>
                 </div>
               </div>
@@ -99,28 +102,28 @@
         <tr>
           <td>
             <div class="form-group">
-              Nazwa firmy: <input type="text" class="form-control" name="senderCompanyName" [(ngModel)]="sender.companyName" placeholder="Nazwa firmy">
+              <p class="text-white">   Nazwa firmy: <input type="text" class="form-control" name="senderCompanyName" [(ngModel)]="sender.companyName" placeholder="Nazwa firmy">
               <div class="form-group">
               </div>
             </div>
           </td>
           <td>
             <div class="form-group">
-              Nazwa firmy: <input type="text" class="form-control" name="receiverCompanyName"  [(ngModel)]="receiver.companyName" placeholder="Nazwa firmy">
+              <p class="text-white">    Nazwa firmy: <input type="text" class="form-control" name="receiverCompanyName"  [(ngModel)]="receiver.companyName" placeholder="Nazwa firmy">
             </div>
           </td>
         </tr>
         <tr>
           <td>
             <div class="form-group">
-              Miasto: <input type="text" class="form-control" name="senderCity"  [(ngModel)]="sender.city" #city="ngModel" placeholder="Miasto" required minlength="3">
+              <p class="text-white">   Miasto: <input type="text" class="form-control" name="senderCity"  [(ngModel)]="sender.city" #city="ngModel" placeholder="Miasto" required minlength="3">
               <div class="form-group">
                 <div *ngIf="city.invalid" class="error-message">
                   <div *ngIf="city.errors.required">
-                    Miasto nie może być puste!
+              <p class="text-white">        Miasto nie może być puste!
                   </div>
                   <div *ngIf="city.errors.minlength">
-                    Miasto musi zawierać przynajmniej 3 litery!
+                    <p class="text-white">        Miasto musi zawierać przynajmniej 3 litery!
                   </div>
                 </div>
               </div>
@@ -128,14 +131,14 @@
           </td>
           <td>
             <div class="form-group">
-              Miasto: <input type="text" class="form-control" name="receiverCity" [(ngModel)]="receiver.city" #city2="ngModel" placeholder="Miasto" required minlength="3">
+              <p class="text-white">   Miasto: <input type="text" class="form-control" name="receiverCity" [(ngModel)]="receiver.city" #city2="ngModel" placeholder="Miasto" required minlength="3">
               <div class="form-group">
                 <div *ngIf="city2.invalid" class="error-message">
                   <div *ngIf="city2.errors.required">
-                    Miasto nie może być puste!
+              <p class="text-white">       Miasto nie może być puste!
                   </div>
                   <div *ngIf="city2.errors.minlength">
-                    Miasto musi zawierać przynajmniej 3 litery!
+                    <p class="text-white">       Miasto musi zawierać przynajmniej 3 litery!
                   </div>
                 </div>
               </div>
@@ -145,14 +148,14 @@
         <tr>
           <td>
             <div class="form-group">
-              Ulica: <input type="text" class="form-control" name="senderStreet"  [(ngModel)]="sender.street" #street="ngModel" placeholder="Ulica" required minlength="3">
+              <p class="text-white">    Ulica: <input type="text" class="form-control" name="senderStreet"  [(ngModel)]="sender.street" #street="ngModel" placeholder="Ulica" required minlength="3">
               <div class="form-group">
                 <div *ngIf="street.invalid" class="error-message">
                   <div *ngIf="street.errors.required">
-                    Ulica nie może być pusta!
+              <p class="text-white">      Ulica nie może być pusta!
                   </div>
                   <div *ngIf="street.errors.minlength">
-                    Ulica musi zawierać przynajmniej 3 litery!
+                    <p class="text-white">     Ulica musi zawierać przynajmniej 3 litery!
                   </div>
                 </div>
               </div>
@@ -160,14 +163,14 @@
           </td>
           <td>
             <div class="form-group">
-              Ulica: <input type="text" class="form-control" name="receiverStreet" [(ngModel)]="receiver.street" #street2="ngModel"  placeholder="Ulica" required minlength="3">
+              <p class="text-white">    Ulica: <input type="text" class="form-control" name="receiverStreet" [(ngModel)]="receiver.street" #street2="ngModel"  placeholder="Ulica" required minlength="3">
               <div class="form-group">
                 <div *ngIf="street2.invalid" class="error-message">
                   <div *ngIf="street2.errors.required">
-                    Ulica nie może być pusta!
+              <p class="text-white">     Ulica nie może być pusta!
                   </div>
                   <div *ngIf="street2.errors.minlength">
-                    Ulica musi zawierać przynajmniej 3 litery!
+                    <p class="text-white">      Ulica musi zawierać przynajmniej 3 litery!
                   </div>
                 </div>
               </div>
@@ -177,14 +180,14 @@
         <tr>
           <td>
             <div class="form-group">
-              Numer domu: <input type="text" class="form-control" name="senderHouseNumber"  [(ngModel)]="sender.houseNumber" #houseNumber="ngModel" placeholder="Numer domu" required minlength="1">
+              <p class="text-white">  Numer domu: <input type="text" class="form-control" name="senderHouseNumber"  [(ngModel)]="sender.houseNumber" #houseNumber="ngModel" placeholder="Numer domu" required minlength="1">
               <div class="form-group">
                 <div *ngIf="houseNumber.invalid" class="error-message">
                   <div *ngIf="houseNumber.errors.required">
-                    Numer domu nie może być pusty!
+              <p class="text-white">      Numer domu nie może być pusty!
                   </div>
                   <div *ngIf="houseNumber.errors.minlength">
-                    Numer domu musi zawierać przynajmniej 1 literę bądź cyfrę!
+                    <p class="text-white">     Numer domu musi zawierać przynajmniej 1 literę bądź cyfrę!
                   </div>
                 </div>
               </div>
@@ -192,14 +195,14 @@
           </td>
           <td>
             <div class="form-group">
-              Numer domu: <input type="text" class="form-control" name="receiverHouseNumber" [(ngModel)]="receiver.houseNumber" #houseNumber2="ngModel"  placeholder="Numer domu" required minlength="1">
+              <p class="text-white">   Numer domu: <input type="text" class="form-control" name="receiverHouseNumber" [(ngModel)]="receiver.houseNumber" #houseNumber2="ngModel"  placeholder="Numer domu" required minlength="1">
               <div class="form-group">
                 <div *ngIf="houseNumber2.invalid" class="error-message">
                   <div *ngIf="houseNumber2.errors.required">
-                    Numer domu nie może być pusty!
+              <p class="text-white">      Numer domu nie może być pusty!
                   </div>
                   <div *ngIf="houseNumber2.errors.minlength">
-                    Numer domu musi zawierać przynajmniej 1 literę bądź cyfrę!
+                    <p class="text-white">     Numer domu musi zawierać przynajmniej 1 literę bądź cyfrę!
                   </div>
                 </div>
               </div>
@@ -209,14 +212,14 @@
         <tr>
           <td>
             <div class="form-group">
-              Numer mieszkania: <input type="text" class="form-control" name="senderApartmentNumber"  [(ngModel)]="sender.apartmentNumber" #apartmentNumber="ngModel" placeholder="Numer mieszkania" required minlength="1">
+              <p class="text-white">  Numer mieszkania: <input type="text" class="form-control" name="senderApartmentNumber"  [(ngModel)]="sender.apartmentNumber" #apartmentNumber="ngModel" placeholder="Numer mieszkania" required minlength="1">
               <div class="form-group">
                 <div *ngIf="apartmentNumber.invalid" class="error-message">
                   <div *ngIf="apartmentNumber.errors.required">
-                    Numer mieszkania nie może być pusty!
+              <p class="text-white">      Numer mieszkania nie może być pusty!
                   </div>
                   <div *ngIf="apartmentNumber.errors.minlength">
-                    Numer mieszkania musi zawierać przynajmniej 1 literę bądź cyfrę!
+                    <p class="text-white">      Numer mieszkania musi zawierać przynajmniej 1 literę bądź cyfrę!
                   </div>
                 </div>
               </div>
@@ -224,14 +227,14 @@
           </td>
           <td>
             <div class="form-group">
-              Numer mieszkania: <input type="text" class="form-control" name="receiverApartmentNumber" [(ngModel)]="receiver.apartmentNumber" #apartmentNumber2="ngModel"  placeholder="Numer mieszkania" required minlength="1">
+              <p class="text-white">   Numer mieszkania: <input type="text" class="form-control" name="receiverApartmentNumber" [(ngModel)]="receiver.apartmentNumber" #apartmentNumber2="ngModel"  placeholder="Numer mieszkania" required minlength="1">
               <div class="form-group">
                 <div *ngIf="apartmentNumber2.invalid" class="error-message">
                   <div *ngIf="apartmentNumber2.errors.required">
-                    Numer mieszkania nie może być pusty!
+              <p class="text-white">       Nr mieszkania nie może być pusty!
                   </div>
                   <div *ngIf="apartmentNumber2.errors.minlength">
-                    Numer mieszkania musi zawierać przynajmniej 1 literę bądź cyfrę!
+                    <p class="text-white">      Nr mieszkania musi zawierać przynajmniej 1 literę bądź cyfrę!
                   </div>
                 </div>
               </div>
@@ -241,14 +244,14 @@
         <tr>
           <td>
             <div class="form-group">
-              Kod pocztowy: <input type="text" class="form-control" name="senderPostCode" [(ngModel)]="sender.postCode" #postCode="ngModel" placeholder="Kod pocztowy [xx-zzz]" required pattern="([\d]{2})-([\d]{3})">
+              <p class="text-white">  Kod pocztowy: <input type="text" class="form-control" name="senderPostCode" [(ngModel)]="sender.postCode" #postCode="ngModel" placeholder="Kod pocztowy [xx-zzz]" required pattern="([\d]{2})-([\d]{3})">
               <div class="form-group">
                 <div *ngIf="postCode.invalid" class="error-message">
                   <div *ngIf="postCode.errors.required">
-                    Kod pocztowy nie może być pusty!
+              <p class="text-white">      Kod pocztowy nie może być pusty!
                   </div>
                   <div *ngIf="postCode.errors.pattern">
-                    Podaj poprawny format kodu [xx-zzz]
+                    <p class="text-white">     Podaj poprawny format kodu [xx-zzz]
                   </div>
                 </div>
               </div>
@@ -256,14 +259,14 @@
           </td>
           <td>
             <div class="form-group">
-              Kod pocztowy: <input type="text" class="form-control" name="receiverPostCode" [(ngModel)]="receiver.postCode" #postCode2="ngModel" placeholder="Kod pocztowy [xx-zzz]" required pattern="([\d]{2})-([\d]{3})">
+              <p class="text-white">    Kod pocztowy: <input type="text" class="form-control" name="receiverPostCode" [(ngModel)]="receiver.postCode" #postCode2="ngModel" placeholder="Kod pocztowy [xx-zzz]" required pattern="([\d]{2})-([\d]{3})">
               <div class="form-group">
                 <div *ngIf="postCode2.invalid" class="error-message">
                   <div *ngIf="postCode2.errors.required">
-                    Kod pocztowy nie może być pusty!
+              <p class="text-white">        Kod pocztowy nie może być pusty!
                   </div>
                   <div *ngIf="postCode2.errors.pattern">
-                    Podaj poprawny format kodu [xx-zzz]
+                    <p class="text-white">       Podaj poprawny format kodu [xx-zzz]
                   </div>
                 </div>
               </div>
@@ -273,14 +276,14 @@
         <tr>
           <td>
             <div class="form-group">
-              Telefon: <input type="text" class="form-control" name="senderNumber" [(ngModel)]="sender.phoneNumber" #phoneNumber="ngModel" placeholder="Numer telefonu" required pattern="([\d]{9})|(\+[\d]{11})">
+              <p class="text-white">  Telefon: <input type="text" class="form-control" name="senderNumber" [(ngModel)]="sender.phoneNumber" #phoneNumber="ngModel" placeholder="Numer telefonu" required pattern="([\d]{9})|(\+[\d]{11})">
               <div class="form-group">
                 <div *ngIf="phoneNumber.invalid" class="error-message">
                   <div *ngIf="phoneNumber.errors.required">
-                    Telefon nie może być pusty!
+              <p class="text-white">        Telefon nie może być pusty!
                   </div>
                   <div *ngIf="phoneNumber.errors.pattern">
-                    Podaj poprawny numer telefonu!
+                    <p class="text-white">       Podaj poprawny numer telefonu!
                   </div>
                 </div>
               </div>
@@ -288,14 +291,14 @@
           </td>
           <td>
             <div class="form-group">
-              Telefon: <input type="text" class="form-control" name="receiverNumber" [(ngModel)]="receiver.phoneNumber" #phoneNumber2="ngModel" placeholder="Numer telefonu" required pattern="([\d]{9})|(\+[\d]{11})">
+              <p class="text-white">  Telefon: <input type="text" class="form-control" name="receiverNumber" [(ngModel)]="receiver.phoneNumber" #phoneNumber2="ngModel" placeholder="Numer telefonu" required pattern="([\d]{9})|(\+[\d]{11})">
               <div class="form-group">
                 <div *ngIf="phoneNumber2.invalid" class="error-message">
                   <div *ngIf="phoneNumber2.errors.required">
-                    Telefon nie może być pusty!
+              <p class="text-white">       Telefon nie może być pusty!
                   </div>
                   <div *ngIf="phoneNumber2.errors.pattern">
-                    Podaj poprawny numer telefonu!
+                    <p class="text-white">      Podaj poprawny numer telefonu!
                   </div>
                 </div>
               </div>
