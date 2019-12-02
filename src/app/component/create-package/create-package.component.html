@@ -21,11 +21,13 @@
     </div>
 
 
+    <!-- TO MUSISZ SCHOWAC DO IFA NIZEJ I TAK SAMO NIZEJ CHYBA JESZCZE PODOBNIE RAZ ZROBIC !! -->
     <div class="card card-image mt-4 "
-         style="background-color: #333333; width: 50rem; margin: 0 auto; padding: 5 px">
+         style="background-color: #333333; width: 50rem; margin: 0 auto; padding: 5px;">
       <div class="card card-image mt-4 "
-           style="background-color: #333333; width: 30rem; margin: 0 auto; padding: 5 px; border-color: #333333;">
+           style="background-color: #333333; width: 30rem; margin: 0 auto; padding: 5px; border-color: #333333;">
     <div *ngIf="!packageAdded && !senderAdded && !productsAdded">
+
       <form class="form-registration" (ngSubmit)="createPackage()" name="createPackage" #myForm="ngForm">
         <table class="table">
           <tbody>
@@ -188,9 +190,15 @@
                 <table class="table table-responsive table-sm">
                   <thead>
                   <th><p class="text-white">Nazwa</p></th>
+<<<<<<< HEAD
                 <th><p class="text-white">Waga</p></th>
                 <th><p class="text-white">Kategoria</p></th>
                 <th><p class="text-white">Uwagi</p></th>
+=======
+                  <th><p class="text-white">Waga</p></th>
+                  <th><p class="text-white">Kategoria</p></th>
+                  <th><p class="text-white">Uwagi</p></th>
+>>>>>>> 05248680d4bdeb0ceaac12aeffc1b78249d97bf4
                   </thead>
                   <tbody>
                   <tr *ngFor="let product of productsAdded">
