@@ -84,7 +84,7 @@
           <tr>
             <td>
               <div class="form-group">
-                <button class="btn btn-success" type="submit">Dalej</button>
+                <button class="btn btn-success" type="submit">Dalej</p></button>
               </div>
             </td>
           </tr>
@@ -102,15 +102,15 @@
         <div class="col-md-12">
           <div class="row">
             <div class="col-md-12">
-              <p class="text-white"> Informacje o paczce:
+              <p class="text-white"> Informacje o paczce:</p>
               <table class="table-responsive table-sm">
                 <tbody>
                   <tr>
-                    <th><p class="text-white">WysxSzerxDl[cm]:</th>
-                    <td><p class="text-white">{{package.height}}x{{package.width}}x{{package.length}}</td>
+                    <th><p class="text-white">WysxSzerxDl[cm]:</p></th>
+                    <td><p class="text-white">{{package.height}}x{{package.width}}x{{package.length}}</p></td>
                   </tr>
                   <tr>
-                    <th><p class="text-white">Opis:</th>
+                    <th><p class="text-white">Opis:</p></th>
                     <td><textarea rows = "3" cols = "25" name = "description" disabled [(ngModel)]="package.comments" class="form-control">Uwagi</textarea></td>
                   </tr>
                 </tbody>
@@ -120,20 +120,20 @@
 
           <div class="row">
               <div class="col-md-6">
-                <p class="text-white">Informacje o nadawcy:
+                <p class="text-white">Informacje o nadawcy:</p>
                 <table class="table table-responsive table-sm">
                   <tbody>
                   <tr>
-                    <th><p class="text-white">Imię i nazwisko:</th>
-                    <td><p class="text-white">{{package.sender.name}} {{package.sender.lastName}}</td>
+                    <th><p class="text-white">Imię i nazwisko:</p></th>
+                    <td><p class="text-white">{{package.sender.name}} {{package.sender.lastName}}</p></td>
                   </tr>
                   <tr>
-                    <th><p class="text-white">Adres email:</th>
-                    <td><p class="text-white">{{package.sender.email}}</td>
+                    <th><p class="text-white">Adres email:</p></th>
+                    <td><p class="text-white">{{package.sender.email}}</p></td>
                   </tr>
                   <tr>
-                    <th><p class="text-white">Nazwa firmy:</th>
-                    <td><p class="text-white">{{package.sender.companyName}}</td>
+                    <th><p class="text-white">Nazwa firmy:</p></th>
+                    <td><p class="text-white">{{package.sender.companyName}}</p></td>
                   </tr>
                   <tr>
                     <th><p class="text-white">Miasto:</th>
@@ -184,20 +184,20 @@
           </div>
           <div class="row" *ngIf="!wantAddProducts">
               <div class="col-md-12">
-                <p class="text-white"> Produkty:
+                <p class="text-white"> Produkty:</p>
                 <table class="table table-responsive table-sm">
                   <thead>
-                  <th><p class="text-white">Nazwa</th>
-                  <th><p class="text-white">Waga</th>
-                  <th><p class="text-white">Kategoria</th>
-                  <th><p class="text-white">Uwagi</th>
+                  <th><p class="text-white">Nazwa</p></th>
+                <th><p class="text-white">Waga</p></th>
+                <th><p class="text-white">Kategoria</p></th>
+                <th><p class="text-white">Uwagi</p></th>
                   </thead>
                   <tbody>
                   <tr *ngFor="let product of productsAdded">
-                    <td><p class="text-white">{{product.name}}</td>
-                    <td><p class="text-white">{{product.weight}}</td>
-                    <td><p class="text-white">{{product.category.name}}</td>
-                    <td><p class="text-white">{{product.comments}}</td>
+                    <td><p class="text-white">{{product.name}}</p></td>
+                <td><p class="text-white">{{product.weight}}</p></td>
+                <td><p class="text-white">{{product.category.name}}</p></td>
+                <td><p class="text-white">{{product.comments}}</p></td>
                   </tr>
                   </tbody>
                 </table>
