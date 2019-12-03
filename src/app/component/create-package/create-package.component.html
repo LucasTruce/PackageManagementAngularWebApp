@@ -1,5 +1,5 @@
 
-<div class="container">
+<div class="container" style="padding-bottom: 50px;">
   <div class="row justify-content-md-center">
     <div *ngIf="packageAdded && !senderAdded && !productsAdded">
       <app-create-sender-receiver
@@ -22,20 +22,21 @@
 
 
     <!-- TO MUSISZ SCHOWAC DO IFA NIZEJ I TAK SAMO NIZEJ CHYBA JESZCZE PODOBNIE RAZ ZROBIC !! -->
+    <div *ngIf="!packageAdded && !senderAdded && !productsAdded">
     <div class="card card-image mt-4 "
          style="background-color: #333333; width: 50rem; margin: 0 auto; padding: 5px;">
       <div class="card card-image mt-4 "
            style="background-color: #333333; width: 30rem; margin: 0 auto; padding: 5px; border-color: #333333;">
-    <div *ngIf="!packageAdded && !senderAdded && !productsAdded">
+
 
       <form class="form-registration" (ngSubmit)="createPackage()" name="createPackage" #myForm="ngForm">
         <table class="table">
           <tbody>
-          <tr><td><p class="text-white">Wprowadź wymiary paczki:</p></td></tr>
+          <tr><td><p class="text-white">Wprowadź wymiary paczki:</td></tr>
           <tr>
             <td>
               <div class="form-group">
-                <p class="text-white">   Wysokość[cm]: </p><input type="number" class="form-control" name="height" [(ngModel)]="package.height"  placeholder="Wysokość [cm]">
+                <p class="text-white">   Wysokość[cm]: <input type="number" class="form-control" name="height" [(ngModel)]="package.height"  placeholder="Wysokość [cm]">
                 <div *ngIf="error.height" class="error-message">
                   {{error.height}}
                 </div>
@@ -45,7 +46,7 @@
           <tr>
             <td>
               <div class="form-group">
-                <p class="text-white">  Szerokość[cm]:</p> <input type="number" class="form-control" name="width" [(ngModel)]="package.width" placeholder="Szerokość [cm]">
+                <p class="text-white">  Szerokość[cm]: <input type="number" class="form-control" name="width" [(ngModel)]="package.width" placeholder="Szerokość [cm]">
                 <div *ngIf="error.width" class="error-message">
                   {{error.width}}
                 </div>
@@ -55,7 +56,7 @@
           <tr>
             <td>
               <div class="form-group">
-                <p class="text-white">  Długość[cm]: </p><input type="number" class="form-control" name="length" [(ngModel)]="package.length" placeholder="Długość [cm]">
+                <p class="text-white">  Długość[cm]: <input type="number" class="form-control" name="length" [(ngModel)]="package.length" placeholder="Długość [cm]">
                 <div *ngIf="error.length" class="error-message">
                   {{error.length}}
                 </div>
@@ -65,7 +66,7 @@
           <tr>
             <td>
               <div class="form-group">
-                <p class="text-white">   Waga[kg]:</p> <input type="number" class="form-control" name="weight" [(ngModel)]="package.weight" placeholder="Waga [kg]">
+                <p class="text-white">   Waga[kg]: <input type="number" class="form-control" name="weight" [(ngModel)]="package.weight" placeholder="Waga [kg]">
                 <div *ngIf="error.weight" class="error-message">
                   {{error.weight}}
                 </div>
@@ -86,7 +87,7 @@
           <tr>
             <td>
               <div class="form-group">
-                <button class="btn btn-success" type="submit">Dalej</p></button>
+                <button class="btn btn-success" type="submit">Dalej</button>
               </div>
             </td>
           </tr>
@@ -95,11 +96,16 @@
       </form>
     </div>
     </div>
-
+    </div>
 
 
 
     <div *ngIf="packageAdded && senderAdded && receiverAdded && (productsAdded || wantAddProducts)">
+      <div class="card card-image mt-4 "
+           style="background-color: #333333; width: 50rem; margin: 0 auto; padding: 5px;">
+        <div class="card card-image mt-4 "
+             style="background-color: #333333; width: 30rem; margin: 0 auto; padding: 5px; border-color: #333333;">
+
       <form class="form-registration" (ngSubmit)="addToDatabase()" name="addToDatabase" #myForm1="ngForm">
         <div class="col-md-12">
           <div class="row">
@@ -123,7 +129,7 @@
           <div class="row">
               <div class="col-md-6">
                 <p class="text-white">Informacje o nadawcy:</p>
-                <table class="table table-responsive table-sm">
+                <table class="table table-striped table-bordered" cellspacing="0" width="100%">
                   <tbody>
                   <tr>
                     <th><p class="text-white">Imię i nazwisko:</p></th>
@@ -138,47 +144,47 @@
                     <td><p class="text-white">{{package.sender.companyName}}</p></td>
                   </tr>
                   <tr>
-                    <th><p class="text-white">Miasto:</th>
-                    <td><p class="text-white">{{package.sender.postCode}}, {{package.sender.city}}</td>
+                    <th><p class="text-white">Miasto:</p></th>
+                    <td><p class="text-white">{{package.sender.postCode}}, {{package.sender.city}}</p></td>
                   </tr>
                   <tr>
-                    <th><p class="text-white">Ulica:</th>
-                    <td><p class="text-white">{{package.sender.street}} {{package.recipient.houseNumber}}/{{package.recipient.apartmentNumber}}</td>
+                    <th><p class="text-white">Ulica:</p></th>
+                    <td><p class="text-white">{{package.sender.street}} {{package.recipient.houseNumber}}/{{package.recipient.apartmentNumber}}</p></td>
                   </tr>
                   <tr>
-                    <th><p class="text-white">Telefon:</th>
-                    <td><p class="text-white">{{package.sender.phoneNumber}}</td>
+                    <th><p class="text-white">Telefon:</p></th>
+                    <td><p class="text-white">{{package.sender.phoneNumber}}</p></td>
                   </tr>
                   </tbody>
                 </table>
               </div>
             <div class="col-md-6">
-              <p class="text-white"> Informacje o odbiorcy:
-              <table class="table table-responsive table-sm">
+              <p class="text-white"> Informacje o odbiorcy:</p>
+              <table class="table table-striped table-bordered" cellspacing="0" width="100%">
                 <tbody>
                 <tr>
-                  <th><p class="text-white">Imię i nazwisko:</th>
-                  <td><p class="text-white">{{package.recipient.name}} {{package.recipient.lastName}}</td>
+                  <th><p class="text-white">Imię i nazwisko:</p></th>
+                  <td><p class="text-white">{{package.recipient.name}} {{package.recipient.lastName}}</p></td>
                 </tr>
                 <tr>
-                  <th><p class="text-white">Adres email:</th>
-                  <td><p class="text-white">{{package.recipient.email}}</td>
+                  <th><p class="text-white">Adres email:</p></th>
+                  <td><p class="text-white">{{package.recipient.email}}</p></td>
                 </tr>
                 <tr>
-                  <th><p class="text-white">Nazwa firmy:</th>
-                  <td><p class="text-white">{{package.recipient.companyName}}</td>
+                  <th><p class="text-white">Nazwa firmy:</p></th>
+                  <td><p class="text-white">{{package.recipient.companyName}}</p></td>
                 </tr>
                 <tr>
-                  <th><p class="text-white">Miasto:</th>
-                  <td><p class="text-white">{{package.recipient.postCode}}, {{package.recipient.city}}</td>
+                  <th><p class="text-white">Miasto:</p></th>
+                  <td><p class="text-white">{{package.recipient.postCode}}, {{package.recipient.city}}</p></td>
                 </tr>
                 <tr>
-                  <th><p class="text-white">Ulica:</th>
-                  <td><p class="text-white">{{package.recipient.street}} {{package.recipient.houseNumber}}/{{package.recipient.apartmentNumber}}</td>
+                  <th><p class="text-white">Ulica:</p></th>
+                  <td><p class="text-white">{{package.recipient.street}} {{package.recipient.houseNumber}}/{{package.recipient.apartmentNumber}}</p></td>
                 </tr>
                 <tr>
-                  <th><p class="text-white">Telefon:</th>
-                  <td><p class="text-white">{{package.recipient.phoneNumber}}</td>
+                  <th><p class="text-white">Telefon:</p></th>
+                  <td><p class="text-white">{{package.recipient.phoneNumber}}</p></td>
                 </tr>
                 </tbody>
               </table>
@@ -190,15 +196,15 @@
                 <table class="table table-responsive table-sm">
                   <thead>
                   <th><p class="text-white">Nazwa</p></th>
-<<<<<<< HEAD
+
                 <th><p class="text-white">Waga</p></th>
                 <th><p class="text-white">Kategoria</p></th>
                 <th><p class="text-white">Uwagi</p></th>
-=======
+
                   <th><p class="text-white">Waga</p></th>
                   <th><p class="text-white">Kategoria</p></th>
                   <th><p class="text-white">Uwagi</p></th>
->>>>>>> 05248680d4bdeb0ceaac12aeffc1b78249d97bf4
+
                   </thead>
                   <tbody>
                   <tr *ngFor="let product of productsAdded">
@@ -220,6 +226,8 @@
       </form>
     </div>
 
-  </div>
+
+</div>
+</div>
 </div>
 </div>

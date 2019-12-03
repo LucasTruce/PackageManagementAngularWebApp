@@ -35,16 +35,19 @@
                       <p class="text-white">  Podaj nazwę: <input type="text" class="form-control" name="item[{{item.id}}][name]" [(ngModel)]="item.name" placeholder="Nazwa towaru">
                     </div>
                   </td>
+              <tr>
                   <td>
                     <div class="form-group">
                       <p class="text-white">  Podaj wagę[kg]: <input type="number" class="form-control" name="item[{{item.id}}][weight]" [(ngModel)]="item.weight"  placeholder="Waga towaru">
                     </div>
                   </td>
+
                   <td>
                     <div class="form-group">
                       <p class="text-white">  Uwagi: <textarea rows = "2" cols = "50" class="form-control" name="item[{{item.id}}][comments]" [(ngModel)]="item.comments" >Uwagi</textarea>
                     </div>
                   </td>
+              </tr>
                   <td>
                     <input type="button" name="deleteProduct"  class="form-control" (click)="deleteProductFromContent(i)" value="Usuń produkt">
                   </td>

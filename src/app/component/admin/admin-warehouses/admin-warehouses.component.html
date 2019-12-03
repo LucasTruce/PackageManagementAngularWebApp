@@ -1,12 +1,12 @@
 <div *ngIf="authService.isAdmin()" class="container">
   <div class="row justify-content-md-center">
     <app-navigation></app-navigation>
-
     <div class="card card-image mt-4 col-sm-9"
          style="background-color: #333333; width: 30rem; margin: 0 auto;">
       <div class="card card-image col-sm-12"
            style="background-color: #333333; width: 50rem; margin: 0 auto ;border-color: #333333;">
-      <button type="button" class="btn btn-primary" name="addWarehouse" routerLink="/admin/warehouses/addWarehouse">Dodaj magazyn</button>
+
+      <button type="button" class="btn btn-primary mt-2" name="addWarehouse" routerLink="/admin/warehouses/addWarehouse">Dodaj magazyn</button>
 
       <table matSort (matSortChange)="sortWarehouse($event)" class="table table-striped">
         <thead>

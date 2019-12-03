@@ -1,14 +1,15 @@
-<div *ngIf="authService.isUser()" class="col-md-2" style="max-width: 100%">
-  <a routerLink="/profile" class="nav-link" >Informacje</a><br/>
-  <a routerLink="/profile/change" class="nav-link">Zmień dane logowania</a><br/>
-  <a routerLink="/profile/packages-info" class="nav-link">Moje paczki</a>
+
+<div *ngIf="authService.isUser()" class="btn-group-vertical mt-4" role="group" aria-label="Vertical button group">
+  <a class="btn btn-primary" type="button" routerLink="/profile" role="button">Link</a>
+  <a class="btn btn-primary" type="button" routerLink="/profile/change" role="button">Link</a>
+  <a class="btn btn-primary" type="button" routerLink="/profile/packages-info" role="button">Link</a>
 </div>
 
-<div *ngIf="authService.isAdmin()" class="col-md-2" style="max-width: 100%">
-  <a routerLink="/admin" class="nav-link" >Informacje</a><br/>
-  <a routerLink="/admin/change" class="nav-link">Zmień dane logowania</a><br/>
-  <a routerLink="/admin/users" class="nav-link">Zarządzaj użytkownikami</a><br/>
-  <a routerLink="/admin/warehouses" class="nav-link">Zarządzaj magazynami</a><br/>
-  <a routerLink="/admin/cars" class="nav-link">Zarządzaj samochodami</a><br/>
-  <a routerLink="/admin/packages" class="nav-link">Zarządzaj paczkami</a>
+<div *ngIf="authService.isAdmin()" class="btn-group-vertical mt-4" role="group" aria-label="Vertical button group">
+  <a class="btn btn-dark" type="button" routerLink="/admin" role="button">Informacje</a>
+  <a class="btn btn-dark" type="button" routerLink="/admin/change" role="button">Zmień dane logowania</a>
+  <a class="btn btn-dark" type="button" routerLink="/admin/users" role="button">Zarządzaj użytkownikami</a>
+  <a class="btn btn-dark" type="button" routerLink="/admin/warehouses" role="button">Zarządzaj magazynami</a>
+  <a class="btn btn-dark" type="button" routerLink="/admin/cars" role="button">Zarządzaj samochodami</a>
+  <a class="btn btn-dark" type="button" routerLink="/admin/packages" role="button">Zarządzaj paczkami</a>
 </div>
