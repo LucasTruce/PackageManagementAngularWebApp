@@ -73,21 +73,22 @@ export class CreatePackageComponent implements OnInit {
         this.receiverService.save(this.receiverAdded).subscribe( //dodawanie odbiorcy
           res => {
             this.package.recipient = res;
-            if(this.wantAddProducts == false) {  //przypadek gdzie uzytkownik chce dodać towary
-              this.productService.saveAll(this.productsAdded).subscribe( //dodawanie produktow (produkt musi mieć kod)
+            if(this.wantAddProducts == false) {  //przypadek, w którym użytkownik chciałby dodać towary
+              this.productService.saveAll(this.productsAdded).subscribe( //dodawanie produktów (produkt musi posiadać kod)
                 nx => {
                   this.successfulResponseProducts(nx);
-                  this.contentService.saveContent(this.contentAdded).subscribe( //dodawanie zawartosci (zawartosc musi miec produkty)
+                  this.contentService.saveContent(this.contentAdded).subscribe( //dodawanie zawartości (zawartość musi posiadać produkty)
                   next => {
                     this.successfulResponseContent(next);
-                    this.packageService.save(this.package, this.authenticationService.getLogin()).subscribe(  //dodawanie paczki (paczka musi mieć kod)
+                    //dodawanie paczki (paczka musi mieć kod)
+                    this.packageService.save(this.package, this.authenticationService.getLogin()).subscribe(
                       response => {
                         this.successfullResponsePackage(response);
                         this.router.navigate(['/profile/packages-info']);
                       }
                       );});});
             }
-            else { //przypadek gdy uzytkownik nie chce dodać towarów (wstawiamy sama paczke, bez content'u i towarow)
+            else { //przypadek gdy uzytkownik nie chce dodać towarów (wstawiamy samą paczkę, bez content'u i towarów)
               this.package.code = new Code('');
               this.packageService.save(this.package, this.authenticationService.getLogin()).subscribe(
                 respo => {

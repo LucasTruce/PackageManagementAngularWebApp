@@ -1,5 +1,5 @@
 <div class="card card-image mt-4 "
-     style="background-color: #333333; width: 60rem; margin: 0 auto; padding: 5 px; height: 37rem;">
+     style="background-color: #333333; width: 75rem; margin: 0 auto; padding: 5px; height: auto;">
   <div class="row justify-content-md-center mt-5" >
     <form *ngIf="package.id === ''" class="form-registration" (ngSubmit)="findPackage()" name="findPackage" #myForm="ngForm">
       <p class="text-white">    Wprowadź numer paczki:</p> <input type="text" class="form-control" name="packageNumber" [(ngModel)]="package.packageNumber"  placeholder="Numer paczki">
@@ -33,7 +33,7 @@
           </tr>
         </tbody>
       </table>
-      <p class="text-white"> Nadawca:
+      <p class="text-white"> Nadawca: </p>
       <table class="table table-striped table-bordered" cellspacing="0" width="100%">
         <thead>
           <tr>
@@ -51,7 +51,7 @@
           <td><p class="text-white"> {{package.sender.name}} {{package.sender.lastName}}</td>
           <td><p class="text-white"> {{package.sender.email}}</td>
           <td>  <div *ngIf="package.sender.companyName === ''"><p class="text-white">brak</div>
-    <p class="text-white">{{package.sender.companyName}}
+            <p class="text-white">{{package.sender.companyName}} </p>
           </td>
           <td><p class="text-white"> {{package.sender.city}}</td>
           <td><p class="text-white"> {{package.sender.street}}</td>
@@ -61,7 +61,7 @@
         </tbody>
       </table>
 
-      <p class="text-white">  Odbiorca:
+      <p class="text-white">  Odbiorca: </p>
         <table class="table table-striped table-bordered" cellspacing="0" width="100%">
           <thead>
           <tr>
@@ -79,8 +79,8 @@
             <td><p class="text-white"> {{package.recipient.name}} {{package.recipient.lastName}}</td>
             <td><p class="text-white"> {{package.recipient.email}}</td>
             <td>
-              <div *ngIf="package.recipient.companyName === ''"><p class="text-white">brak</div>
-    <p class="text-white"> {{package.recipient.companyName}}
+              <div *ngIf="package.recipient.companyName === ''"><p class="text-white">brak </p></div>
+              <p class="text-white"> {{package.recipient.companyName}} </p>
             </td>
             <td><p class="text-white"> {{package.recipient.city}}</td>
             <td><p class="text-white"> {{package.recipient.street}}</td>
@@ -88,6 +88,24 @@
             <td><p class="text-white"> {{package.recipient.phoneNumber}}</td>
           </tr>
           </tbody>
+      </table>
+
+      <p class="text-white">  Historia paczki: </p>
+      <table class="table table-striped table-bordered" cellspacing="0" width="100%">
+        <thead>
+        <tr>
+          <th><p class="text-white"> Data</th>
+          <th><p class="text-white"> Opis</th>
+          <th><p class="text-white"> Lokalizacja</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let history of histories">
+          <td><p class="text-white"> {{history.date}}</p></td>
+          <td><p class="text-white"> {{history.description}}</p></td>
+          <td><p class="text-white"> {{history.localization}}</p></td>
+        </tr>
+        </tbody>
       </table>
     </div>
 

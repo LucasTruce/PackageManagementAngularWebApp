@@ -22,7 +22,7 @@
                 <div *ngFor="let item of productList; index as i">
                   <td>
                     <div class="form-group">
-      <p class="text-white"> Wybierz kategorię:
+                      <p class="text-white"> Wybierz kategorię: </p>
                       <select class="form-control" id="selectCategory" name="item[{{item.id}}][category]" [(ngModel)]="item.category">
                           <option *ngFor="let category of productCategories"  [ngValue]="category">
                             {{category.name}}
@@ -32,26 +32,26 @@
                   </td>
                   <td>
                     <div class="form-group">
-                      <p class="text-white">  Podaj nazwę: <input type="text" class="form-control" name="item[{{item.id}}][name]" [(ngModel)]="item.name" placeholder="Nazwa towaru">
+                      <p class="text-white">  Podaj nazwę: <input type="text" class="form-control" name="item[{{item.id}}][name]" [(ngModel)]="item.name" placeholder="Nazwa towaru"> </p>
                     </div>
                   </td>
               <tr>
                   <td>
                     <div class="form-group">
-                      <p class="text-white">  Podaj wagę[kg]: <input type="number" class="form-control" name="item[{{item.id}}][weight]" [(ngModel)]="item.weight"  placeholder="Waga towaru">
+                      <p class="text-white">  Podaj wagę[kg]: <input type="number" class="form-control" name="item[{{item.id}}][weight]" [(ngModel)]="item.weight"  placeholder="Waga towaru"> </p>
                     </div>
                   </td>
 
                   <td>
                     <div class="form-group">
-                      <p class="text-white">  Uwagi: <textarea rows = "2" cols = "50" class="form-control" name="item[{{item.id}}][comments]" [(ngModel)]="item.comments" >Uwagi</textarea>
+                      <p class="text-white">  Uwagi: <textarea rows = "2" cols = "50" class="form-control" name="item[{{item.id}}][comments]" [(ngModel)]="item.comments" >Uwagi</textarea> </p>
                     </div>
                   </td>
               </tr>
+              <tr>
                   <td>
-                    <input type="button" name="deleteProduct"  class="form-control" (click)="deleteProductFromContent(i)" value="Usuń produkt">
+                    <input type="button" name="deleteProduct"  class="form-control" (click)="deleteProductFromContent(i)" value="Usuń produkt" >
                   </td>
-                </div>
               </tr>
               <tr>
                 <div *ngIf="productList.length > 0">
@@ -64,9 +64,7 @@
           </table>
         </form>
       </div>
-
     </div>
-
   </div>
 </div>
 </div>

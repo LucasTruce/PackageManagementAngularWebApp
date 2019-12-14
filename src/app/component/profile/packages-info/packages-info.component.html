@@ -2,10 +2,8 @@
   <div class="row justify-content-md-center">
     <app-navigation></app-navigation>
 
-    <div class="card card-image mt-4 col-sm-9"
-         style="background-color: #333333; width: 60rem; margin: 0 auto;">
-      <div class="card card-image col-sm-12"
-           style="background-color: #333333; width: 45rem; margin: 0 auto ;border-color: #333333;">
+    <div class="card card-image mt-9 col-sm-9"
+         style="background-color: #333333; width: 75rem; margin: 0 auto;">
       <form class="form-registration" name="packagesInfo" #myForm="ngForm">
         <p class="text-white">Jeśli paczka została nadana to nie można jej usunąć ani zmienić danych! <br/>
           Nie zapomnij wydrukować i przykleić kodów QR na paczkę oraz produkty! Bez tego kurier nie bęzie mógł odebrać paczki!</p>
@@ -33,14 +31,24 @@
                 <button *ngIf="package.packageStatus.name != 'W oczekiwaniu na kuriera'" type="button" class="btn btn-sm btn-outline-warning" disabled>Edytuj</button>
                 <button type="button" class="btn btn-sm btn-info" name="packageDetails" [routerLink]="['/profile/packages-info/', package.id]">Szczegóły</button>
                 <button type="button" class="btn btn-sm btn-secondary" (click)="goToPdf(package.id, package.packageNumber)">Pobierz</button>
+                <div class="dropdown">
+                  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton[i]" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Dropdown button
+                  </button>
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                  </div>
+                </div>
               </td>
             </tr>
           </tbody>
         </table>
         <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
       </form>
-    </div>
   </div>
+</div>
 </div>
 
 <div class="modal" id="myModal" tabindex="-1" role="dialog">

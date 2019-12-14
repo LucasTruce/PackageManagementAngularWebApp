@@ -29,14 +29,25 @@
           <td><p class="text-white">{{warehouse.phoneNumber}}</td>
           <td><p class="text-white">{{warehouse.description}}</td>
           <td>
-            <button type="button" class="btn btn-sm btn-danger" name="deleteWarehouse" (click)="deletingWarehouse(warehouse)" data-toggle="modal" data-target="#myModal">Usuń</button>
-            <button type="button" class="btn btn-sm btn-warning" name="editWarehouse" [routerLink]="['/admin/warehouses/', warehouse.id]">Edytuj</button>
-            <button type="button" class="btn btn-sm btn-secondary" (click)="goToPdf(warehouse.id)">Pobierz</button>
+            <div class="dropdown">
+              <button class="btn btn-danger dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown"
+                      aria-haspopup="true" aria-expanded="false">wybierz akcje</button>
+              <div class="dropdown-menu dropdown-primary">
+                <button type="button" class="dropdown-item" name="deleteWarehouse" (click)="deletingWarehouse(warehouse)" data-toggle="modal" data-target="#myModal">Usuń</button>
+                <button type="button" class="dropdown-item" name="editWarehouse" [routerLink]="['/admin/warehouses/', warehouse.id]">Edytuj</button>
+                <button type="button" class="dropdown-item" (click)="goToPdf(warehouse.id)">Pobierz</button>
+              </div>
+            </div>
           </td>
         </tr>
         </tbody>
       </table>
-      <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
+        <div class="row justify-content-md-center">
+          <pagination-controls (pageChange)="pageChanged($event)"
+                               previousLabel="Poprzednia"
+                               nextLabel="Następna">
+          </pagination-controls>
+        </div>
     </div>
   </div>
 </div>

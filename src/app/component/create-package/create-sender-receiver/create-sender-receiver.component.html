@@ -12,7 +12,7 @@
         <tr>
           <td>
             <div class="form-group">
-              <p class="text-white"> Imię: <input type="text" class="form-control" name="senderName" [(ngModel)]="sender.name" placeholder="Imię" #name="ngModel" required minlength="3">
+              <p class="text-white"> Imię: <input type="text" class="form-control" name="senderName" [(ngModel)]="sender.name" placeholder="Imię" #name="ngModel" required minlength="3"> </p>
               <div class="form-group">
                 <div *ngIf="name.invalid" class="error-message">
                   <div *ngIf="name.errors.required">
@@ -28,7 +28,8 @@
           <td>
             <div class="form-group">
               <p class="text-white">  Imię: <input type="text" class="form-control" name="receiverName"  [(ngModel)]="receiver.name" #name2="ngModel" placeholder="Imię" required minlength="3">
-              <div class="form-group">
+              </p>
+                <div class="form-group">
                 <div *ngIf="name2.invalid" class="error-message">
                   <div *ngIf="name2.errors.required">
               <p class="text-white">    Imię nie może być puste!
@@ -45,10 +46,11 @@
           <td>
             <div class="form-group">
               <p class="text-white"> Nazwisko: <input type="text" class="form-control" name="senderLastName"  [(ngModel)]="sender.lastName" #lastName="ngModel" placeholder="Nazwisko" required minlength="2">
-              <div class="form-group">
+              </p>
+                <div class="form-group">
                 <div *ngIf="lastName.invalid" class="error-message">
                   <div *ngIf="lastName.errors.required">
-              <p class="text-white">  Imię nie może być puste!
+              <p class="text-white">  Imię nie może być puste! </p>
                   </div>
                   <div *ngIf="lastName.errors.minlength">
                     <p class="text-white">  Imię musi zawierać przynajmniej 3 litery!
@@ -60,7 +62,8 @@
           <td>
             <div class="form-group">
               <p class="text-white"> Nazwisko: <input type="text" class="form-control" name="receiverLastName" [(ngModel)]="receiver.lastName" #lastName2="ngModel"  placeholder="Nazwisko" required minlength="2">
-              <div class="form-group">
+              </p>
+                <div class="form-group">
                 <div *ngIf="lastName2.invalid" class="error-message">
                   <div *ngIf="lastName2.errors.required">
               <p class="text-white">   Imię nie może być puste!
@@ -77,6 +80,7 @@
           <td>
             <div class="form-group">
               <p class="text-white">  Adres e-mail: <input type="email" class="form-control" name="senderEmail"  [(ngModel)]="sender.email" #senderEmail="ngModel" placeholder="Adres email" required="true">
+              </p>
               <div class="form-group">
                 <div *ngIf="senderEmail.invalid" class="error-message">
                   <div *ngIf="senderEmail.errors.required">
@@ -89,6 +93,7 @@
           <td>
             <div class="form-group">
               <p class="text-white">   Adres e-mail: <input type="email" class="form-control" name="receiverEmail" [(ngModel)]="receiver.email" #email2="ngModel" placeholder="Adres email" required="true">
+              </p>
               <div class="form-group">
                 <div *ngIf="email2.invalid" class="error-message">
                   <div *ngIf="email2.errors.required">
@@ -117,6 +122,7 @@
           <td>
             <div class="form-group">
               <p class="text-white">   Miasto: <input type="text" class="form-control" name="senderCity"  [(ngModel)]="sender.city" #city="ngModel" placeholder="Miasto" required minlength="3">
+              </p>
               <div class="form-group">
                 <div *ngIf="city.invalid" class="error-message">
                   <div *ngIf="city.errors.required">
@@ -132,6 +138,7 @@
           <td>
             <div class="form-group">
               <p class="text-white">   Miasto: <input type="text" class="form-control" name="receiverCity" [(ngModel)]="receiver.city" #city2="ngModel" placeholder="Miasto" required minlength="3">
+              </p>
               <div class="form-group">
                 <div *ngIf="city2.invalid" class="error-message">
                   <div *ngIf="city2.errors.required">
@@ -149,6 +156,7 @@
           <td>
             <div class="form-group">
               <p class="text-white">    Ulica: <input type="text" class="form-control" name="senderStreet"  [(ngModel)]="sender.street" #street="ngModel" placeholder="Ulica" required minlength="3">
+              </p>
               <div class="form-group">
                 <div *ngIf="street.invalid" class="error-message">
                   <div *ngIf="street.errors.required">
@@ -164,6 +172,7 @@
           <td>
             <div class="form-group">
               <p class="text-white">    Ulica: <input type="text" class="form-control" name="receiverStreet" [(ngModel)]="receiver.street" #street2="ngModel"  placeholder="Ulica" required minlength="3">
+              </p>
               <div class="form-group">
                 <div *ngIf="street2.invalid" class="error-message">
                   <div *ngIf="street2.errors.required">
@@ -181,6 +190,7 @@
           <td>
             <div class="form-group">
               <p class="text-white">  Numer domu: <input type="text" class="form-control" name="senderHouseNumber"  [(ngModel)]="sender.houseNumber" #houseNumber="ngModel" placeholder="Numer domu" required minlength="1">
+              </p>
               <div class="form-group">
                 <div *ngIf="houseNumber.invalid" class="error-message">
                   <div *ngIf="houseNumber.errors.required">
@@ -196,6 +206,7 @@
           <td>
             <div class="form-group">
               <p class="text-white">   Numer domu: <input type="text" class="form-control" name="receiverHouseNumber" [(ngModel)]="receiver.houseNumber" #houseNumber2="ngModel"  placeholder="Numer domu" required minlength="1">
+              </p>
               <div class="form-group">
                 <div *ngIf="houseNumber2.invalid" class="error-message">
                   <div *ngIf="houseNumber2.errors.required">
@@ -213,6 +224,7 @@
           <td>
             <div class="form-group">
               <p class="text-white">  Numer mieszkania: <input type="text" class="form-control" name="senderApartmentNumber"  [(ngModel)]="sender.apartmentNumber" #apartmentNumber="ngModel" placeholder="Numer mieszkania" required minlength="1">
+              </p>
               <div class="form-group">
                 <div *ngIf="apartmentNumber.invalid" class="error-message">
                   <div *ngIf="apartmentNumber.errors.required">
@@ -228,6 +240,7 @@
           <td>
             <div class="form-group">
               <p class="text-white">   Numer mieszkania: <input type="text" class="form-control" name="receiverApartmentNumber" [(ngModel)]="receiver.apartmentNumber" #apartmentNumber2="ngModel"  placeholder="Numer mieszkania" required minlength="1">
+              </p>
               <div class="form-group">
                 <div *ngIf="apartmentNumber2.invalid" class="error-message">
                   <div *ngIf="apartmentNumber2.errors.required">
@@ -245,6 +258,7 @@
           <td>
             <div class="form-group">
               <p class="text-white">  Kod pocztowy: <input type="text" class="form-control" name="senderPostCode" [(ngModel)]="sender.postCode" #postCode="ngModel" placeholder="Kod pocztowy [xx-zzz]" required pattern="([\d]{2})-([\d]{3})">
+              </p>
               <div class="form-group">
                 <div *ngIf="postCode.invalid" class="error-message">
                   <div *ngIf="postCode.errors.required">
@@ -260,6 +274,7 @@
           <td>
             <div class="form-group">
               <p class="text-white">    Kod pocztowy: <input type="text" class="form-control" name="receiverPostCode" [(ngModel)]="receiver.postCode" #postCode2="ngModel" placeholder="Kod pocztowy [xx-zzz]" required pattern="([\d]{2})-([\d]{3})">
+              </p>
               <div class="form-group">
                 <div *ngIf="postCode2.invalid" class="error-message">
                   <div *ngIf="postCode2.errors.required">
@@ -277,6 +292,7 @@
           <td>
             <div class="form-group">
               <p class="text-white">  Telefon: <input type="text" class="form-control" name="senderNumber" [(ngModel)]="sender.phoneNumber" #phoneNumber="ngModel" placeholder="Numer telefonu" required pattern="([\d]{9})|(\+[\d]{11})">
+              </p>
               <div class="form-group">
                 <div *ngIf="phoneNumber.invalid" class="error-message">
                   <div *ngIf="phoneNumber.errors.required">
@@ -292,6 +308,7 @@
           <td>
             <div class="form-group">
               <p class="text-white">  Telefon: <input type="text" class="form-control" name="receiverNumber" [(ngModel)]="receiver.phoneNumber" #phoneNumber2="ngModel" placeholder="Numer telefonu" required pattern="([\d]{9})|(\+[\d]{11})">
+              </p>
               <div class="form-group">
                 <div *ngIf="phoneNumber2.invalid" class="error-message">
                   <div *ngIf="phoneNumber2.errors.required">
@@ -317,4 +334,5 @@
     </form>
 
   </div>
+</div>
 </div>
