@@ -1,8 +1,8 @@
 
 <div *ngIf="authService.isUser()" class="btn-group-vertical mt-4" role="group" aria-label="Vertical button group">
-  <a class="btn btn-primary" type="button" routerLink="/profile" role="button">Link</a>
-  <a class="btn btn-primary" type="button" routerLink="/profile/change" role="button">Link</a>
-  <a class="btn btn-primary" type="button" routerLink="/profile/packages-info" role="button">Link</a>
+  <a class="btn btn-dark" type="button" routerLink="/profile" role="button">Informacje</a>
+  <a class="btn btn-dark" type="button" routerLink="/profile/change" role="button">Zmień dane logowania</a>
+  <a class="btn btn-dark" type="button" routerLink="/profile/packages-info" role="button">Twoje paczki</a>
 </div>
 
 <div *ngIf="authService.isAdmin()" class="btn-group-vertical mt-4" role="group" aria-label="Vertical button group">
